@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Kaira - Bootstrap 5 Fashion Store HTML CSS Template</title>
+    <title>Pengaduan Polsek Pauh</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,7 +151,7 @@
         </defs>
     </svg>
 
-    <div class="overflow-hidden text-white preloader fs-6 text-uppercase"></div>
+    {{-- <div class="overflow-hidden text-white preloader fs-6 text-uppercase"></div>
 
     <div class="search-popup">
         <div class="search-popup-container">
@@ -236,20 +236,17 @@
                 <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to Checkout</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    @include('layout.header')
+    @include('layouts.header')
+    {{-- @include('layouts.navigation') --}}
 
     <section id="billboard" class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <h1 class="mt-4 text-center section-title" data-aos="fade-up">New Collections</h1>
+                <h1 class="mt-4 text-center section-title" data-aos="fade-up">Layanan Berita Polsek Pauh</h1>
                 <div class="text-center col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptas ut dolorum consequuntur,
-                        adipisci
-                        repellat! Eveniet commodi voluptatem voluptate, eum minima, in suscipit explicabo voluptatibus
-                        harum,
-                        quibusdam ex repellat eaque!</p>
+                    <p>Berita terbaru terkait kecamatan pauh</p>
                 </div>
             </div>
             <div class="row">
@@ -1137,7 +1134,7 @@
         </div>
     </section>
 
-    @include('layout.footer')
+    @include('layouts.footer')
     <script src="js/jquery.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/SmoothScroll.js"></script>
