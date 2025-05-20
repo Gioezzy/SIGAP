@@ -11,6 +11,7 @@
     <meta name="author" content="TemplatesJungle">
     <meta name="keywords" content="ecommerce,fashion,store">
     <meta name="description" content="Bootstrap 5 Fashion Store HTML CSS Template">
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/vendor.css">
@@ -244,7 +245,7 @@
     <section id="billboard" class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <h1 class="mt-4 text-center section-title" data-aos="fade-up">Layanan Berita Polsek Pauh</h1>
+                <h1 class="mt-4 text-center section-title" data-aos="fade-up"> Layanan Berita Polsek Pauh</h1>
                 <div class="text-center col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <p>Berita terbaru terkait kecamatan pauh</p>
                 </div>
