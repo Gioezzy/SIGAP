@@ -100,7 +100,6 @@ class CategoryReportResource extends Resource
                 ])->label('Aksi')
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
                 BulkAction::make('editKategori')
                     ->label('Edit')
                     ->form([
