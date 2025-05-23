@@ -1,127 +1,52 @@
-<footer id="footer" class="mt-5">
-        <div class="container">
-            <div class="flex-wrap py-5 row d-flex justify-content-between">
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu footer-menu-001">
-                        <div class="mb-4 footer-intro">
-                            <a href="index.html">
-                                <img src="images/main-logo.png" alt="logo">
-                            </a>
-                        </div>
-                        <p>Gravida massa volutpat aenean odio. Amet, turpis erat nullam fringilla elementum diam in.
-                            Nisi, purus
-                            vitae, ultrices nunc. Sit ac sit suscipit hendrerit.</p>
-                        <div class="social-links">
-                            <ul class="flex-wrap gap-3 list-unstyled d-flex">
-                                <li>
-                                    <a href="#" class="text-secondary">
-                                        <svg width="24" height="24" viewBox="0 0 24 24">
-                                            <use xlink:href="#facebook"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-secondary">
-                                        <svg width="24" height="24" viewBox="0 0 24 24">
-                                            <use xlink:href="#twitter"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-secondary">
-                                        <svg width="24" height="24" viewBox="0 0 24 24">
-                                            <use xlink:href="#youtube"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-secondary">
-                                        <svg width="24" height="24" viewBox="0 0 24 24">
-                                            <use xlink:href="#pinterest"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-secondary">
-                                        <svg width="24" height="24" viewBox="0 0 24 24">
-                                            <use xlink:href="#instagram"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu footer-menu-002">
-                        <h5 class="mb-4 widget-title text-uppercase">Quick Links</h5>
-                        <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
-                            <li class="menu-item">
-                                <a href="index.html" class="item-anchor">Home</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="index.html" class="item-anchor">About</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="blog.html" class="item-anchor">Services</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="styles.html" class="item-anchor">Single item</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu footer-menu-003">
-                        <h5 class="mb-4 widget-title text-uppercase">Help & Info</h5>
-                        <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Track Your Order</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Returns + Exchanges</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Shipping + Delivery</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Contact Us</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#" class="item-anchor">Find us easy</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="index.html" class="item-anchor">Faqs</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu footer-menu-004 border-animation-left">
-                        <h5 class="mb-4 widget-title text-uppercase">Contact Us</h5>
-                        <p>Do you have any questions or suggestions? <a href="mailto:contact@yourcompany.com"
-                                class="item-anchor">contact@yourcompany.com</a></p>
-                        <p>Do you need support? Give us a call. <a href="tel:+43 720 11 52 78" class="item-anchor">+43
-                                720 11 52
-                                78</a>
-                        </p>
-                    </div>
-                </div>
+<footer class="bg-gray-100 text-gray-700 py-10">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between items-start gap-8">
+
+            <!-- Kolom 1: Layanan Pengaduan -->
+            <div class="w-full md:w-1/3">
+                <h5 class="text-xl font-bold mb-4">Layanan Pengaduan Polsek Pauh</h5>
+                <p class="text-sm leading-relaxed">
+                    Layanan pengaduan adalah mekanisme yang memungkinkan masyarakat untuk menyampaikan keluhan,
+                    saran, atau aspirasi terkait berbagai hal, termasuk pelayanan publik, pelanggaran hukum, atau
+                    masalah lainnya. Layanan ini bertujuan untuk meningkatkan kualitas layanan publik, memfasilitasi
+                    partisipasi masyarakat, dan memastikan adanya tindak lanjut atas keluhan yang disampaikan.
+                </p>
             </div>
-        </div>
-        <div class="py-4 border-top">
-            <div class="container">
-                <div class="row">
-                    <div class="flex-wrap col-md-6 d-flex">
-                    </div>
-                    <div class="col-md-6 text-end">
-                        <p>© Copyright 2025 Layanan Pengaduan Online Polsek Pauh.
-                        <p>All rights reserved.
-                    </div>
-                </div>
+
+            <!-- Kolom 2: Quick Links -->
+            <div class="w-full md:w-1/4">
+                <h5 class="text-xl font-bold mb-4">Quick Links</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="{{route('index')}}" class="hover:text-blue-600 transition">Home</a></li>
+                    <li><a href="{{route('pengaduan.index')}}" class="hover:text-blue-600 transition">Pengaduan</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Services</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Single Item</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition">Contact</a></li>
+                </ul>
             </div>
+
+            <!-- Kolom 3: Contact Us -->
+            <div class="w-full md:w-1/4">
+                <h5 class="text-xl font-bold mb-4">Contact Us</h5>
+                <p class="text-sm mb-2">
+                    Do you have any questions or suggestions?<br>
+                    <a href="mailto:contact@yourcompany.com" class="text-blue-600 hover:underline">
+                        contact@yourcompany.com
+                    </a>
+                </p>
+                <p class="text-sm">
+                    Do you need support? Give us a call.<br>
+                    <a href="tel:+43720115278" class="text-blue-600 hover:underline font-medium">
+                        +43 720 11 52 78
+                    </a>
+                </p>
+            </div>
+
         </div>
-    </footer>
+
+        <!-- Footer bawah -->
+        <div class="mt-10 pt-4 border-t text-sm text-center text-gray-500">
+            <p>© Copyright 2025 Layanan Pengaduan Online Polsek Pauh. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

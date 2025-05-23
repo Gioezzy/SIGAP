@@ -12,4 +12,8 @@ class CategoryReport extends Model
         'deskripsi',
     ];
 
+    public function pengaduans()
+    {
+        return $this->hasMany(Pengaduan::class, 'kategori_id');
+    }
 }
