@@ -26,7 +26,7 @@ return new class extends Migration
             // isi utama
             $table->string('judul');
             $table->string('isi_pengaduan');
-            $table->enum('status', ['menunggu', 'proses', 'selesai'])->default('menunggu');
+            $table->enum('status', ['menunggu', 'proses', 'selesai', 'ditolak'])->default('menunggu');
             $table->timestamps();
         });
     }
