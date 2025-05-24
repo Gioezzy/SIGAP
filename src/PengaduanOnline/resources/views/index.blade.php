@@ -754,7 +754,7 @@
     </section> --}}
 
     <div class="py-10 bg-white dark:bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <!-- Judul Awal -->
             <div class="mb-8 text-center">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">Layanan Berita Polsek Pauh</h2>
@@ -763,61 +763,61 @@
 
             <!-- Header dan tombol -->
             <div class="flex flex-wrap items-center justify-between mb-6">
-                <h4 class="text-xl font-semibold uppercase text-gray-800 dark:text-gray-200">Read Blog Posts</h4>
-                <a href="index.html" class="text-blue-600 hover:underline font-medium">View All</a>
+                <h4 class="text-xl font-semibold text-gray-800 uppercase dark:text-gray-200">Read Blog Posts</h4>
+                <a href="index.html" class="font-medium text-blue-600 hover:underline">View All</a>
             </div>
 
             <!-- Grid Berita -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <!-- Item 1 -->
-                <article class="bg-white dark:bg-gray-800 rounded shadow p-4">
+                <article class="p-4 bg-white rounded shadow dark:bg-gray-800">
                     <a href="index.html">
-                        <img src="images/post-image1.jpg" alt="image" class="w-full h-48 object-cover rounded">
+                        <img src="images/post-image1.jpg" alt="image" class="object-cover w-full h-48 rounded">
                     </a>
                     <div class="mt-4">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400">
+                        <div class="text-sm text-gray-500 uppercase dark:text-gray-400">
                             <span>Fashion /</span> <span>Jul 11, 2022</span>
                         </div>
-                        <h5 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white uppercase">
+                        <h5 class="mt-2 text-lg font-semibold text-gray-800 uppercase dark:text-white">
                             <a href="index.html" class="hover:text-blue-600">How to look outstanding in pastel</a>
                         </h5>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
                             Dignissim lacus, turpis ut suspendisse vel tellus. Turpis purus, gravida orci, fringilla...
                         </p>
                     </div>
                 </article>
 
                 <!-- Item 2 -->
-                <article class="bg-white dark:bg-gray-800 rounded shadow p-4">
+                <article class="p-4 bg-white rounded shadow dark:bg-gray-800">
                     <a href="index.html">
-                        <img src="images/post-image2.jpg" alt="image" class="w-full h-48 object-cover rounded">
+                        <img src="images/post-image2.jpg" alt="image" class="object-cover w-full h-48 rounded">
                     </a>
                     <div class="mt-4">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400">
+                        <div class="text-sm text-gray-500 uppercase dark:text-gray-400">
                             <span>Fashion /</span> <span>Jul 11, 2022</span>
                         </div>
-                        <h5 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white uppercase">
+                        <h5 class="mt-2 text-lg font-semibold text-gray-800 uppercase dark:text-white">
                             <a href="index.html" class="hover:text-blue-600">Top 10 fashion trend for summer</a>
                         </h5>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
                             Turpis purus, gravida orci, fringilla dignissim lacus, turpis ut suspendisse vel tellus...
                         </p>
                     </div>
                 </article>
 
                 <!-- Item 3 -->
-                <article class="bg-white dark:bg-gray-800 rounded shadow p-4">
+                <article class="p-4 bg-white rounded shadow dark:bg-gray-800">
                     <a href="index.html">
-                        <img src="images/post-image3.jpg" alt="image" class="w-full h-48 object-cover rounded">
+                        <img src="images/post-image3.jpg" alt="image" class="object-cover w-full h-48 rounded">
                     </a>
                     <div class="mt-4">
-                        <div class="text-sm uppercase text-gray-500 dark:text-gray-400">
+                        <div class="text-sm text-gray-500 uppercase dark:text-gray-400">
                             <span>Fashion /</span> <span>Jul 11, 2022</span>
                         </div>
-                        <h5 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white uppercase">
+                        <h5 class="mt-2 text-lg font-semibold text-gray-800 uppercase dark:text-white">
                             <a href="index.html" class="hover:text-blue-600">Crazy fashion with unique moment</a>
                         </h5>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
                             Turpis purus, gravida orci, fringilla dignissim lacus, turpis ut suspendisse vel tellus...
                         </p>
                     </div>
@@ -825,98 +825,4 @@
             </div>
         </div>
     </div>
-
-
-    {{-- <section class="py-5 my-5 logo-bar">
-        <div class="container">
-            <div class="row">
-                <div class="flex-wrap logo-content d-flex justify-content-between">
-                    <img src="images/logo1.png" alt="logo" class="logo-image img-fluid">
-                    <img src="images/logo2.png" alt="logo" class="logo-image img-fluid">
-                    <img src="images/logo3.png" alt="logo" class="logo-image img-fluid">
-                    <img src="images/logo4.png" alt="logo" class="logo-image img-fluid">
-                    <img src="images/logo5.png" alt="logo" class="logo-image img-fluid">
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
-    {{-- <section class="newsletter bg-light" style="background: url(images/pattern-bg.png) no-repeat;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="py-5 my-5 col-md-8">
-                    <div class="pb-3 text-center subscribe-header">
-                        <h3 class="section-title text-uppercase">Sign Up for our newsletter</h3>
-                    </div>
-                    <form id="form" class="flex-wrap gap-2 d-flex">
-                        <input type="text" name="email" placeholder="Your Email Addresss"
-                            class="form-control form-control-lg">
-                        <button class="btn btn-dark btn-lg text-uppercase w-100">Sign Up</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
-    {{-- <section class="instagram position-relative">
-        <div class="bottom-0 d-flex justify-content-center w-100 position-absolute z-1">
-            <a href="https://www.instagram.com/templatesjungle/" class="px-5 btn btn-dark">Follow us on
-                Instagram</a>
-        </div>
-        <div class="row g-0">
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="insta-item">
-                    <a href="https://www.instagram.com/templatesjungle/" target="_blank">
-                        <img src="images/insta-item1.jpg" alt="instagram" class="insta-image img-fluid">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="insta-item">
-                    <a href="https://www.instagram.com/templatesjungle/" target="_blank">
-                        <img src="images/insta-item2.jpg" alt="instagram" class="insta-image img-fluid">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="insta-item">
-                    <a href="https://www.instagram.com/templatesjungle/" target="_blank">
-                        <img src="images/insta-item3.jpg" alt="instagram" class="insta-image img-fluid">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="insta-item">
-                    <a href="https://www.instagram.com/templatesjungle/" target="_blank">
-                        <img src="images/insta-item4.jpg" alt="instagram" class="insta-image img-fluid">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="insta-item">
-                    <a href="https://www.instagram.com/templatesjungle/" target="_blank">
-                        <img src="images/insta-item5.jpg" alt="instagram" class="insta-image img-fluid">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2">
-                <div class="insta-item">
-                    <a href="https://www.instagram.com/templatesjungle/" target="_blank">
-                        <img src="images/insta-item6.jpg" alt="instagram" class="insta-image img-fluid">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
-    {{--
-    <script src="js/jquery.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/SmoothScroll.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="js/script.min.js"></script> --}}
-    </body>
 </x-app-layout>
