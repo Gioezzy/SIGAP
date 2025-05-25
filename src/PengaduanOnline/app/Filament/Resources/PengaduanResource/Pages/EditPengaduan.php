@@ -23,6 +23,10 @@ class EditPengaduan extends EditRecord
 
         $data['nama_pelapor'] = $record->user?->name;
 
+        $data['nohp'] = $record->user?->no_hp;
+
+        $data['alamat'] = $record->user?->alamat;
+
         $data['kategori_nama'] = $record->kategori?->namaKategori;
 
         return $data;

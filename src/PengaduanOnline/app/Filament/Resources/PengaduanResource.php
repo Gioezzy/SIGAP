@@ -56,6 +56,14 @@ class PengaduanResource extends Resource
                     // ->default(fn($record) => $record->user?->name)
                     ->disabled()
                     ->dehydrated(false),
+                TextInput::make('nohp')
+                    ->label('Nomor HP Pelapor')
+                    ->disabled()
+                    ->dehydrated(false),
+                TextInput::make('alamat')
+                    ->label('Alamat Pelapor')
+                    ->disabled()
+                    ->dehydrated(false),
                 TextInput::make('judul')
                     ->label('Judul Pengaduan')
                     ->disabled()
@@ -77,7 +85,7 @@ class PengaduanResource extends Resource
                         'ditolak' => 'Ditolak',
                     ])
                     ->required()
-            ])->columns(1);
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table
@@ -107,10 +115,16 @@ class PengaduanResource extends Resource
                     ->searchable()
                     ->badge()
                     ->colors([
-                        'menunggu' => 'gray',
-                        'proses' => 'warning',
-                        'selesai' => 'success',
-                        'ditolak' => 'danger',
+                        'primary' => 'menunggu',
+                        'warning' => 'proses',
+                        'success' => 'selesai',
+                        'danger' => 'ditolak',
+                    ])
+                    ->icons([
+                        'heroicon-o-clock' => 'menunggu',
+                        'heroicon-o-cog' => 'proses',
+                        'heroicon-o-check-circle' => 'selesai',
+                        'heroicon-o-x-circle' => 'ditolak',
                     ]),
                 TextColumn::make('created_at')
                     ->label('Tanggal Pengaduan')
