@@ -14,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use FIlament\Tables\Actions\Action;
 use Filament\Forms\Components\Placeholder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -137,6 +138,11 @@ class PengaduanResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('view')
+                    ->label('Response')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn (Pengaduan $record): string => route('pengaduan.show', $record->id))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([]);
     }
