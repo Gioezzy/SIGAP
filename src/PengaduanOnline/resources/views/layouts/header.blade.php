@@ -33,40 +33,9 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="{{ route('pengaduan.index') }}">Pengaduan</a>
-                                {{-- <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Sidebar </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Three Column
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Three Column
-                                            Wide </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Four Column </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Four Column Wide
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Six Column </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Shop Six Column Wide
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Single Product </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html" class="dropdown-item item-anchor">Single Product V2
-                                        </a>
-                                    </li>
-                                </ul> --}}
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('tanggapan.index')}}">Tanggapan</a>
                             </li>
                             {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownBlog" data-bs-toggle="dropdown"
