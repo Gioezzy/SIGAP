@@ -96,7 +96,12 @@ class CategoryReportResource extends Resource
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\DeleteAction::make()
+                        ->label('Hapus Kategori')
+                        ->icon('heroicon-o-trash')
+                        ->color('danger')
+                        ->requiresConfirmation()
+                        ->successNotificationTitle('Kategori berhasil dihapus.'),
                 ])->label('Aksi')
             ])
             ->bulkActions([
