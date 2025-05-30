@@ -24,7 +24,7 @@ class PengaduanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder-minus';
 
-    protected static ?string $navigationLabel = 'Daftar Pengaduan Masuk';
+    protected static ?string $navigationLabel = 'Pengaduan Masuk';
 
     protected static ?string $pluralModelLabel = 'Daftar Pengaduan Masuk';
 
@@ -35,7 +35,7 @@ class PengaduanResource extends Resource
 
     public static function getNavigationIcon(): string
     {
-        return 'heroicon-o-inbox-stack';
+        return 'heroicon-o-arrow-down-on-square-stack';
     }
 
     public static function getNavigationBadge(): ?string
@@ -97,19 +97,32 @@ class PengaduanResource extends Resource
                 TextColumn::make('user.name')
                     ->label('Nama Pelapor')
                     ->sortable()
+                    ->searchable()
+                    ->wrap(),
+                TextColumn::make('user.no_hp')
+                    ->label('Nomor HP Pelapor')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('user.alamat')
+                    ->label('Alamat Pelapor')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('judul')
                     ->label('Judul Pengaduan')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 TextColumn::make('kategori.namaKategori')
                     ->label('Kategori Pengaduan')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 TextColumn::make('isi_pengaduan')
                     ->label('Isi Pengaduan')
                     ->sortable()
-                    ->searchable(),
+                    ->tooltip(fn($state) => $state)
+                    ->searchable()
+                    ->wrap(),
                 TextColumn::make('status')
                     ->label('Status Pengaduan')
                     ->sortable()
@@ -139,10 +152,15 @@ class PengaduanResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Action::make('view')
-                    ->label('Response')
-                    ->icon('heroicon-o-eye')
-                    ->url(fn (Pengaduan $record): string => route('pengaduan.show', $record->id))
-                    ->openUrlInNewTab(),
+                    ->label('Respon')
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->url(
+                        fn($record) =>
+                        TanggapanPengaduanResource::getUrl('create', [
+                            'pengaduan_id' => $record->id,
+                            'kategori_id' => $record->kategori_id,
+                        ])
+                    ),
             ])
             ->bulkActions([]);
     }

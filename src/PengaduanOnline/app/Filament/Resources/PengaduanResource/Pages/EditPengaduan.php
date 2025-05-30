@@ -4,6 +4,7 @@ namespace App\Filament\Resources\PengaduanResource\Pages;
 
 use App\Filament\Resources\PengaduanResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 
 class EditPengaduan extends EditRecord
@@ -15,6 +16,19 @@ class EditPengaduan extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function getUpdatedNotification(): ?Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title('Pengaduan Diperbarui')
+            ->body('Pengaduan telah diperbarui dengan sukses.');
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->previousUrl ?? $this->getResource()::getUrl('index');
     }
 
     protected function mutateFormDataBeforeFill(array $data): array
