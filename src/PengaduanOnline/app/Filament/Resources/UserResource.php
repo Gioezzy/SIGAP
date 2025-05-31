@@ -107,10 +107,8 @@ class UserResource extends Resource
                 TextColumn::make('alamat')
                     ->searchable(),
                 TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('role')
-                    ->sortable(),
+                    ->dateTime(),
+                TextColumn::make('role'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -144,7 +142,7 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
+            'index' => Pages\ListUser::route('/'),
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
