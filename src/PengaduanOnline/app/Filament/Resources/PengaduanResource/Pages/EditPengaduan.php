@@ -18,7 +18,7 @@ class EditPengaduan extends EditRecord
         ];
     }
 
-    protected function getUpdatedNotification(): ?Notification
+    protected function getSavedNotification(): ?Notification
     {
         return Notification::make()
             ->success()
