@@ -16,6 +16,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -52,7 +53,32 @@ class BeritaResource extends Resource
                 TextInput::make('judul')
                     ->label('Judul Berita')
                     ->required()
-                    ->maxLength(50),
+                    ->maxLength(100)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        if ($operation !== 'create') {
+                            return;
+                        }
+                        $set('slug', Str::slug($state));
+                    }),
+
+                // Saat CREATE: Hidden field
+                TextInput::make('slug')
+                    ->label('URL Slug')
+                    ->required()
+                    ->maxLength(255)
+                    ->dehydrated()
+                    ->hidden(fn(string $operation): bool => $operation === 'create'),
+
+                // Saat EDIT: Show dengan warning
+                TextInput::make('slug')
+                    ->label('URL Slug')
+                    ->required()
+                    ->maxLength(255)
+                    ->helperText('⚠️ Hati-hati mengubah slug! Bisa merusak SEO dan link yang sudah dibagikan')
+                    ->helperText('⚠️ Slug digunakan untuk URL berita')
+                    ->visible(fn(string $operation): bool => $operation === 'edit'),
+
                 Textarea::make('isiBerita')
                     ->label('Isi Berita')
                     ->required()
@@ -105,7 +131,7 @@ class BeritaResource extends Resource
                 TextColumn::make('status')
                     ->label('Status Berita')
                     ->badge()
-                    ->formatStateUsing(function ($state){
+                    ->formatStateUsing(function ($state) {
                         $labels = [
                             'published' => 'Dipublikasikan',
                             'not_published' => 'Tidak Dipublikasikan',

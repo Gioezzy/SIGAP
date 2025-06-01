@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Berita extends Model
 {
     protected $fillable = [
         'judul',
+        'slug',
         'isiBerita',
         'gambar',
         'status',
@@ -22,4 +24,27 @@ class Berita extends Model
     {
         return $this->gambar ? asset('storage/' . $this->gambar) : null;
     }
+
+    // Di Model Berita.php
+
+
+protected static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($berita) {
+        if (empty($berita->slug) && !empty($berita->judul)) {
+            $berita->slug = Str::slug($berita->judul);
+
+            // Pastikan unique
+            $counter = 1;
+            $originalSlug = $berita->slug;
+
+            while (static::where('slug', $berita->slug)->exists()) {
+                $berita->slug = $originalSlug . '-' . $counter;
+                $counter++;
+            }
+        }
+    });
+}
 }
