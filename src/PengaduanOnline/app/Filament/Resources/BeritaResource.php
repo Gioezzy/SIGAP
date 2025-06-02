@@ -62,20 +62,21 @@ class BeritaResource extends Resource
                         $set('slug', Str::slug($state));
                     }),
 
-                // Saat CREATE: Hidden field
+                // Saat CREATE
                 TextInput::make('slug')
                     ->label('URL Slug')
                     ->required()
                     ->maxLength(255)
                     ->dehydrated()
-                    ->hidden(fn(string $operation): bool => $operation === 'create'),
+                    ->disabled()
+                    ->hidden(fn(string $operation): bool => $operation === 'create')
+                    ->hidden(fn(string $operation): bool => $operation === 'edit'),
 
                 // Saat EDIT: Show dengan warning
                 TextInput::make('slug')
                     ->label('URL Slug')
                     ->required()
                     ->maxLength(255)
-                    ->helperText('⚠️ Hati-hati mengubah slug! Bisa merusak SEO dan link yang sudah dibagikan')
                     ->helperText('⚠️ Slug digunakan untuk URL berita')
                     ->visible(fn(string $operation): bool => $operation === 'edit'),
 
