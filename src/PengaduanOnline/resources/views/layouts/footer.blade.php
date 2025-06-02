@@ -19,9 +19,8 @@
                 <ul class="space-y-2 text-sm">
                     <li><a href="{{route('home')}}" class="transition hover:text-blue-600">Home</a></li>
                     <li><a href="{{route('pengaduan.index')}}" class="transition hover:text-blue-600">Pengaduan</a></li>
-                    <li><a href="#" class="transition hover:text-blue-600">Services</a></li>
-                    <li><a href="#" class="transition hover:text-blue-600">Single Item</a></li>
-                    <li><a href="#" class="transition hover:text-blue-600">Contact</a></li>
+                    <li><a href="{{route('tanggapan.index')}}" class="transition hover:text-blue-600">Tanggapan</a></li>
+                    <li><a href="{{route('profiles.index')}}" class="transition hover:text-blue-600">Tentang Kami</a></li>
                 </ul>
             </div>
 
