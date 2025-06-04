@@ -35,7 +35,13 @@
                                 <a class="nav-link" href="{{ route('pengaduan.index') }}">Pengaduan</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('tanggapan.index')}}">Tanggapan</a>
+                                <a class="nav-link" href="{{ route('tanggapan.pengaduan.index')}}">Tanggapan Pengaduan</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('kritiksaran.index')}}">Kritik Saran</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('tanggapan.kritiksaran.index')}}">Tanggapan Kritik Saran</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="{{ route('profiles.index')}}">Tentang Kami</a>
