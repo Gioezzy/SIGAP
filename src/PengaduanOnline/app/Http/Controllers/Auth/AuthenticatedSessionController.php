@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         if ($request->user()->role == 'admin') {
             return redirect()->intended(route('filament.admin.pages.dashboard', absolute: false));
         }
-        return redirect()->intended(route('index', absolute: false));
+        return redirect()->intended(route('home', absolute: false));
 
         //return redirect()->intended(route('dashboard', absolute: false));
     }

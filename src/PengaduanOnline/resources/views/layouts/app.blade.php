@@ -54,7 +54,9 @@
             {{ $slot }}
         </main>
 
-        @include('layouts.footer')
+          @if (!request()->is('pengaduan*'))
+            @include('layouts.footer')
+        @endif
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
