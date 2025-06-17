@@ -27,12 +27,14 @@
                     {{-- <li><a href="{{route('tanggapan.kritiksaran.index')}}"
                             class="text-blue-400 transition hover:text-white">Tanggapan
                             Kritik Saran</a></li> --}}
-                    <li><a href="{{route('aspirasi.index')}}"   
+                    <li><a href="{{route('aspirasi.index')}}"
                             class="text-blue-400 transition hover:text-white">Aspirasi</a></li>
                     {{-- <li><a href="{{route('tanggapan.aspirasi.index')}}"
                             class="text-blue-400 transition hover:text-white">Tanggapan Aspirasi</a></li> --}}
                     <li><a href="{{route('kehilangan.index')}}"
                             class="text-blue-400 transition hover:text-white">Kehilangan</a></li>
+                    <li><a href="{{route('keramaian.index')}}"
+                            class="text-blue-400 transition hover:text-white">Keramaian</a></li>
                     {{-- <li><a href="{{route('tanggapan.kehilangan.index')}}"
                             class="text-blue-400 transition hover:text-white">Tanggapan Kehilangan</a></li> --}}
                     <li><a href="{{route('profiles.index')}}" class="text-blue-400 transition hover:text-white">Tentang
