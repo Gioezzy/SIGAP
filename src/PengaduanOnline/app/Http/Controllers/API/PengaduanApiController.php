@@ -4,13 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pengaduan;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
-
-
 
 class PengaduanApiController extends Controller
 {
@@ -26,7 +23,7 @@ class PengaduanApiController extends Controller
         $validator = Validator::make($request->all(), [
             'judul' => 'required|string|max:255',
             'isi_pengaduan' => 'required|string',
-            'kategori_id' => 'required|integer|exists:category_reports,id'
+            'kategori_id' => 'required|integer|exists:category_reports,id',
         ]);
 
         if ($validator->fails()) {
@@ -44,7 +41,7 @@ class PengaduanApiController extends Controller
 
         return response()->json([
             'message' => 'Pengaduan berhasil dibuat',
-            'data' => $pengaduan
+            'data' => $pengaduan,
         ], 201);
     }
 
@@ -73,7 +70,7 @@ class PengaduanApiController extends Controller
 
     public function destroy(Pengaduan $pengaduan)
     {
-        $this->authorize('delete', $pengaduan); 
+        $this->authorize('delete', $pengaduan);
 
         $pengaduan->delete();
 
