@@ -4,6 +4,8 @@ use App\Http\Controllers\users\PengaduanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\users\ProfilesController;
 use App\Http\Controllers\users\BeritaController;
+use App\Http\Controllers\users\KritikSaranController;
+use App\Http\Controllers\users\TanggapanKritikSaranController;
 use App\Http\Controllers\users\TanggapanPengaduanController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/pengaduan', PengaduanController::class);
-    Route::get('/tanggapan', [TanggapanPengaduanController::class, 'index'])->name('tanggapan.index');
+    Route::resource('/kritiksaran', KritikSaranController::class);
+    Route::get('/tanggapanpengaduan', [TanggapanPengaduanController::class, 'index'])->name('tanggapan.pengaduan.index');
+    Route::get('/tanggapankritiksaran', [TanggapanKritikSaranController::class, 'index'])->name('tanggapan.kritiksaran.index');
 });
 
 require __DIR__.'/auth.php';
