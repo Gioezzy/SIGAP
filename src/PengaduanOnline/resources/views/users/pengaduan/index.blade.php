@@ -319,29 +319,6 @@
                                                         </a>
                                                     </div>
 
-                                                    <!-- Delete Button -->
-                                                    <div class="relative group/btn">
-                                                        <div
-                                                            class="absolute -inset-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl blur opacity-30 group-hover/btn:opacity-70 transition duration-300">
-                                                        </div>
-                                                        <form
-                                                            action="{{ route('pengaduan.destroy', $pengaduan->id) }}"
-                                                            method="POST" class="relative"
-                                                            onsubmit="return confirm('Yakin ingin menghapus pengaduan ini?')">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="inline-flex items-center px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl">
-                                                                <svg class="w-4 h-4 mr-2" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round"
-                                                                        stroke-linejoin="round" stroke-width="2"
-                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4a1 1 0 011 1v2H9V4a1 1 0 011-1z" />
-                                                                </svg>
-                                                                Hapus
-                                                            </button>
-                                                        </form>
-                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
