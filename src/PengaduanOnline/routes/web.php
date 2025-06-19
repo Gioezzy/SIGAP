@@ -42,4 +42,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tanggapankeramaian', [TanggapanKeramaianController::class, 'index'])->name('tanggapan.keramaian.index');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';    
