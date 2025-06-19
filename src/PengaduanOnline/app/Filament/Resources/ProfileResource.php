@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -85,11 +86,6 @@ class ProfileResource extends Resource
                     ->required()
                     ->maxLength(50),
 
-                TextInput::make('deskripsi')
-                    ->label('Deskripsi')
-                    ->required()
-                    ->maxLength(255),
-
                 FileUpload::make('gambar')
                     ->label('Gambar Profil')
                     ->image()
@@ -98,6 +94,11 @@ class ProfileResource extends Resource
                     ->directory('profile')
                     ->visibility('public')
                     ->imagePreviewHeight(150),
+
+                RichEditor::make('deskripsi')
+                    ->label('Deskripsi')
+                    ->required()
+                    ->maxLength(255),
 
                 Select::make('status')
                     ->label('Status')

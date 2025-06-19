@@ -7,6 +7,7 @@ use App\Filament\Resources\BeritaResource\RelationManagers;
 use App\Models\Berita;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -80,10 +81,6 @@ class BeritaResource extends Resource
                     ->helperText('⚠️ Slug digunakan untuk URL berita')
                     ->visible(fn(string $operation): bool => $operation === 'edit'),
 
-                Textarea::make('isiBerita')
-                    ->label('Isi Berita')
-                    ->required()
-                    ->columnSpanFull(),
                 FileUpload::make('gambar')
                     ->label('Gambar Berita')
                     ->image()
@@ -92,6 +89,11 @@ class BeritaResource extends Resource
                     ->visibility('public')
                     ->imagePreviewHeight('150')
                     ->required(),
+                    
+                RichEditor::make('isiBerita')
+                    ->label('Isi Berita')
+                    ->required()
+                    ->columnSpanFull(),
                 Select::make('status')
                     ->required()
                     ->options([

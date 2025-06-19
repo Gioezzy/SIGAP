@@ -77,7 +77,7 @@ class KehilanganResource extends Resource
                     ->square(),
 
                 TextColumn::make('status')
-                    ->label('Status Berita')
+                    ->label('Status Kehilangan')
                     ->badge()
                     ->formatStateUsing(function ($state) {
                         $labels = [

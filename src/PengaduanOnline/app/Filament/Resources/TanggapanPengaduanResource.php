@@ -6,6 +6,8 @@ use App\Filament\Resources\TanggapanPengaduanResource\Pages;
 use App\Filament\Resources\TanggapanPengaduanResource\RelationManagers;
 use App\Models\TanggapanPengaduan;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -52,67 +54,71 @@ class TanggapanPengaduanResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('judul_pengaduan')
-                    ->label('Judul Pengaduan')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
+                Fieldset::make('Informasi Pengaduan')
+                    ->schema([
+                        TextInput::make('judul_pengaduan')
+                            ->label('Judul Pengaduan')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
 
-                TextInput::make('nama_pelapor')
-                    ->label('Nama Pelapor')
-                    ->disabled()
-                    ->dehydrated(false),
+                        TextInput::make('nama_pelapor')
+                            ->label('Nama Pelapor')
+                            ->disabled()
+                            ->dehydrated(false),
 
-                TextInput::make('nohp')
-                    ->label('Nomor HP Pelapor')
-                    ->disabled()
-                    ->dehydrated(false),
+                        TextInput::make('nohp')
+                            ->label('Nomor HP Pelapor')
+                            ->disabled()
+                            ->dehydrated(false),
 
-                TextInput::make('alamat')
-                    ->label('Alamat Pelapor')
-                    ->disabled()
-                    ->dehydrated(false),
+                        TextInput::make('alamat')
+                            ->label('Alamat Pelapor')
+                            ->disabled()
+                            ->dehydrated(false),
 
-                TextInput::make('kategori_nama')
-                    ->label('Kategori Pengaduan')
-                    ->disabled()
-                    ->dehydrated(false),
+                        TextInput::make('kategori_nama')
+                            ->label('Kategori Pengaduan')
+                            ->disabled()
+                            ->dehydrated(false),
 
-                TextArea::make('isi_pengaduan')
-                    ->label('Isi Pengaduan')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
+                        TextArea::make('isi_pengaduan')
+                            ->label('Isi Pengaduan')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                    ]),
+                Fieldset::make('Tanggapan Pengaduan')
+                    ->schema([
+                        RichEditor::make('isi_tanggapan')
+                            ->label('Tanggapan')
+                            ->required()
+                            ->maxLength(100)
+                            ->columnSpanFull()
+                            ->helperText('Tanggapan ini akan ditampilkan pada halaman detail pengaduan. Pastikan tanggapan sesuai dengan pengaduan yang dilaporkan.'),
 
-                TextInput::make('isi_tanggapan')
-                    ->label('Tanggapan')
-                    ->required()
-                    ->maxLength(100)
-                    ->columnSpanFull()
-                    ->helperText('Tanggapan ini akan ditampilkan pada halaman detail pengaduan. Pastikan tanggapan sesuai dengan pengaduan yang dilaporkan.'),
+                        Select::make('status')
+                            ->label('Status Pengaduan')
+                            ->options([
+                                'menunggu' => 'Menunggu',
+                                'proses' => 'Proses',
+                                'selesai' => 'Selesai',
+                                'ditolak' => 'Ditolak',
+                            ])
+                            ->default('proses')
+                            ->required()
+                            ->columnSpanFull()
+                            ->helperText('Status ini akan diperbarui pada pengaduan terkait setelah tanggapan disimpan.'),
 
-                Select::make('status')
-                    ->label('Status Pengaduan')
-                    ->options([
-                        'menunggu' => 'Menunggu',
-                        'proses' => 'Proses',
-                        'selesai' => 'Selesai',
-                        'ditolak' => 'Ditolak',
+                        Hidden::make('pengaduan_id')
+                            ->default(fn() => request()->query('pengaduan_id'))
+                            ->required(),
+
+                        Hidden::make('kategori_id')
+                            ->default(fn() => request()->query('kategori_id'))
+                            ->required(),
                     ])
-                    ->default('proses')
-                    ->required()
-                    ->columnSpanFull()
-                    ->helperText('Status ini akan diperbarui pada pengaduan terkait setelah tanggapan disimpan.'),
-
-                Hidden::make('pengaduan_id')
-                    ->default(fn() => request()->query('pengaduan_id'))
-                    ->required(),
-
-                Hidden::make('kategori_id')
-                    ->default(fn() => request()->query('kategori_id'))
-                    ->required(),
-
-            ])->columns(2);
+            ]);
     }
 
     public static function table(Table $table): Table

@@ -6,6 +6,8 @@ use App\Filament\Resources\TanggapanKehilanganResource\Pages;
 use App\Filament\Resources\TanggapanKehilanganResource\RelationManagers;
 use App\Models\TanggapanKehilangan;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -44,61 +46,50 @@ class TanggapanKehilanganResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('nama_pelapor')
-                    ->label('Nama Pelapor')
-                    ->disabled()
-                    ->dehydrated(false),
-                TextInput::make('nama_barang')
-                    ->label('Nama Barang')
-                    ->disabled()
-                    ->dehydrated(false),
-                    // ->columnSpanFull(),
-                TextInput::make('lokasi_hilang')
-                    ->label('Lokasi Kehilangan')
-                    ->disabled()
-                    ->dehydrated(false),
-                    // ->columnSpanFull(),
-                // TextInput::make('tanggal_hilang')
-                //     ->label('Tanggal Kehilangan')
-                //     ->dateTime('d M Y H:i')
-                //     ->disabled()
-                //     ->dehydrated(false)
-                //     ->columnSpanFull(),
-                DatePicker::make('tanggal_hilang')
-                    ->label('Tanggal Kehilangan')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->displayFormat('d M Y'),
-                    // ->columnSpanFull(),
-                // ImageColumn::make('foto')
-                //     ->label('Foto Barang')
-                //     ->disk('public')
-                //     ->path('public/kehilangan')
-                //     ->circular()
-                //     ->size(100)
-                //     ->disablePlaceholder(),
-                Textarea::make('deskripsi')
-                    ->label('Deskripsi Kehilangan')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextArea::make('tanggapan')
-                    ->label('Tanggapan Kehilangan')
-                    ->required()
-                    ->columnSpanFull(),
-                Select::make('status')
-                    ->label('Status Pengaduan')
-                    ->options([
-                        'belum_ditemukan' => 'Belum Ditemukan',
-                        'ditemukan' => 'Ditemukan',
+                Fieldset::make('Informasi Kehilangan')
+                    ->schema([
+                        TextInput::make('nama_pelapor')
+                            ->label('Nama Pelapor')
+                            ->disabled()
+                            ->dehydrated(false),
+                        TextInput::make('nama_barang')
+                            ->label('Nama Barang')
+                            ->disabled()
+                            ->dehydrated(false),
+                        TextInput::make('lokasi_hilang')
+                            ->label('Lokasi Kehilangan')
+                            ->disabled()
+                            ->dehydrated(false),
+                        DatePicker::make('tanggal_hilang')
+                            ->label('Tanggal Kehilangan')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->displayFormat('d M Y'),
+                        Textarea::make('deskripsi')
+                            ->label('Deskripsi Kehilangan')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                    ]),
+                Fieldset::make('Tanggapan Kehilangan')
+                    ->schema([
+                        RichEditor::make('tanggapan')
+                            ->label('Tanggapan Kehilangan')
+                            ->required()
+                            ->columnSpanFull(),
+                        Select::make('status')
+                            ->label('Status Pengaduan')
+                            ->options([
+                                'belum_ditemukan' => 'Belum Ditemukan',
+                                'ditemukan' => 'Ditemukan',
+                            ])
+                            ->required()
+                            ->columnSpanFull()
+                            ->helperText('Status ini akan menentukan apakah barang yang dilaporkan hilang sudah ditemukan atau belum.'),
+                        Hidden::make('id_kehilangan')
+                            ->default(fn() => request()->query('id_kehilangan'))
+                            ->required(),
                     ])
-                    ->required()
-                    ->columnSpanFull()
-                    ->helperText('Status ini akan menentukan apakah barang yang dilaporkan hilang sudah ditemukan atau belum.'),
-
-                Hidden::make('id_kehilangan')
-                    ->default(fn() => request()->query('id_kehilangan'))
-                    ->required(),
             ]);
     }
 
