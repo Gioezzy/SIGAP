@@ -1,7 +1,5 @@
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b shadow-sm bg-white/90 backdrop-blur-md border-gray-200/50"
-    x-data="{ open: false, scrolled: false }"
-    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
-    :class="{ 'bg-white/95 shadow-lg': scrolled }">
+    x-data="{ open: false, scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" :class="{ 'bg-white/95 shadow-lg': scrolled }">
 
     <div class="container px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
@@ -30,27 +28,34 @@
             <!-- Tambahkan ini di bagian header -->
             <div x-data="{ openMenu: null }" class="items-center hidden space-x-8 lg:flex">
                 @auth
-                    @foreach([
-                        ['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'],
-                        ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'],
-                        ['key' => 'kritik', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'],
-                        ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'],
-                        ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index'],
-                    ] as $menu)
-                        <div @mouseenter="openMenu = '{{ $menu['key'] }}'" @mouseleave="openMenu = null" class="relative">
-                            <button class="relative font-medium text-gray-700 transition-colors duration-300 hover:text-blue-600 group">
+                    <!-- Tambahkan ini -->
+                    <a href="{{ route('home') }}"
+                        class="relative font-medium transition-colors duration-300 group
+        {{ request()->routeIs('home') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
+                        <span>Beranda</span>
+                        <div
+                            class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5
+        bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300
+        {{ request()->routeIs('home') ? 'w-full' : '' }}">
+                        </div>
+                    </a>
+
+                    @foreach ([['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'], ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'], ['key' => 'kritik', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'], ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'], ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index']] as $menu)
+                        <div class="relative" x-data="{ open: false }">
+                            <button @click="open = !open"
+                                class="relative font-medium text-gray-700 transition-colors duration-300 hover:text-blue-600 group">
                                 <span>{{ $menu['title'] }}</span>
-                                <div class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300"></div>
+                                <div
+                                    class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300">
+                                </div>
                             </button>
 
-                            <div x-show="openMenu === '{{ $menu['key'] }}'" class="absolute z-10 w-56 py-2 mt-2 bg-white rounded-lg shadow-lg"
-                                @click.away="openMenu = null">
-                                <x-dropdown-link :href="route($menu['route'])"
-                                    :active="request()->routeIs(str_replace('.index', '.*', $menu['route']))">
+                            <div x-show="open" @click.away="open = false"
+                                class="absolute z-50 w-56 py-2 mt-2 bg-white rounded-lg shadow-lg">
+                                <x-dropdown-link :href="route($menu['route'])" :active="request()->routeIs(str_replace('.index', '.*', $menu['route']))">
                                     {{ $menu['title'] }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route($menu['tanggapan'])"
-                                    :active="request()->routeIs(str_replace('.index', '.*', $menu['tanggapan']))">
+                                <x-dropdown-link :href="route($menu['tanggapan'])" :active="request()->routeIs(str_replace('.index', '.*', $menu['tanggapan']))">
                                     Tanggapan {{ $menu['title'] }}
                                 </x-dropdown-link>
                             </div>
@@ -75,7 +80,8 @@
                             <span class="hidden sm:block">{{ Auth::user()->name }}</span>
                             <svg class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': userOpen }"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
 
@@ -155,21 +161,16 @@
             </a>
 
             <!-- Grouped Menus -->
-            @foreach([
-                ['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'],
-                ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'],
-                ['key' => 'kritiksaran', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'],
-                ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'],
-                ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index'],
-            ] as $menu)
+            @foreach ([['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'], ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'], ['key' => 'kritiksaran', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'], ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'], ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index']] as $menu)
                 <div>
                     <!-- Parent Button -->
-                    <button @click="openSubmenu === '{{ $menu['key'] }}' ? openSubmenu = null : openSubmenu = '{{ $menu['key'] }}'"
+                    <button
+                        @click="openSubmenu === '{{ $menu['key'] }}' ? openSubmenu = null : openSubmenu = '{{ $menu['key'] }}'"
                         class="flex items-center justify-between w-full px-4 py-3 font-medium text-gray-700 transition rounded-xl hover:bg-blue-50">
                         {{ $menu['title'] }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform transform"
-                            :class="{ 'rotate-180': openSubmenu === '{{ $menu['key'] }}' }" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
+                            :class="{ 'rotate-180': openSubmenu === '{{ $menu['key'] }}' }" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7" />
                         </svg>
@@ -210,3 +211,7 @@
     </div>
 
 </nav>
+@if (!request()->routeIs('home') && !request()->routeIs('berita.show'))
+    <div class="h-10 lg:h-12"></div>
+@endif
+

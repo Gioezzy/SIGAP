@@ -1,6 +1,6 @@
 <x-app-layout>
     @guest
-        <div class="relative min-h-screen overflow-hidden bg-center bg-cover" id="heroSection">
+        <div class="relative min-h-screen pt-16 lg:pt-20 overflow-hidden bg-center bg-cover" id="heroSection">
             <!-- Background Image Container -->
             <div class="absolute inset-0 transition-all duration-1000 ease-in-out bg-center bg-cover"
                 style="background-image: url('{{ asset('images/unand2.jpeg') }}');" id="bgImage"></div>
@@ -15,7 +15,8 @@
             <div class="absolute w-3 h-3 rounded-full bottom-20 right-10 bg-white/25 animate-bounce-slow"></div>
 
             <!-- Hero Content -->
-            <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div
+                class="relative z-10 flex items-center justify-center h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)] px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
                     <!-- Main Title -->
                     <h1 class="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl animate-fade-in-up">
@@ -27,14 +28,14 @@
                     <p
                         class="max-w-4xl mx-auto mb-8 text-lg leading-relaxed text-white delay-300 sm:text-xl animate-fade-in-up">
                         Merupakan platform yang masyarakat untuk melapor jika ada pelanggaran atau kejadian yang
-                        mencurigakan. Layanan ini dibuat agar pelaporan bisa dilakukan dengan cepat, aman, tanpa harus
-                        datang langsung. Tujuannya adalah untuk membantu menjaga keamanan lingkungan kampus, khususnya di
-                        daerah UNAND dan PNP.
+                        mencurigakan.
+                        Layanan ini dibuat agar pelaporan bisa dilakukan dengan cepat, aman, tanpa harus datang langsung.
+                        Tujuannya adalah untuk membantu menjaga keamanan lingkungan kampus, khususnya di daerah UNAND dan
+                        PNP.
                     </p>
                 </div>
             </div>
         </div>
-
         <!-- JavaScript untuk slideshow -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
