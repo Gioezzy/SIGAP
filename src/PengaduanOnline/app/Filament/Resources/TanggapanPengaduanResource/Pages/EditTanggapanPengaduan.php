@@ -55,7 +55,7 @@ class EditTanggapanPengaduan extends EditRecord
         return TanggapanPengaduanResource::getUrl('index');
     }
 
-    protected function getUpdatedNotification(): ?Notification
+    protected function getSavedNotification(): ?Notification
     {
         return Notification::make()
             ->success()

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\CategoryReportResource\Pages;
+namespace App\Filament\Resources\BeritaResource\Pages;
 
-use App\Filament\Resources\CategoryReportResource;
+use App\Filament\Resources\BeritaResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 
-class EditCategoryReport extends EditRecord
+class EditBerita extends EditRecord
 {
-    protected static string $resource = CategoryReportResource::class;
+    protected static string $resource = BeritaResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -22,8 +22,8 @@ class EditCategoryReport extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title('Category Updated')
-            ->body('The category has been updated successfully.');
+            ->title('Berita Beru Diperbarui')
+            ->body('Berita telah berhasil diperbarui.');
     }
 
     protected function getRedirectUrl(): string
