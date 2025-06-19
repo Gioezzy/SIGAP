@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Http\Responses\CustomLogoutResponse;
+use Carbon\Carbon;
 use Filament\Http\Responses\Auth\Contracts\LogoutResponse;
 // use Filament\Http\Responses\Auth\LogoutResponse;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -24,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // if(config('app.env') === 'local'){
+        //     URL::forceScheme('https');
+        // }
         Paginator::useBootstrapFive();
+        Carbon::setLocale('id');
     }
 }
