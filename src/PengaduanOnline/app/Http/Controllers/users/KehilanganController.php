@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\users\KehilanganStoreRequest;
 use App\Http\Requests\users\KehilanganUpdateRequest;
 use App\Models\Kehilangan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class KehilanganController extends Controller
@@ -17,9 +16,9 @@ class KehilanganController extends Controller
     public function index()
     {
         $kehilangan = Kehilangan::with('user')
-        ->where('user_id', Auth::id())
-        ->latest()
-        ->get();
+            ->where('user_id', Auth::id())
+            ->latest()
+            ->get();
 
         return view('users.kehilangan.index', compact('kehilangan'));
     }
@@ -30,6 +29,7 @@ class KehilanganController extends Controller
     public function create()
     {
         $kehilangan = Kehilangan::all();
+
         return view('users.kehilangan.create', compact('kehilangan'));
     }
 
@@ -38,7 +38,7 @@ class KehilanganController extends Controller
      */
     public function store(KehilanganStoreRequest $request)
     {
-        $kehilangan = new Kehilangan();
+        $kehilangan = new Kehilangan;
         $kehilangan->user_id = Auth::id();
         $kehilangan->nama_barang = $request->nama_barang;
         $kehilangan->lokasi_hilang = $request->lokasi_hilang;
@@ -68,6 +68,7 @@ class KehilanganController extends Controller
     public function edit(string $id)
     {
         $kehilangan = Kehilangan::findOrFail($id);
+
         return view('users.kehilangan.edit', compact('kehilangan'));
     }
 

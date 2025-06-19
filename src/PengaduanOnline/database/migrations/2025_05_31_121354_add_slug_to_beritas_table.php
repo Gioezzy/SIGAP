@@ -3,8 +3,8 @@
 use App\Models\Berita;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -18,14 +18,14 @@ return new class extends Migration
         });
 
         $beritas = Berita::all();
-        foreach ($beritas as $berita){
+        foreach ($beritas as $berita) {
             $slug = Str::slug($berita->judul);
 
             $counter = 1;
             $originalSlug = $slug;
 
-            while (Berita::where('slug', $slug)->where('id', '!=', $berita->id)->exists()){
-                $slug = $originalSlug . '-' . $counter;
+            while (Berita::where('slug', $slug)->where('id', '!=', $berita->id)->exists()) {
+                $slug = $originalSlug.'-'.$counter;
                 $counter++;
             }
 

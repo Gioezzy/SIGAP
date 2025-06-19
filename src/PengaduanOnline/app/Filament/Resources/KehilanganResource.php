@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\KehilanganResource\Pages;
-use App\Filament\Resources\KehilanganResource\RelationManagers;
 use App\Models\Kehilangan;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,8 +11,6 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class KehilanganResource extends Resource
 {
@@ -71,7 +67,7 @@ class KehilanganResource extends Resource
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
-                        return $record->foto ? asset('storage/' . $record->foto) : null;
+                        return $record->foto ? asset('storage/'.$record->foto) : null;
                     })
                     ->size(60)
                     ->square(),
@@ -84,6 +80,7 @@ class KehilanganResource extends Resource
                             'ditemukan' => 'Ditemukan',
                             'belum_ditemukan' => 'Belum Ditemukan',
                         ];
+
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
@@ -114,9 +111,9 @@ class KehilanganResource extends Resource
                     ->label('Respon')
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->color('primary')
-                    ->url(fn($record)=>TanggapanKehilanganResource::getUrl('create', [
-                        'id_kehilangan' => $record->id
-                    ]))
+                    ->url(fn ($record) => TanggapanKehilanganResource::getUrl('create', [
+                        'id_kehilangan' => $record->id,
+                    ])),
 
             ])
             ->bulkActions([

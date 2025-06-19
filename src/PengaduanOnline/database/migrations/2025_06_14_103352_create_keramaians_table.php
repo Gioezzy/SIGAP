@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('lokasi_acara');
             $table->date('tanggal_acara');
             $table->time('waktu_acara');
-            $table->enum('status', ['menunggu','disetujui','ditolak'])->default('menunggu');
+            $table->enum('status', ['menunggu', 'disetujui', 'ditolak'])->default('menunggu');
             $table->timestamps();
         });
     }

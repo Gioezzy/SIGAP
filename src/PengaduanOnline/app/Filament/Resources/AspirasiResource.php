@@ -3,17 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AspirasiResource\Pages;
-use App\Filament\Resources\AspirasiResource\RelationManagers;
 use App\Models\Aspirasi;
-use Filament\Tables\Actions\Action;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AspirasiResource extends Resource
 {
@@ -89,9 +85,9 @@ class AspirasiResource extends Resource
                 Action::make('view')
                     ->label('Respon')
                     ->icon('heroicon-o-chat-bubble-left-right')
-                    ->url(fn($record) => TanggapanAspirasiResource::getUrl('create', [
-                        'id_aspirasi' => $record->id
-                    ]))
+                    ->url(fn ($record) => TanggapanAspirasiResource::getUrl('create', [
+                        'id_aspirasi' => $record->id,
+                    ])),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -3,22 +3,18 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TanggapanKeramaianResource\Pages;
-use App\Filament\Resources\TanggapanKeramaianResource\RelationManagers;
 use App\Models\TanggapanKeramaian;
-use Filament\Forms;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class TanggapanKeramaianResource extends Resource
@@ -68,7 +64,7 @@ class TanggapanKeramaianResource extends Resource
                         TextInput::make('waktu_acara')
                             ->label('Waktu Kegiatan')
                             ->disabled()
-                            ->dehydrated(false)
+                            ->dehydrated(false),
                     ])->columns(2),
                 Fieldset::make('Tanggapan Petugas')
                     ->schema([
@@ -81,18 +77,18 @@ class TanggapanKeramaianResource extends Resource
                             ->options([
                                 'menunggu' => 'Menunggu',
                                 'disetujui' => 'Disetujui',
-                                'ditolak' => 'Ditolak'
+                                'ditolak' => 'Ditolak',
                             ])
                             ->required()
                             ->columnSpanFull()
                             ->helperText('Status ini akan digunakan untuk menentukan apa pengajuan izin disetujui atau ditolak.'),
                         Hidden::make('id_keramaian')
-                            ->default(fn() => request()->query('id_keramaian'))
+                            ->default(fn () => request()->query('id_keramaian'))
                             ->required(),
                         Hidden::make('user_id')
-                            ->default(fn() => Auth::id())
+                            ->default(fn () => Auth::id())
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -127,14 +123,15 @@ class TanggapanKeramaianResource extends Resource
                         $labels = [
                             'menunggu' => 'Menunggu',
                             'disetujui' => 'Desetujui',
-                            'ditolak' => 'Ditolak'
+                            'ditolak' => 'Ditolak',
                         ];
+
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
                         'info' => 'menunggu',
                         'success' => 'disetujui',
-                        'danger' => 'ditolak'
+                        'danger' => 'ditolak',
                     ])
                     ->icons([
                         'heroicon-o-clock' => 'menunggu',

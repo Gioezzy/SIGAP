@@ -26,23 +26,23 @@ class KeramaianUpdateRequest extends FormRequest
                 'sometimes',
                 'required',
                 'string',
-                'max:100'
+                'max:100',
             ],
             'lokasi_acara' => [
                 'sometimes',
                 'required',
                 'string',
-                'max:100'
+                'max:100',
             ],
             'tanggal_acara' => [
                 'sometimes',
                 'required',
-                'date'
+                'date',
             ],
             'waktu_acara' => [
                 'sometimes',
                 'required',
-                'date_format:H:i'
+                'date_format:H:i',
             ],
         ];
     }

@@ -25,33 +25,33 @@ class KehilanganUpdateRequest extends FormRequest
             'nama_barang' => [
                 'required',
                 'string',
-                'max:50'
+                'max:50',
             ],
             'lokasi_hilang' => [
                 'required',
                 'string',
-                'max:100'
+                'max:100',
             ],
             'deskripsi' => [
                 'required',
                 'string',
-                'max:1000'
+                'max:1000',
             ],
             'tanggal_hilang' => [
                 'required',
                 'date',
-                'before_or_equal:today'
+                'before_or_equal:today',
             ],
             'foto' => [
                 'nullable',
                 'image',
                 'mimes:jpeg,png,jpg,svg,gif',
-                'max:2048' // 2 MB
+                'max:2048', // 2 MB
             ],
             'status' => [
                 'required',
-                'in:belum_ditemukan,ditemukan'
-            ]
+                'in:belum_ditemukan,ditemukan',
+            ],
         ];
     }
 }

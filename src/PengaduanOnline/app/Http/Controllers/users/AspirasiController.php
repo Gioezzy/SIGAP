@@ -7,7 +7,6 @@ use App\Http\Requests\users\AspirasiStoreRequest;
 use App\Http\Requests\users\AspirasiUpdateRequest;
 use App\Models\Aspirasi;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class AspirasiController extends Controller
 {
@@ -30,6 +29,7 @@ class AspirasiController extends Controller
     public function create()
     {
         $aspirasi = Aspirasi::aLL();
+
         return view('users.aspirasi.create', compact('aspirasi'));
     }
 
@@ -38,7 +38,7 @@ class AspirasiController extends Controller
      */
     public function store(AspirasiStoreRequest $request)
     {
-        $aspirasi = new Aspirasi();
+        $aspirasi = new Aspirasi;
         $aspirasi->user_id = Auth::id();
         $aspirasi->judul = $request->judul;
         $aspirasi->isi = $request->isi;
@@ -61,6 +61,7 @@ class AspirasiController extends Controller
     public function edit(string $id)
     {
         $aspirasi = Aspirasi::findOrFail($id);
+
         return view('users.aspirasi.edit', compact('aspirasi'));
     }
 

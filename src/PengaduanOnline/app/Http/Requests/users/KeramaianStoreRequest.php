@@ -25,20 +25,20 @@ class KeramaianStoreRequest extends FormRequest
             'nama_acara' => [
                 'required',
                 'string',
-                'max:100'
+                'max:100',
             ],
             'lokasi_acara' => [
                 'required',
                 'string',
-                'max:100'
+                'max:100',
             ],
             'tanggal_acara' => [
                 'required',
-                'date'
+                'date',
             ],
             'waktu_acara' => [
                 'required',
-                'date_format:H:i'
+                'date_format:H:i',
             ],
         ];
     }

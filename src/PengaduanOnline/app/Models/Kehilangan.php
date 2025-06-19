@@ -14,7 +14,7 @@ class Kehilangan extends Model
         'deskripsi',
         'tanggal_hilang',
         'foto',
-        'status'
+        'status',
     ];
 
     public function user(): BelongsTo

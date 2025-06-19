@@ -17,20 +17,17 @@ class EditTanggapanKeramaian extends EditRecord
 
     /**
      * Mount the page with the given record.
-     *
-     * @param int|string $record
      */
-
-    public function mount(int | string $record): void
+    public function mount(int|string $record): void
     {
         parent::mount($record);
-        //load data keramaian yg terkait
+        // load data keramaian yg terkait
         $tanggapan = $this->getRecord();
 
-        if($tanggapan && $tanggapan->keramaian){
+        if ($tanggapan && $tanggapan->keramaian) {
             $keramaian = $tanggapan->keramaian()->with('user')->first();
 
-            if($keramaian){
+            if ($keramaian) {
                 // isi form dengan data keramaian yg terkait
                 $this->form->fill([
                     'nama_pelapor' => $keramaian->user->name ?? '',
@@ -40,7 +37,7 @@ class EditTanggapanKeramaian extends EditRecord
                     'waktu_acara' => $keramaian->waktu_acara,
                     'status' => $keramaian->status,
                     'id_keramaian' => $keramaian->id,
-                    'user_id' => Auth::id()
+                    'user_id' => Auth::id(),
                 ]);
             }
         }
@@ -51,7 +48,7 @@ class EditTanggapanKeramaian extends EditRecord
         // simpan status yg akan diupdate ke tabel keramaian
         $this->statusKeramaian = $data['status'] ?? null;
 
-        //hapus status dari data karena tidak ada di tabel tanggapan
+        // hapus status dari data karena tidak ada di tabel tanggapan
         unset($data['status']);
 
         return $data;
@@ -60,10 +57,10 @@ class EditTanggapanKeramaian extends EditRecord
     protected function afterSave(): void
     {
         // update status di tabel keramanaian
-        if($this->record->id_keramaian && isset($this->statusKeramaian)){
+        if ($this->record->id_keramaian && isset($this->statusKeramaian)) {
             $keramaian = Keramaian::find($this->record->id_keramaian);
 
-            if ($keramaian && $keramaian->status !== $this->statusKeramaian){
+            if ($keramaian && $keramaian->status !== $this->statusKeramaian) {
                 $keramaian->update(['status' => $this->statusKeramaian]);
             }
         }

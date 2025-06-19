@@ -4,7 +4,6 @@ namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
 use App\Models\TanggapanKritikSaran;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TanggapanKritikSaranController extends Controller
@@ -13,7 +12,7 @@ class TanggapanKritikSaranController extends Controller
     {
         $userId = Auth::id();
 
-        $tanggapans = TanggapanKritikSaran::whereHas('kritiksaran', function ($query) use ($userId){
+        $tanggapans = TanggapanKritikSaran::whereHas('kritiksaran', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         })->with('kritiksaran')->latest()->get();
 

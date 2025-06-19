@@ -4,12 +4,10 @@ namespace App\Filament\Resources\TanggapanKeramaianResource\Pages;
 
 use App\Filament\Resources\TanggapanKeramaianResource;
 use App\Models\Keramaian;
-use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
 
 class CreateTanggapanKeramaian extends CreateRecord
 {
@@ -36,7 +34,7 @@ class CreateTanggapanKeramaian extends CreateRecord
                     'waktu_acara' => $keramaian->waktu_acara,
                     'status' => $keramaian->status,
                     'id_keramaian' => $keramaian->id,
-                    'user_id' => Auth::id()
+                    'user_id' => Auth::id(),
                 ]);
             }
         }

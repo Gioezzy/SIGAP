@@ -24,7 +24,7 @@ class Profile extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->gamber ? asset('storage/' . $this->gambar) : null;
+        return $this->gamber ? asset('storage/'.$this->gambar) : null;
     }
 
     protected static function boot()
@@ -32,14 +32,14 @@ class Profile extends Model
         parent::boot();
 
         static::creating(function ($profile) {
-            if (empty($profile->slug) && !empty($profile->nama)){
-                $profile->slug =  Str::slug($profile->nama);
+            if (empty($profile->slug) && ! empty($profile->nama)) {
+                $profile->slug = Str::slug($profile->nama);
 
-                //buat slug unik
+                // buat slug unik
                 $counter = 1;
                 $originalSlug = $profile->slug;
-                while (static::where('slug', $profile->slug)->exists()){
-                    $profile->slug = $originalSlug . '-' . $counter;
+                while (static::where('slug', $profile->slug)->exists()) {
+                    $profile->slug = $originalSlug.'-'.$counter;
                     $counter++;
                 }
             }

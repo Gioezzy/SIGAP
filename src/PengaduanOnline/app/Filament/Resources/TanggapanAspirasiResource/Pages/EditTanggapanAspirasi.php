@@ -33,10 +33,12 @@ class EditTanggapanAspirasi extends EditRecord
             }
         }
     }
+
     protected function getRedirectUrl(): string
     {
         return TanggapanAspirasiResource::getUrl('index');
     }
+
     protected function getSavedNotification(): ?Notification
     {
         return Notification::make()

@@ -3,23 +3,19 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProfileResource\Pages;
-use App\Filament\Resources\ProfileResource\RelationManagers;
 use App\Models\Profile;
 use Filament\Forms;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Illuminate\Support\Str;
-use Filament\Tables\Table;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class ProfileResource extends Resource
 {
@@ -65,8 +61,8 @@ class ProfileResource extends Resource
                     ->dehydrated()
                     ->disabled()
                     ->helperText('⚠️ Tidak perlu diisi, slug otomatis dibuat berdasarkan nama profil')
-                    ->hidden(fn(string $operation): bool => $operation === 'create')
-                    ->hidden(fn(string $operation): bool => $operation === 'edit'),
+                    ->hidden(fn (string $operation): bool => $operation === 'create')
+                    ->hidden(fn (string $operation): bool => $operation === 'edit'),
 
                 // tampilkan saat edit
                 TextInput::make('slug')
@@ -74,7 +70,7 @@ class ProfileResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->helperText('⚠️ Slug digunakan untuk URL berita')
-                    ->visible(fn(string $operation): bool => $operation === 'edit'),
+                    ->visible(fn (string $operation): bool => $operation === 'edit'),
 
                 TextInput::make('alamat')
                     ->label('Alamat')
@@ -104,7 +100,7 @@ class ProfileResource extends Resource
                     ->label('Status')
                     ->options([
                         'published' => 'Published',
-                        'not_published' => 'Not Published'
+                        'not_published' => 'Not Published',
                     ]),
             ])->columns(1);
     }
@@ -150,7 +146,7 @@ class ProfileResource extends Resource
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
-                        return $record->gambar ? asset('storage/' . $record->gambar) : null;
+                        return $record->gambar ? asset('storage/'.$record->gambar) : null;
                     })
                     ->size(60)
                     ->square(),
@@ -163,6 +159,7 @@ class ProfileResource extends Resource
                             'published' => 'Dipublikasikan',
                             'not_published' => 'Tidak Dipublikasikan',
                         ];
+
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
@@ -188,9 +185,9 @@ class ProfileResource extends Resource
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
                         'published' => 'Published',
-                        'not_published' => 'Not Published'
+                        'not_published' => 'Not Published',
                     ])
-                    ->label('Status')
+                    ->label('Status'),
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
@@ -208,7 +205,7 @@ class ProfileResource extends Resource
                         ->color('danger')
                         ->requiresConfirmation()
                         ->successNotificationTitle('Profil berhasil dihapus'),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

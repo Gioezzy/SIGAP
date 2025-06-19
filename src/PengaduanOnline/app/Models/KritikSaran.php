@@ -23,5 +23,4 @@ class KritikSaran extends Model
     {
         return $this->hasOne(TanggapanKritikSaran::class, 'id_kritiksaran');
     }
-
 }

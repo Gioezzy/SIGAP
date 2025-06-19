@@ -3,13 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BeritaResource\Pages;
-use App\Filament\Resources\BeritaResource\RelationManagers;
 use App\Models\Berita;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -18,9 +16,6 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BeritaResource extends Resource
 {
@@ -70,8 +65,8 @@ class BeritaResource extends Resource
                     ->maxLength(255)
                     ->dehydrated()
                     ->disabled()
-                    ->hidden(fn(string $operation): bool => $operation === 'create')
-                    ->hidden(fn(string $operation): bool => $operation === 'edit'),
+                    ->hidden(fn (string $operation): bool => $operation === 'create')
+                    ->hidden(fn (string $operation): bool => $operation === 'edit'),
 
                 // Saat EDIT: Show dengan warning
                 TextInput::make('slug')
@@ -79,7 +74,7 @@ class BeritaResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->helperText('⚠️ Slug digunakan untuk URL berita')
-                    ->visible(fn(string $operation): bool => $operation === 'edit'),
+                    ->visible(fn (string $operation): bool => $operation === 'edit'),
 
                 FileUpload::make('gambar')
                     ->label('Gambar Berita')
@@ -89,7 +84,7 @@ class BeritaResource extends Resource
                     ->visibility('public')
                     ->imagePreviewHeight('150')
                     ->required(),
-                    
+
                 RichEditor::make('isiBerita')
                     ->label('Isi Berita')
                     ->required()
@@ -126,7 +121,7 @@ class BeritaResource extends Resource
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
-                        return $record->gambar ? asset('storage/' . $record->gambar) : null;
+                        return $record->gambar ? asset('storage/'.$record->gambar) : null;
                     })
                     ->size(60)
                     ->square(),
@@ -139,6 +134,7 @@ class BeritaResource extends Resource
                             'published' => 'Dipublikasikan',
                             'not_published' => 'Tidak Dipublikasikan',
                         ];
+
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
@@ -184,7 +180,7 @@ class BeritaResource extends Resource
                         ->color('danger')
                         ->requiresConfirmation()
                         ->successNotificationTitle('Berita berhasil dihapus.'),
-                ])->label('Aksi')
+                ])->label('Aksi'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

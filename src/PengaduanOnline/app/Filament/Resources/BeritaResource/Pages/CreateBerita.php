@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\BeritaResource\Pages;
 
 use App\Filament\Resources\BeritaResource;
-use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 

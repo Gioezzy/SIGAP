@@ -3,20 +3,16 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TanggapanKritikSaranResource\Pages;
-use App\Filament\Resources\TanggapanKritikSaranResource\RelationManagers;
 use App\Models\TanggapanKritikSaran;
-use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Fieldset;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Hidden;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TanggapanKritikSaranResource extends Resource
 {
@@ -68,10 +64,10 @@ class TanggapanKritikSaranResource extends Resource
                             ->columnSpanFull(),
 
                         Hidden::make('id_kritiksaran')
-                            ->default(fn() => request()
+                            ->default(fn () => request()
                                 ->query('id_kritiksaran'))
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -134,7 +130,7 @@ class TanggapanKritikSaranResource extends Resource
                         ->color('danger')
                         ->requiresConfirmation()
                         ->successNotificationTitle('Tanggapan berhasil dihapus.'),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

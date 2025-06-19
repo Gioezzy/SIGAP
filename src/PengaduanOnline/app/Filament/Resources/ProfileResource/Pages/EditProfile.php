@@ -4,8 +4,8 @@ namespace App\Filament\Resources\ProfileResource\Pages;
 
 use App\Filament\Resources\ProfileResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\EditRecord;
 
 class EditProfile extends EditRecord
 {
@@ -18,7 +18,7 @@ class EditProfile extends EditRecord
         ];
     }
 
-    protected function getSavedNotification(): ? Notification
+    protected function getSavedNotification(): ?Notification
     {
         return Notification::make()
             ->success()

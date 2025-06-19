@@ -22,7 +22,7 @@ class Berita extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->gambar ? asset('storage/' . $this->gambar) : null;
+        return $this->gambar ? asset('storage/'.$this->gambar) : null;
     }
 
     protected static function boot()
@@ -30,7 +30,7 @@ class Berita extends Model
         parent::boot();
 
         static::creating(function ($berita) {
-            if (empty($berita->slug) && !empty($berita->judul)) {
+            if (empty($berita->slug) && ! empty($berita->judul)) {
                 $berita->slug = Str::slug($berita->judul);
 
                 // Pastikan unique
@@ -38,7 +38,7 @@ class Berita extends Model
                 $originalSlug = $berita->slug;
 
                 while (static::where('slug', $berita->slug)->exists()) {
-                    $berita->slug = $originalSlug . '-' . $counter;
+                    $berita->slug = $originalSlug.'-'.$counter;
                     $counter++;
                 }
             }

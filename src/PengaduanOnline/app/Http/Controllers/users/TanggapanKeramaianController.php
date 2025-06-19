@@ -4,7 +4,6 @@ namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
 use App\Models\TanggapanKeramaian;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TanggapanKeramaianController extends Controller
@@ -13,7 +12,7 @@ class TanggapanKeramaianController extends Controller
     {
         $userId = Auth::id();
 
-        $tanggapans = TanggapanKeramaian::whereHas('keramaian', function($query) use ($userId){
+        $tanggapans = TanggapanKeramaian::whereHas('keramaian', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         })->with('keramaian')->latest()->paginate(5);
 

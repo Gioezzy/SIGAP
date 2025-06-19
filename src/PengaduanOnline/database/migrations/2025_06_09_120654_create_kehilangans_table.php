@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('kehilangans', function (Blueprint $table) {
             $table->id();
 
-            //add foreign key columns first
+            // add foreign key columns first
             $table->unsignedBigInteger('user_id')->nullable();
 
-            //reference to the users table
+            // reference to the users table
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
             $table->string('nama_barang');

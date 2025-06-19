@@ -4,7 +4,6 @@ namespace App\Filament\Resources\TanggapanKritikSaranResource\Pages;
 
 use App\Filament\Resources\TanggapanKritikSaranResource;
 use App\Models\KritikSaran;
-use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +23,7 @@ class CreateTanggapanKritikSaran extends CreateRecord
         // Debug untuk memastikan parameter sampai
         logger('URL Parameter received:', [
             'id_kritiksaran' => $id_kritiksaran,
-            'full_url' => request()->fullUrl()
+            'full_url' => request()->fullUrl(),
         ]);
 
         if ($id_kritiksaran) {

@@ -17,10 +17,10 @@ class EditTanggapanKritikSaran extends EditRecord
 
         // load data kritik saran yang terkait
         $tanggapan = $this->getRecord();
-        if ($tanggapan && $tanggapan->kritiksaran){
+        if ($tanggapan && $tanggapan->kritiksaran) {
             $kritiksaran = $tanggapan->kritiksaran()->with('user')->first();
 
-            if ($kritiksaran){
+            if ($kritiksaran) {
                 // Pre-fill form dengan data kritik saran
                 $this->form->fill([
                     'judul_kritiksaran' => $kritiksaran->judul,
@@ -45,7 +45,7 @@ class EditTanggapanKritikSaran extends EditRecord
     {
         return TanggapanKritikSaranResource::getUrl('index');
     }
-    
+
     protected function getSavedNotification(): ?Notification
     {
         return Notification::make()

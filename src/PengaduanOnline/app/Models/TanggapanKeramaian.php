@@ -10,7 +10,7 @@ class TanggapanKeramaian extends Model
     protected $fillable = [
         'id_keramaian',
         'user_id',
-        'tanggapan'
+        'tanggapan',
     ];
 
     public function keramaian(): BelongsTo

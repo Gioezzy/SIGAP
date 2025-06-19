@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\users\PengaduanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\users\AspirasiController;
-use App\Http\Controllers\users\ProfilesController;
 use App\Http\Controllers\users\BeritaController;
 use App\Http\Controllers\users\KehilanganController;
 use App\Http\Controllers\users\KeramaianController;
 use App\Http\Controllers\users\KritikSaranController;
+use App\Http\Controllers\users\PengaduanController;
+use App\Http\Controllers\users\ProfilesController;
 use App\Http\Controllers\users\TanggapanAspirasiController;
 use App\Http\Controllers\users\TanggapanKehilanganController;
 use App\Http\Controllers\users\TanggapanKeramaianController;
@@ -15,12 +15,11 @@ use App\Http\Controllers\users\TanggapanKritikSaranController;
 use App\Http\Controllers\users\TanggapanPengaduanController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', [BeritaController::class, 'home'])->name('home');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 
-Route::get('/profil', [ProfilesController::class,'index'])->name('profiles.index');
+Route::get('/profil', [ProfilesController::class, 'index'])->name('profiles.index');
 Route::get('/profil/{slug}', [ProfilesController::class, 'show'])->name('profiles.show');
 
 Route::middleware('auth')->group(function () {
@@ -42,4 +41,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tanggapankeramaian', [TanggapanKeramaianController::class, 'index'])->name('tanggapan.keramaian.index');
 });
 
-require __DIR__.'/auth.php';    
+require __DIR__.'/auth.php';

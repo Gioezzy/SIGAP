@@ -13,7 +13,7 @@ class Keramaian extends Model
         'lokasi_acara',
         'tanggal_acara',
         'waktu_acara',
-        'status'
+        'status',
     ];
 
     public function user(): BelongsTo

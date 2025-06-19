@@ -4,7 +4,6 @@ namespace App\Filament\Resources\TanggapanAspirasiResource\Pages;
 
 use App\Filament\Resources\TanggapanAspirasiResource;
 use App\Models\Aspirasi;
-use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
@@ -21,19 +20,19 @@ class CreateTanggapanAspirasi extends CreateRecord
 
         $id_aspirasi = request()->query('id_aspirasi');
 
-        //Debug untuk memastika parameter sampai
+        // Debug untuk memastika parameter sampai
         Logger('URL Parameter Received:', [
             'id_aspirasi' => $id_aspirasi,
-            'full_url' => request()->fullUrl()
+            'full_url' => request()->fullUrl(),
         ]);
 
         if ($id_aspirasi) {
             $aspirasi = Aspirasi::with('user')->find($id_aspirasi);
 
             if ($id_aspirasi) {
-                //Pre-fill form dengan data dari aspirasi
+                // Pre-fill form dengan data dari aspirasi
                 $this->form->fill([
-                    'judul_aspirasi' =>$aspirasi->judul,
+                    'judul_aspirasi' => $aspirasi->judul,
                     'nama_pelapor' => $aspirasi->user->name ?? '',
                     'isi_aspirasi' => $aspirasi->isi,
                     'id_aspirasi' => $aspirasi->id,

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\users\KritikSaranStoreRequest;
 use App\Http\Requests\users\KritikSaranUpdateRequest;
 use App\Models\KritikSaran;
-use Illuminate\Http\Request;
 
 class KritikSaranController extends Controller
 {
@@ -19,6 +18,7 @@ class KritikSaranController extends Controller
             ->where('user_id', auth()->user()->id)
             ->latest()
             ->get();
+
         return view('users.kritiksaran.index', compact('kritikSaran'));
     }
 
@@ -28,6 +28,7 @@ class KritikSaranController extends Controller
     public function create()
     {
         $kritiksaran = KritikSaran::all();
+
         return view('users.kritiksaran.create', compact('kritiksaran'));
     }
 
@@ -36,7 +37,7 @@ class KritikSaranController extends Controller
      */
     public function store(KritikSaranStoreRequest $request)
     {
-        $kritikSaran = new KritikSaran();
+        $kritikSaran = new KritikSaran;
         $kritikSaran->user_id = auth()->user()->id;
         $kritikSaran->judul = $request->judul;
         $kritikSaran->isi = $request->isi;
@@ -59,7 +60,8 @@ class KritikSaranController extends Controller
     public function edit(string $id)
     {
         $kritiksaran = KritikSaran::findOrFail($id);
-        return view ('users.kritiksaran.edit', compact('kritiksaran'));
+
+        return view('users.kritiksaran.edit', compact('kritiksaran'));
     }
 
     /**

@@ -3,24 +3,20 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TanggapanKehilanganResource\Pages;
-use App\Filament\Resources\TanggapanKehilanganResource\RelationManagers;
 use App\Models\TanggapanKehilangan;
-use Filament\Forms;
-use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TanggapanKehilanganResource extends Resource
 {
@@ -87,9 +83,9 @@ class TanggapanKehilanganResource extends Resource
                             ->columnSpanFull()
                             ->helperText('Status ini akan menentukan apakah barang yang dilaporkan hilang sudah ditemukan atau belum.'),
                         Hidden::make('id_kehilangan')
-                            ->default(fn() => request()->query('id_kehilangan'))
+                            ->default(fn () => request()->query('id_kehilangan'))
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -124,7 +120,7 @@ class TanggapanKehilanganResource extends Resource
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
-                        return $record->kehilangan->foto ? asset('storage/' . $record->kehilangan->foto) : null;
+                        return $record->kehilangan->foto ? asset('storage/'.$record->kehilangan->foto) : null;
                     })
                     ->size(60)
                     ->square(),
@@ -136,6 +132,7 @@ class TanggapanKehilanganResource extends Resource
                             'ditemukan' => 'Ditemukan',
                             'belum_ditemukan' => 'Belum Ditemukan',
                         ];
+
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
@@ -188,7 +185,6 @@ class TanggapanKehilanganResource extends Resource
             //
         ];
     }
-
 
     public static function getPages(): array
     {

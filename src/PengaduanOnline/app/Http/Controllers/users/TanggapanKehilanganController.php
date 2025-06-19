@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kehilangan;
 use App\Models\TanggapanKehilangan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TanggapanKehilanganController extends Controller

@@ -3,17 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\KeramaianResource\Pages;
-use App\Filament\Resources\KeramaianResource\RelationManagers;
 use App\Models\Keramaian;
-use Filament\Tables\Actions\Action;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class KeramaianResource extends Resource
 {
@@ -71,14 +67,15 @@ class KeramaianResource extends Resource
                         $labels = [
                             'menunggu' => 'Menunggu',
                             'disetujui' => 'Desetujui',
-                            'ditolak' => 'Ditolak'
+                            'ditolak' => 'Ditolak',
                         ];
+
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
                         'info' => 'menunggu',
                         'success' => 'disetujui',
-                        'danger' => 'ditolak'
+                        'danger' => 'ditolak',
                     ])
                     ->icons([
                         'heroicon-o-clock' => 'menunggu',
@@ -106,11 +103,10 @@ class KeramaianResource extends Resource
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->color('primary')
                     ->url(
-                        fn($record) =>
-                        TanggapanKeramaianResource::getUrl('create', [
+                        fn ($record) => TanggapanKeramaianResource::getUrl('create', [
                             'id_keramaian' => $record->id,
                         ])
-                    )
+                    ),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([

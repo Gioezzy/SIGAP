@@ -3,20 +3,16 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TanggapanAspirasiResource\Pages;
-use App\Filament\Resources\TanggapanAspirasiResource\RelationManagers;
 use App\Models\TanggapanAspirasi;
-use Filament\Forms;
-use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TanggapanAspirasiResource extends Resource
 {
@@ -68,10 +64,10 @@ class TanggapanAspirasiResource extends Resource
                             ->columnSpanFull(),
 
                         Hidden::make('id_aspirasi')
-                            ->default(fn() => request()
+                            ->default(fn () => request()
                                 ->query('id_aspirasi'))
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -137,7 +133,7 @@ class TanggapanAspirasiResource extends Resource
                         ->color('danger')
                         ->requiresConfirmation()
                         ->successNotificationTitle('Tanggapan berhasil dihapus.'),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

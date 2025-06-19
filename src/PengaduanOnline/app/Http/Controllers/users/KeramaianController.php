@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\users\KeramaianStoreRequest;
 use App\Http\Requests\users\KeramaianUpdateRequest;
 use App\Models\Keramaian;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class KeramaianController extends Controller
@@ -27,6 +26,7 @@ class KeramaianController extends Controller
     public function create()
     {
         $keramaian = Keramaian::all();
+
         return view('users.keramaian.create', compact('keramaian'));
     }
 
@@ -35,7 +35,7 @@ class KeramaianController extends Controller
      */
     public function store(KeramaianStoreRequest $request)
     {
-        $keramaian = new Keramaian();
+        $keramaian = new Keramaian;
         $keramaian->user_id = Auth::id();
         $keramaian->nama_acara = $request->nama_acara;
         $keramaian->lokasi_acara = $request->lokasi_acara;
@@ -44,6 +44,7 @@ class KeramaianController extends Controller
         $keramaian->status = 'menunggu';
 
         $keramaian->save();
+
         return redirect()->route('keramaian.index');
     }
 
@@ -61,6 +62,7 @@ class KeramaianController extends Controller
     public function edit(string $id)
     {
         $keramaian = Keramaian::findOrFail($id);
+
         return view('users.keramaian.edit', compact('keramaian'));
     }
 
@@ -76,6 +78,7 @@ class KeramaianController extends Controller
         $keramaian->waktu_acara = $request->waktu_acara;
 
         $keramaian->save();
+
         return redirect()->route('keramaian.index');
     }
 

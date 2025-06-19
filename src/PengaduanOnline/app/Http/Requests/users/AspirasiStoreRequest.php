@@ -25,13 +25,13 @@ class AspirasiStoreRequest extends FormRequest
             'judul' => [
                 'required',
                 'string',
-                'max:50'
+                'max:50',
             ],
             'isi' => [
                 'required',
                 'string',
-                'max:1000'
-            ]
+                'max:1000',
+            ],
         ];
     }
 }

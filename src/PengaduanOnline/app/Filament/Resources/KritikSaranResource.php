@@ -3,18 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\KritikSaranResource\Pages;
-use App\Filament\Resources\KritikSaranResource\RelationManagers;
 use App\Models\KritikSaran;
-use Filament\Forms;
-use Filament\Forms\Components\Actions\Action as ComponentsActionsAction;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use FIlament\Tables\Actions\Action;
 use Filament\Tables;
+use FIlament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class KritikSaranResource extends Resource
 {
@@ -90,8 +85,8 @@ class KritikSaranResource extends Resource
                     ->label('Respon')
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->color('primary')
-                    ->url(fn($record) => TanggapanKritikSaranResource::getUrl('create', [
-                        'id_kritiksaran' => $record->id
+                    ->url(fn ($record) => TanggapanKritikSaranResource::getUrl('create', [
+                        'id_kritiksaran' => $record->id,
                     ])),
             ])
             ->bulkActions([
