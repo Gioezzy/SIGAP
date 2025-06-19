@@ -147,7 +147,13 @@ class PengaduanResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->options([
+                        'menunggu' => 'Menunggu',
+                        'proses' => 'Proses',
+                        'selesai' => 'Selesai',
+                        'ditolak' => 'Ditolak',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
