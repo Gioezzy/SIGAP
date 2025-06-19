@@ -9,60 +9,88 @@
                     Kami menyediakan platform pengaduan masyarakat terkait pelayanan publik, pelanggaran hukum, dan
                     aspirasi untuk meningkatkan transparansi serta kualitas pelayanan Polsek Pauh.
                 </p>
+
+                <div class="gap-2 d-flex flex-column">
+                    <div class="d-flex align-items-start">
+                        <span class="mt-1 text-warning me-3">📍</span>
+                        <span class="opacity-75 text-light small">Jl. Raya Pauh No. XX, Padang</span>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <span class="mt-1 text-warning me-3">📞</span>
+                        <span class="opacity-75 text-light small">Telp: (0751) 123456</span>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <span class="mt-1 text-warning me-3">✉️</span>
+                        <span class="opacity-75 text-light small">layanan@contoh.go.id</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Kolom 2 -->
-            <div>
-                <h5 class="mb-4 text-xl font-semibold text-white">Quick Links</h5>
-                <ul class="space-y-2 text-sm text-blue-400">
-                    <li><a href="{{route('home')}}" class="text-blue-400 transition hover:text-white">Home</a></li>
-                    <li><a href="{{route('pengaduan.index')}}"
-                            class="text-blue-400 transition hover:text-white">Pengaduan</a></li>
-                    {{-- <li><a href="{{route('tanggapan.pengaduan.index')}}"
-                            class="text-blue-400 transition hover:text-white">Tanggapan
-                            Pengaduan</a></li> --}}
-                    <li><a href="{{route('kritiksaran.index')}}"
-                            class="text-blue-400 transition hover:text-white">Kritik Saran</a>
+            <!-- Kolom 2: Navigasi (Di Tengah) -->
+            <div class="text-center col-lg-4 col-md-6">
+                <h4 class="mb-3 text-white h5 fw-semibold">Navigasi</h4>
+
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="{{route('pengaduan.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Pengaduan
+                        </a>
                     </li>
-                    {{-- <li><a href="{{route('tanggapan.kritiksaran.index')}}"
-                            class="text-blue-400 transition hover:text-white">Tanggapan
-                            Kritik Saran</a></li> --}}
-                    <li><a href="{{route('aspirasi.index')}}"   
-                            class="text-blue-400 transition hover:text-white">Aspirasi</a></li>
-                    {{-- <li><a href="{{route('tanggapan.aspirasi.index')}}"
-                            class="text-blue-400 transition hover:text-white">Tanggapan Aspirasi</a></li> --}}
-                    <li><a href="{{route('kehilangan.index')}}"
-                            class="text-blue-400 transition hover:text-white">Kehilangan</a></li>
-                    {{-- <li><a href="{{route('tanggapan.kehilangan.index')}}"
-                            class="text-blue-400 transition hover:text-white">Tanggapan Kehilangan</a></li> --}}
-                    <li><a href="{{route('profiles.index')}}" class="text-blue-400 transition hover:text-white">Tentang
-                            Kami</a></li>
+                    <li class="mb-2">
+                        <a href="{{route('aspirasi.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Aspirasi
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{route('kritiksaran.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Kritik Saran
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{route('kehilangan.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Kehilangan
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{route('keramaian.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Keramaian
+                        </a>
+                    </li>
+
                 </ul>
             </div>
 
-
-            <!-- Kolom 3 -->
-            <div>
-                <h5 class="mb-4 text-xl font-semibold text-white">Contact Us</h5>
-                <p class="mb-2 text-sm">
-                    Ada pertanyaan atau saran?<br>
-                    <a href="mailto:contact@yourcompany.com" class="text-blue-400 hover:underline">
-                        contact@yourcompany.com
-                    </a>
-                </p>
-                <p class="text-sm">
-                    Butuh bantuan?<br>
-                    <a href="tel:+43720115278" class="text-blue-400 hover:underline">
-                        +43 720 11 52 78
-                    </a>
+            <!-- Kolom 3: Media Sosial -->
+            <div class="text-center col-lg-4 col-md-12 text-lg-start">
+                <h4 class="mb-3 text-white h5 fw-semibold">Ikuti Kami</h4>
+                <p class="mb-3 opacity-75 text-light">
+                    Dapatkan update terbaru melalui sosial media.
                 </p>
             </div>
 
         </div>
 
-        <!-- Footer bawah -->
-        <div class="pt-6 mt-10 text-sm text-center text-gray-400 border-t border-gray-700">
-            &copy; 2025 Layanan Pengaduan Online Polsek Pauh. All rights reserved.
+        <!-- Copyright Section -->
+        <hr class="my-3 opacity-25 border-light">
+        <div class="text-center">
+            <p class="mb-0 opacity-50 text-light small">
+                &copy; 2025 Layanan Pengaduan Online. All Rights Reserved.
+            </p>
         </div>
     </div>
 </footer>

@@ -9,6 +9,8 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Fieldset;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Hidden;
@@ -40,30 +42,36 @@ class TanggapanKritikSaranResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('judul_kritiksaran')
-                    ->label('Judul Kritik & Saran')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextInput::make('nama_pelapor')
-                    ->label('Nama Pelapor')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextInput::make('isi_kritiksaran')
-                    ->label('Isi Kritik & Saran')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextInput::make('tanggapan')
-                    ->label('Tanggapan Kritik & Saran')
-                    ->required()
-                    ->columnSpanFull(),
+                Fieldset::make('Informasi Kritik Saran')
+                    ->schema([
+                        TextInput::make('judul_kritiksaran')
+                            ->label('Judul Kritik & Saran')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                        TextInput::make('nama_pelapor')
+                            ->label('Nama Pelapor')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                        TextInput::make('isi_kritiksaran')
+                            ->label('Isi Kritik & Saran')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                    ]),
+                Fieldset::make('Tanggapan Kritik Saran')
+                    ->schema([
+                        RichEditor::make('tanggapan')
+                            ->label('Tanggapan Kritik & Saran')
+                            ->required()
+                            ->columnSpanFull(),
 
-                Hidden::make('id_kritiksaran')
-                    ->default(fn() => request()
-                    ->query('id_kritiksaran'))
-                    ->required(),
+                        Hidden::make('id_kritiksaran')
+                            ->default(fn() => request()
+                                ->query('id_kritiksaran'))
+                            ->required(),
+                    ])
             ]);
     }
 

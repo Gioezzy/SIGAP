@@ -7,7 +7,9 @@ use App\Filament\Resources\TanggapanAspirasiResource\RelationManagers;
 use App\Models\TanggapanAspirasi;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -40,30 +42,36 @@ class TanggapanAspirasiResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('judul_aspirasi')
-                    ->label('Judul Aspirasi')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextInput::make('nama_pelapor')
-                    ->label('Nama Pelapor')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextInput::make('isi_aspirasi')
-                    ->label('Isi Aspirasi')
-                    ->disabled()
-                    ->dehydrated(false)
-                    ->columnSpanFull(),
-                TextInput::make('tanggapan')
-                    ->label('Tanggapan Aspirasi')
-                    ->required()
-                    ->columnSpanFull(),
+                Fieldset::make('Informasi Aspirasi')
+                    ->schema([
+                        TextInput::make('judul_aspirasi')
+                            ->label('Judul Aspirasi')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                        TextInput::make('nama_pelapor')
+                            ->label('Nama Pelapor')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                        TextInput::make('isi_aspirasi')
+                            ->label('Isi Aspirasi')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                    ]),
+                Fieldset::make('Tanggapan')
+                    ->schema([
+                        RichEditor::make('tanggapan')
+                            ->label('Tanggapan Aspirasi')
+                            ->required()
+                            ->columnSpanFull(),
 
-                Hidden::make('id_aspirasi')
-                    ->default(fn() => request()
-                        ->query('id_aspirasi'))
-                    ->required(),
+                        Hidden::make('id_aspirasi')
+                            ->default(fn() => request()
+                                ->query('id_aspirasi'))
+                            ->required(),
+                    ])
             ]);
     }
 

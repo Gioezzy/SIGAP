@@ -2,39 +2,38 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TanggapanKehilanganResource\Pages;
-use App\Filament\Resources\TanggapanKehilanganResource\RelationManagers;
-use App\Models\TanggapanKehilangan;
+use App\Filament\Resources\TanggapanKeramaianResource\Pages;
+use App\Filament\Resources\TanggapanKeramaianResource\RelationManagers;
+use App\Models\TanggapanKeramaian;
 use Filament\Forms;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
-class TanggapanKehilanganResource extends Resource
+class TanggapanKeramaianResource extends Resource
 {
-    protected static ?string $model = TanggapanKehilangan::class;
+    protected static ?string $model = TanggapanKeramaian::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-arrow-up';
+    protected static ?string $navigationIcon = 'heroicon-o-envelope-open';
 
-    protected static ?string $navigationLabel = 'Tanggapan Kehilangan';
+    protected static ?string $navigationLabel = 'Tanggapan Keramaian';
 
-    protected static ?string $pluralModelLabel = 'Daftar Tanggapan Kehilangan';
+    protected static ?string $pluralModelLabel = 'Daftar Tanggapan Keramaian';
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Kehilangan';
+        return 'Keramaian';
     }
 
     public static function getNavigationBadge(): ?string
@@ -46,48 +45,52 @@ class TanggapanKehilanganResource extends Resource
     {
         return $form
             ->schema([
-                Fieldset::make('Informasi Kehilangan')
+                Fieldset::make('Informasi Laporan Keramaian')
                     ->schema([
                         TextInput::make('nama_pelapor')
                             ->label('Nama Pelapor')
                             ->disabled()
                             ->dehydrated(false),
-                        TextInput::make('nama_barang')
-                            ->label('Nama Barang')
+                        TextInput::make('nama_acara')
+                            ->label('Nama Kegiatan')
                             ->disabled()
                             ->dehydrated(false),
-                        TextInput::make('lokasi_hilang')
-                            ->label('Lokasi Kehilangan')
+                        TextInput::make('lokasi_acara')
+                            ->label('Lokasi Kegiatas')
                             ->disabled()
                             ->dehydrated(false),
-                        DatePicker::make('tanggal_hilang')
-                            ->label('Tanggal Kehilangan')
+                        DatePicker::make('tanggal_acara')
+                            ->label('Lokasi Kegiatan')
                             ->disabled()
                             ->dehydrated(false)
-                            ->displayFormat('d M Y'),
-                        Textarea::make('deskripsi')
-                            ->label('Deskripsi Kehilangan')
+                            ->displayFormat('d F Y')
+                            ->native(false),
+                        TextInput::make('waktu_acara')
+                            ->label('Waktu Kegiatan')
                             ->disabled()
                             ->dehydrated(false)
-                            ->columnSpanFull(),
-                    ]),
-                Fieldset::make('Tanggapan Kehilangan')
+                    ])->columns(2),
+                Fieldset::make('Tanggapan Petugas')
                     ->schema([
                         RichEditor::make('tanggapan')
-                            ->label('Tanggapan Kehilangan')
+                            ->label('Tanggapan Petugas')
                             ->required()
                             ->columnSpanFull(),
                         Select::make('status')
-                            ->label('Status Pengaduan')
+                            ->label('Status')
                             ->options([
-                                'belum_ditemukan' => 'Belum Ditemukan',
-                                'ditemukan' => 'Ditemukan',
+                                'menunggu' => 'Menunggu',
+                                'disetujui' => 'Disetujui',
+                                'ditolak' => 'Ditolak'
                             ])
                             ->required()
                             ->columnSpanFull()
-                            ->helperText('Status ini akan menentukan apakah barang yang dilaporkan hilang sudah ditemukan atau belum.'),
-                        Hidden::make('id_kehilangan')
-                            ->default(fn() => request()->query('id_kehilangan'))
+                            ->helperText('Status ini akan digunakan untuk menentukan apa pengajuan izin disetujui atau ditolak.'),
+                        Hidden::make('id_keramaian')
+                            ->default(fn() => request()->query('id_keramaian'))
+                            ->required(),
+                        Hidden::make('user_id')
+                            ->default(fn() => Auth::id())
                             ->required(),
                     ])
             ]);
@@ -98,65 +101,56 @@ class TanggapanKehilanganResource extends Resource
         return $table
             ->defaultSort('created_at', 'desc')
             ->columns([
-                TextColumn::make('kehilangan.user.name')
+                TextColumn::make('keramaian.user.name')
                     ->label('Nama Pengguna')
                     ->searchable()
                     ->wrap(),
-                TextColumn::make('kehilangan.nama_barang')
-                    ->label('Nama Barang')
+                TextColumn::make('keramaian.nama_acara')
+                    ->label('Nama Kegiatan')
                     ->wrap(),
-                TextColumn::make('kehilangan.lokasi_hilang')
-                    ->label('Lokasi Kehilangan')
+                TextColumn::make('keramaian.lokasi_acara')
+                    ->label('Lokasi Kegiatan')
                     ->wrap(),
-                TextColumn::make('kehilangan.tanggal_hilang')
-                    ->label('Tanggal Kehilangan')
-                    ->sortable()
+                TextColumn::make('keramaian.tanggal_acara')
+                    ->label('Tanggal Kegiatan')
                     ->dateTime('d M Y'),
-                TextColumn::make('kehilangan.deskripsi')
-                    ->label('Deskripsi Barang')
-                    ->wrap(),
+                TextColumn::make('keramaian.waktu_acara')
+                    ->label('Waktu Kegiatan')
+                    ->time(),
                 TextColumn::make('tanggapan')
-                    ->label('Tanggapan Kehilangan')
-                    ->wrap()
-                    ->limit(50),
-                ImageColumn::make('kehilangan.foto')
-                    ->label('Gambar')
-                    ->disk('public')
-                    ->visibility('public')
-                    ->getStateUsing(function ($record) {
-                        return $record->kehilangan->foto ? asset('storage/' . $record->kehilangan->foto) : null;
-                    })
-                    ->size(60)
-                    ->square(),
-                TextColumn::make('kehilangan.status')
-                    ->label('Status Tanggapan')
+                    ->label('Tanggapan')
+                    ->wrap(),
+                TextColumn::make('keramaian.status')
+                    ->label('Status')
                     ->badge()
                     ->formatStateUsing(function ($state) {
                         $labels = [
-                            'ditemukan' => 'Ditemukan',
-                            'belum_ditemukan' => 'Belum Ditemukan',
+                            'menunggu' => 'Menunggu',
+                            'disetujui' => 'Desetujui',
+                            'ditolak' => 'Ditolak'
                         ];
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
-                        'success' => 'ditemukan',
-                        'danger' => 'belum_ditemukan',
+                        'info' => 'menunggu',
+                        'success' => 'disetujui',
+                        'danger' => 'ditolak'
                     ])
                     ->icons([
-                        'heroicon-o-check-circle' => 'ditemukan',
-                        'heroicon-o-x-circle' => 'belum_ditemukan',
+                        'heroicon-o-clock' => 'menunggu',
+                        'heroicon-o-check-circle' => 'disetujui',
+                        'heroicon-o-x-circle' => 'ditolak',
                     ]),
+
                 TextColumn::make('created_at')
-                    ->label('Tanggal Tanggapan')
-                    ->dateTime('d M Y H:i')
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->label('Tanggal Update')
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
+                TextColumn::make('updated_at')
+                    ->dateTime('d M Y H:i')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -189,13 +183,12 @@ class TanggapanKehilanganResource extends Resource
         ];
     }
 
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTanggapanKehilangans::route('/'),
-            'create' => Pages\CreateTanggapanKehilangan::route('/create'),
-            'edit' => Pages\EditTanggapanKehilangan::route('/{record}/edit'),
+            'index' => Pages\ListTanggapanKeramaians::route('/'),
+            'create' => Pages\CreateTanggapanKeramaian::route('/create'),
+            'edit' => Pages\EditTanggapanKeramaian::route('/{record}/edit'),
         ];
     }
 }

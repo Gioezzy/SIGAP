@@ -11,7 +11,7 @@
     <!-- Tambahan meta dan style -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="author" content="TemplatesJungle">
     <meta name="keywords" content="ecommerce,fashion,store">
     <meta name="description" content="Bootstrap 5 Fashion Store HTML CSS Template">
@@ -42,19 +42,21 @@
 
         <!-- Page Heading -->
         @isset($header)
-            <header class="bg-white shadow dark:bg-gray-800">
+            <header class="mb-8 bg-white shadow dark:bg-gray-800">
                 <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
         @endisset
 
-        <!-- Page Content -->
-        <main>
+        <main class="pt-8 lg:pt-12">
             {{ $slot }}
         </main>
 
-        @include('layouts.footer')
+        @if (!request()->is('pengaduan*') && !request()->is('tanggapan*'))
+            @include('layouts.footer')
+        @endif
+
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
@@ -62,10 +64,10 @@
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/SmoothScroll.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+        </script>
     <script src="{{ asset('js/script.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </body>
 
 </html>

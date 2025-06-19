@@ -2,33 +2,32 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\KehilanganResource\Pages;
-use App\Filament\Resources\KehilanganResource\RelationManagers;
-use App\Models\Kehilangan;
+use App\Filament\Resources\KeramaianResource\Pages;
+use App\Filament\Resources\KeramaianResource\RelationManagers;
+use App\Models\Keramaian;
+use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class KehilanganResource extends Resource
+class KeramaianResource extends Resource
 {
-    protected static ?string $model = Kehilangan::class;
+    protected static ?string $model = Keramaian::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-arrow-down';
+    protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
-    protected static ?string $navigationLabel = 'Kehilangan';
+    protected static ?string $navigationLabel = 'Keramaian';
 
-    protected static ?string $pluralModelLabel = 'Daftar Kehilangan';
+    protected static ?string $pluralModelLabel = 'Daftar Keramaian';
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Kehilangan';
+        return 'Keramaian';
     }
 
     public static function getNavigationBadge(): ?string
@@ -53,46 +52,38 @@ class KehilanganResource extends Resource
                     ->label('Nama Pengguna')
                     ->searchable()
                     ->wrap(),
-                TextColumn::make('nama_barang')
-                    ->label('Nama Barang')
+                TextColumn::make('nama_acara')
+                    ->label('Nama Kegiatan')
                     ->wrap(),
-                TextColumn::make('lokasi_hilang')
-                    ->label('Lokasi Kehilangan')
+                TextColumn::make('lokasi_acara')
+                    ->label('Lokasi Kegiatan')
                     ->wrap(),
-                TextColumn::make('tanggal_hilang')
-                    ->label('Tanggal Kehilangan')
-                    ->sortable()
+                TextColumn::make('tanggal_acara')
+                    ->label('Tanggal Kegiatan')
                     ->dateTime('d M Y'),
-                TextColumn::make('deskripsi')
-                    ->label('Deskripsi Barang')
-                    ->wrap(),
-                ImageColumn::make('foto')
-                    ->label('Gambar')
-                    ->disk('public')
-                    ->visibility('public')
-                    ->getStateUsing(function ($record) {
-                        return $record->foto ? asset('storage/' . $record->foto) : null;
-                    })
-                    ->size(60)
-                    ->square(),
-
+                TextColumn::make('waktu_acara')
+                    ->label('Waktu Kegiatan')
+                    ->time(),
                 TextColumn::make('status')
-                    ->label('Status Kehilangan')
+                    ->label('Status')
                     ->badge()
                     ->formatStateUsing(function ($state) {
                         $labels = [
-                            'ditemukan' => 'Ditemukan',
-                            'belum_ditemukan' => 'Belum Ditemukan',
+                            'menunggu' => 'Menunggu',
+                            'disetujui' => 'Desetujui',
+                            'ditolak' => 'Ditolak'
                         ];
                         return $labels[$state] ?? $state;
                     })
                     ->colors([
-                        'success' => 'ditemukan',
-                        'danger' => 'belum_ditemukan',
+                        'info' => 'menunggu',
+                        'success' => 'disetujui',
+                        'danger' => 'ditolak'
                     ])
                     ->icons([
-                        'heroicon-o-check-circle' => 'ditemukan',
-                        'heroicon-o-x-circle' => 'belum_ditemukan',
+                        'heroicon-o-clock' => 'menunggu',
+                        'heroicon-o-check-circle' => 'disetujui',
+                        'heroicon-o-x-circle' => 'ditolak',
                     ]),
 
                 TextColumn::make('created_at')
@@ -114,10 +105,12 @@ class KehilanganResource extends Resource
                     ->label('Respon')
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->color('primary')
-                    ->url(fn($record)=>TanggapanKehilanganResource::getUrl('create', [
-                        'id_kehilangan' => $record->id
-                    ]))
-
+                    ->url(
+                        fn($record) =>
+                        TanggapanKeramaianResource::getUrl('create', [
+                            'id_keramaian' => $record->id,
+                        ])
+                    )
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([
@@ -135,15 +128,15 @@ class KehilanganResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false; // Disable create action for Kehilangan
+        return false;
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListKehilangans::route('/'),
-            'create' => Pages\CreateKehilangan::route('/create'),
-            'edit' => Pages\EditKehilangan::route('/{record}/edit'),
+            'index' => Pages\ListKeramaians::route('/'),
+            'create' => Pages\CreateKeramaian::route('/create'),
+            'edit' => Pages\EditKeramaian::route('/{record}/edit'),
         ];
     }
 }
