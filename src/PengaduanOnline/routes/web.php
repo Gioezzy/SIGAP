@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\users\PengaduanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\users\TanggapanPengaduanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/pengaduan', PengaduanController::class);
+    Route::get('/tanggapan', [TanggapanPengaduanController::class, 'index'])->name('tanggapan.index');
 });
 
 require __DIR__.'/auth.php';

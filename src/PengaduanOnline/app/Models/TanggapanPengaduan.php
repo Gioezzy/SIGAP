@@ -4,18 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Pengaduan extends Model
+class TanggapanPengaduan extends Model
 {
     protected $fillable = [
-        'judul',
-        'isi_pengaduan',
+        'pengaduan_id',
         'kategori_id',
         'user_id',
-        'status',
-        'timestamp',
+        'isi_tanggapan',
     ];
+
+    public function pengaduan(): BelongsTo
+    {
+        return $this->belongsTo(Pengaduan::class, 'pengaduan_id');
+    }
 
     public function kategori(): BelongsTo
     {
@@ -25,10 +27,5 @@ class Pengaduan extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function tanggapan(): HasOne
-    {
-        return $this->hasOne(TanggapanPengaduan::class, 'pengaduan_id');
     }
 }
