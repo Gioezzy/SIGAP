@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\users\PengaduanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\users\ProfilesController;
 use App\Http\Controllers\users\BeritaController;
 use App\Http\Controllers\users\TanggapanPengaduanController;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BeritaController::class, 'home'])->name('home');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
+
+Route::get('/profil', [ProfilesController::class,'index'])->name('profiles.index');
+Route::get('/profil/{slug}', [ProfilesController::class, 'show'])->name('profiles.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

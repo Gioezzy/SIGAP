@@ -2,43 +2,37 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BeritaResource\Pages;
-use App\Filament\Resources\BeritaResource\RelationManagers;
-use App\Models\Berita;
+use App\Filament\Resources\ProfileResource\Pages;
+use App\Filament\Resources\ProfileResource\RelationManagers;
+use App\Models\Profile;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Illuminate\Support\Str;
+use Filament\Tables\Table;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BeritaResource extends Resource
+
+class ProfileResource extends Resource
 {
-    protected static ?string $model = Berita::class;
+    protected static ?string $model = Profile::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $navigationLabel = 'Berita';
+    protected static ?string $navigationLabel = 'Profil';
 
-    protected static ?string $pluralModelLabel = 'Daftar Berita';
+    protected static ?string $pluralModelLabel = 'Daftar Profil';
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Berita';
-    }
-
-    public static function getNavigationIcon(): string
-    {
-        return 'heroicon-o-book-open';
+        return 'Profil';
     }
 
     public static function getNavigationBadge(): ?string
@@ -50,8 +44,8 @@ class BeritaResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('judul')
-                    ->label('Judul Berita')
+                TextInput::make('nama')
+                    ->label('Nama Profil')
                     ->required()
                     ->maxLength(100)
                     ->live(onBlur: true)
@@ -62,41 +56,54 @@ class BeritaResource extends Resource
                         $set('slug', Str::slug($state));
                     }),
 
-                // Saat CREATE
+                // saat Create
                 TextInput::make('slug')
-                    ->label('URL Slug')
+                    ->label('Slug')
                     ->required()
                     ->maxLength(255)
                     ->dehydrated()
                     ->disabled()
+                    ->helperText('⚠️ Tidak perlu diisi, slug otomatis dibuat berdasarkan nama profil')
                     ->hidden(fn(string $operation): bool => $operation === 'create')
                     ->hidden(fn(string $operation): bool => $operation === 'edit'),
 
-                // Saat EDIT: Show dengan warning
+                // tampilkan saat edit
                 TextInput::make('slug')
-                    ->label('URL Slug')
+                    ->label('Slug')
                     ->required()
                     ->maxLength(255)
                     ->helperText('⚠️ Slug digunakan untuk URL berita')
                     ->visible(fn(string $operation): bool => $operation === 'edit'),
 
-                Textarea::make('isiBerita')
-                    ->label('Isi Berita')
+                TextInput::make('alamat')
+                    ->label('Alamat')
                     ->required()
-                    ->columnSpanFull(),
+                    ->maxLength(50),
+
+                TextInput::make('kontak')
+                    ->label('Kontak')
+                    ->required()
+                    ->maxLength(50),
+
+                TextInput::make('deskripsi')
+                    ->label('Deskripsi')
+                    ->required()
+                    ->maxLength(255),
+
                 FileUpload::make('gambar')
-                    ->label('Gambar Berita')
+                    ->label('Gambar Profil')
                     ->image()
-                    ->disk('public')
-                    ->directory('berita')
-                    ->visibility('public')
-                    ->imagePreviewHeight('150')
-                    ->required(),
-                Select::make('status')
                     ->required()
+                    ->disk('public')
+                    ->directory('profile')
+                    ->visibility('public')
+                    ->imagePreviewHeight(150),
+
+                Select::make('status')
+                    ->label('Status')
                     ->options([
                         'published' => 'Published',
-                        'not_published' => 'Not Published',
+                        'not_published' => 'Not Published'
                     ]),
             ])->columns(1);
     }
@@ -105,22 +112,40 @@ class BeritaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
+                TextColumn::make('id')
                     ->label('ID')
                     ->sortable(),
 
-                TextColumn::make('judul')
+                TextColumn::make('nama')
+                    ->label('Nama Profil')
                     ->searchable()
                     ->sortable()
+                    ->limit(20)
                     ->wrap(),
 
-                TextColumn::make('isiBerita')
-                    ->label('Isi Berita')
-                    ->limit(50)
+                TextColumn::make('alamat')
+                    ->label('Alamat')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(20)
+                    ->wrap(),
+
+                TextColumn::make('kontak')
+                    ->label('Kontak')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(20)
+                    ->wrap(),
+
+                TextColumn::make('deskripsi')
+                    ->label('Deskripsi')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(30)
                     ->wrap(),
 
                 ImageColumn::make('gambar')
-                    ->label('Gambar')
+                    ->label('Gambar Profil')
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
@@ -130,7 +155,7 @@ class BeritaResource extends Resource
                     ->square(),
 
                 TextColumn::make('status')
-                    ->label('Status Berita')
+                    ->label('Status')
                     ->badge()
                     ->formatStateUsing(function ($state) {
                         $labels = [
@@ -162,27 +187,27 @@ class BeritaResource extends Resource
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
                         'published' => 'Published',
-                        'not_published' => 'Not Published',
+                        'not_published' => 'Not Published'
                     ])
-                    ->label('Status Berita'),
+                    ->label('Status')
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make()
-                        ->label('Lihat Berita')
+                        ->label('Lihat Profil')
                         ->icon('heroicon-o-eye')
                         ->color('secondary'),
                     Tables\Actions\EditAction::make()
-                        ->label('Edit Berita')
+                        ->label('Edit Profil')
                         ->icon('heroicon-o-pencil-square')
                         ->color('primary'),
                     Tables\Actions\DeleteAction::make()
-                        ->label('Hapus Berita')
+                        ->label('Hapus Profil')
                         ->icon('heroicon-o-trash')
                         ->color('danger')
                         ->requiresConfirmation()
-                        ->successNotificationTitle('Berita berhasil dihapus.'),
-                ])->label('Aksi')
+                        ->successNotificationTitle('Profil berhasil dihapus'),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -201,9 +226,9 @@ class BeritaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBeritas::route('/'),
-            'create' => Pages\CreateBerita::route('/create'),
-            'edit' => Pages\EditBerita::route('/{record}/edit'),
+            'index' => Pages\ListProfiles::route('/'),
+            'create' => Pages\CreateProfile::route('/create'),
+            'edit' => Pages\EditProfile::route('/{record}/edit'),
         ];
     }
 }

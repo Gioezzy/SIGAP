@@ -12,7 +12,7 @@ class CustomLogoutResponse implements Responsable
      */
     public function toResponse($request)
     {
-        return redirect()->route('index');
+        return redirect()->route('home');
     }
 }
 

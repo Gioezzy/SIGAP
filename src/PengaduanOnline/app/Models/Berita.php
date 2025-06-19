@@ -25,26 +25,23 @@ class Berita extends Model
         return $this->gambar ? asset('storage/' . $this->gambar) : null;
     }
 
-    // Di Model Berita.php
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::creating(function ($berita) {
+            if (empty($berita->slug) && !empty($berita->judul)) {
+                $berita->slug = Str::slug($berita->judul);
 
-protected static function boot()
-{
-    parent::boot();
+                // Pastikan unique
+                $counter = 1;
+                $originalSlug = $berita->slug;
 
-    static::creating(function ($berita) {
-        if (empty($berita->slug) && !empty($berita->judul)) {
-            $berita->slug = Str::slug($berita->judul);
-
-            // Pastikan unique
-            $counter = 1;
-            $originalSlug = $berita->slug;
-
-            while (static::where('slug', $berita->slug)->exists()) {
-                $berita->slug = $originalSlug . '-' . $counter;
-                $counter++;
+                while (static::where('slug', $berita->slug)->exists()) {
+                    $berita->slug = $originalSlug . '-' . $counter;
+                    $counter++;
+                }
             }
-        }
-    });
-}
+        });
+    }
 }
