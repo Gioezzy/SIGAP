@@ -1,0 +1,49 @@
+name: Fix Code Style
+
+on:
+ push:
+  branches:
+   - testing
+ pull_request:
+  branches:
+   - testing
+
+jobs:
+ lint:
+  runs-on: ubuntu-latest
+  strategy:
+   fail-fast: true
+   matrix:
+    php: [8.4]
+
+  steps:
+   - name: Checkout code
+     uses: actions/checkout@v4
+
+   - name: Setup PHP
+     uses: shivammathur/setup-php@v2
+     with:
+      php-version: ${{ matrix.php }}
+      extensions: json, dom, curl, libxml, mbstring
+      coverage: none
+
+   - name: Install dependencies
+     run: |
+      cd src/PengaduanOnline
+      composer install --no-progress --prefer-dist --no-suggest
+
+   - name: Install Laravel Pint globally
+     run: composer global require laravel/pint
+
+   - name: Add global Composer bin to PATH
+     run: echo "${HOME}/.composer/vendor/bin" >> $GITHUB_PATH
+
+   - name: Run Laravel Pint
+     run: |
+      cd src/PengaduanOnline
+      pint
+
+   - name: Commit linted files
+     uses: stefanzweifel/git-auto-commit-action@v5
+     with:
+      commit_message: "chore: auto-format code via Pint"
