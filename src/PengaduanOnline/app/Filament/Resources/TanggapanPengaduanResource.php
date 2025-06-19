@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TextArea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -77,7 +78,7 @@ class TanggapanPengaduanResource extends Resource
                     ->disabled()
                     ->dehydrated(false),
 
-                TextInput::make('isi_pengaduan')
+                TextArea::make('isi_pengaduan')
                     ->label('Isi Pengaduan')
                     ->disabled()
                     ->dehydrated(false)
@@ -143,6 +144,7 @@ class TanggapanPengaduanResource extends Resource
                 TextColumn::make('pengaduan.isi_pengaduan')
                     ->label('Isi Pengaduan')
                     ->searchable()
+                    ->limit(50)
                     ->sortable()
                     ->wrap(),
                 TextColumn::make('isi_tanggapan')

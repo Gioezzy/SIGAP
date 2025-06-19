@@ -12,6 +12,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextArea;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use FIlament\Tables\Actions\Action;
@@ -73,9 +74,10 @@ class PengaduanResource extends Resource
                     ->label('Kategori Pengaduan')
                     ->disabled()
                     ->dehydrated(false),
-                TextInput::make('isi_pengaduan')
+                TextArea::make('isi_pengaduan')
                     ->label('Isi Pengaduan')
                     ->disabled()
+                    ->columnSpanFull()
                     ->dehydrated(false),
                 Select::make('status')
                     ->label('Status Pengaduan')
@@ -120,6 +122,7 @@ class PengaduanResource extends Resource
                 TextColumn::make('isi_pengaduan')
                     ->label('Isi Pengaduan')
                     ->sortable()
+                    ->limit(50)
                     ->tooltip(fn($state) => $state)
                     ->searchable()
                     ->wrap(),
