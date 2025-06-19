@@ -5,8 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\users\AspirasiController;
 use App\Http\Controllers\users\ProfilesController;
 use App\Http\Controllers\users\BeritaController;
+use App\Http\Controllers\users\KehilanganController;
 use App\Http\Controllers\users\KritikSaranController;
 use App\Http\Controllers\users\TanggapanAspirasiController;
+use App\Http\Controllers\users\TanggapanKehilanganController;
 use App\Http\Controllers\users\TanggapanKritikSaranController;
 use App\Http\Controllers\users\TanggapanPengaduanController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +31,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/pengaduan', PengaduanController::class);
     Route::resource('/kritiksaran', KritikSaranController::class);
     Route::resource('/aspirasi', AspirasiController::class);
+    Route::resource('/kehilangan', KehilanganController::class);
     Route::get('/tanggapanpengaduan', [TanggapanPengaduanController::class, 'index'])->name('tanggapan.pengaduan.index');
     Route::get('/tanggapankritiksaran', [TanggapanKritikSaranController::class, 'index'])->name('tanggapan.kritiksaran.index');
     Route::get('/tanggapanaspirasi', [TanggapanAspirasiController::class, 'index'])->name('tanggapan.aspirasi.index');
+    Route::get('/tanggapankehilangan', [TanggapanKehilanganController::class, 'index'])->name('tanggapan.kehilangan.index');
 
 });
 

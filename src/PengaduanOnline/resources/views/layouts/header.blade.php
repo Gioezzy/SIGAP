@@ -15,6 +15,8 @@
                 <a href="{{ route('tanggapan.kritiksaran.index') }}" class="hover:text-blue-500">Tanggapan Kritik Saran</a>
                 <a href="{{ route('aspirasi.index') }}" class="hover:text-blue-500">Aspirasi</a>
                 <a href="{{ route('tanggapan.aspirasi.index') }}" class="hover:text-blue-500">Tanggapan Aspirasi</a>
+                <a href="{{ route('kehilangan.index') }}" class="hover:text-blue-500">Kehilangan</a>
+                <a href="{{ route('tanggapan.kehilangan.index') }}" class="hover:text-blue-500">Tanggapan Kehilangan</a>
                 <a href="{{ route('profiles.index') }}" class="hover:text-blue-500">Tentang Kami</a>
             </div>
 

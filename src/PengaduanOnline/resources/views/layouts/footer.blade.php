@@ -16,17 +16,27 @@
                 <h5 class="mb-4 text-xl font-semibold text-white">Quick Links</h5>
                 <ul class="space-y-2 text-sm text-blue-400">
                     <li><a href="{{route('home')}}" class="text-blue-400 transition hover:text-white">Home</a></li>
-                    <li><a href="{{route('pengaduan.index')}}" class="text-blue-400 transition hover:text-white">Pengaduan</a></li>
-                    <li><a href="{{route('tanggapan.pengaduan.index')}}" class="text-blue-400 transition hover:text-white">Tanggapan
-                            Pengaduan</a></li>
-                    <li><a href="{{route('kritiksaran.index')}}" class="text-blue-400 transition hover:text-white">Kritik Saran</a>
+                    <li><a href="{{route('pengaduan.index')}}"
+                            class="text-blue-400 transition hover:text-white">Pengaduan</a></li>
+                    {{-- <li><a href="{{route('tanggapan.pengaduan.index')}}"
+                            class="text-blue-400 transition hover:text-white">Tanggapan
+                            Pengaduan</a></li> --}}
+                    <li><a href="{{route('kritiksaran.index')}}"
+                            class="text-blue-400 transition hover:text-white">Kritik Saran</a>
                     </li>
-                    <li><a href="{{route('tanggapan.kritiksaran.index')}}" class="text-blue-400 transition hover:text-white">Tanggapan
-                            Kritik Saran</a></li>
-                    <li><a href="{{route('aspirasi.index')}}" class="text-blue-400 transition hover:text-white">Aspirasi</a></li>
-                    <li><a href="{{route('tanggapan.aspirasi.index')}}" class="text-blue-400 transition hover:text-white">Tanggapan
-                            Aspirasi</a></li>
-                    <li><a href="{{route('profiles.index')}}" class="text-blue-400 transition hover:text-white">Tentang Kami</a></li>
+                    {{-- <li><a href="{{route('tanggapan.kritiksaran.index')}}"
+                            class="text-blue-400 transition hover:text-white">Tanggapan
+                            Kritik Saran</a></li> --}}
+                    <li><a href="{{route('aspirasi.index')}}"   
+                            class="text-blue-400 transition hover:text-white">Aspirasi</a></li>
+                    {{-- <li><a href="{{route('tanggapan.aspirasi.index')}}"
+                            class="text-blue-400 transition hover:text-white">Tanggapan Aspirasi</a></li> --}}
+                    <li><a href="{{route('kehilangan.index')}}"
+                            class="text-blue-400 transition hover:text-white">Kehilangan</a></li>
+                    {{-- <li><a href="{{route('tanggapan.kehilangan.index')}}"
+                            class="text-blue-400 transition hover:text-white">Tanggapan Kehilangan</a></li> --}}
+                    <li><a href="{{route('profiles.index')}}" class="text-blue-400 transition hover:text-white">Tentang
+                            Kami</a></li>
                 </ul>
             </div>
 
