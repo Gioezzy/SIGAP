@@ -32,7 +32,7 @@
 
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <a href="#" class="opacity-75 text-light text-decoration-none"
+                        <a href="{{route('pengaduan.index')}}" class="opacity-75 text-light text-decoration-none"
                             style="transition: all 0.3s ease;"
                             onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
                             onmouseout="this.style.opacity='0.75'; this.style.color=''">
@@ -40,29 +40,38 @@
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="#" class="opacity-75 text-light text-decoration-none"
-                            style="transition: all 0.3s ease;"
-                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
-                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
-                            Tanggapan
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="opacity-75 text-light text-decoration-none"
-                            style="transition: all 0.3s ease;"
-                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
-                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
-                            Kritik & Saran
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="opacity-75 text-light text-decoration-none"
+                        <a href="{{route('aspirasi.index')}}" class="opacity-75 text-light text-decoration-none"
                             style="transition: all 0.3s ease;"
                             onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
                             onmouseout="this.style.opacity='0.75'; this.style.color=''">
                             Aspirasi
                         </a>
                     </li>
+                    <li class="mb-2">
+                        <a href="{{route('kritiksaran.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Kritik Saran
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{route('kehilangan.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Kehilangan
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{route('keramaian.index')}}" class="opacity-75 text-light text-decoration-none"
+                            style="transition: all 0.3s ease;"
+                            onmouseover="this.style.opacity='1'; this.style.color='#ffc107'"
+                            onmouseout="this.style.opacity='0.75'; this.style.color=''">
+                            Keramaian
+                        </a>
+                    </li>
+
                 </ul>
             </div>
 
@@ -80,7 +89,7 @@
         <hr class="my-3 opacity-25 border-light">
         <div class="text-center">
             <p class="mb-0 opacity-50 text-light small">
-                &copy; 2024 Layanan Pengaduan Online. All Rights Reserved.
+                &copy; 2025 Layanan Pengaduan Online. All Rights Reserved.
             </p>
         </div>
     </div>

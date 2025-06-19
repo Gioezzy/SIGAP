@@ -1,31 +1,31 @@
 <x-app-layout>
     @guest
-        <div class="relative min-h-screen bg-cover bg-center overflow-hidden" id="heroSection">
+        <div class="relative min-h-screen overflow-hidden bg-center bg-cover" id="heroSection">
             <!-- Background Image Container -->
-            <div class="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
+            <div class="absolute inset-0 transition-all duration-1000 ease-in-out bg-center bg-cover"
                 style="background-image: url('{{ asset('images/unand2.jpeg') }}');" id="bgImage"></div>
 
             <!-- Overlay gelap agar teks tetap terbaca -->
             <div class="absolute inset-0 bg-black/60"></div>
 
             <!-- Floating Elements -->
-            <div class="absolute top-20 left-10 w-4 h-4 bg-white/20 rounded-full animate-float"></div>
-            <div class="absolute top-40 right-20 w-6 h-6 bg-white/15 rounded-full animate-float-delayed"></div>
-            <div class="absolute bottom-40 left-20 w-5 h-5 bg-white/20 rounded-full animate-pulse-slow"></div>
-            <div class="absolute bottom-20 right-10 w-3 h-3 bg-white/25 rounded-full animate-bounce-slow"></div>
+            <div class="absolute w-4 h-4 rounded-full top-20 left-10 bg-white/20 animate-float"></div>
+            <div class="absolute w-6 h-6 rounded-full top-40 right-20 bg-white/15 animate-float-delayed"></div>
+            <div class="absolute w-5 h-5 rounded-full bottom-40 left-20 bg-white/20 animate-pulse-slow"></div>
+            <div class="absolute w-3 h-3 rounded-full bottom-20 right-10 bg-white/25 animate-bounce-slow"></div>
 
             <!-- Hero Content -->
             <div class="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-4xl mx-auto">
+                <div class="max-w-4xl mx-auto text-center">
                     <!-- Main Title -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-                        <span class="block hover:animate-glow transition-all duration-300">
+                    <h1 class="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl animate-fade-in-up">
+                        <span class="block transition-all duration-300 hover:animate-glow">
                             Layanan Pengaduan Online
                         </span>
                     </h1>
 
                     <p
-                        class="text-lg sm:text-xl text-white mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-300">
+                        class="max-w-4xl mx-auto mb-8 text-lg leading-relaxed text-white delay-300 sm:text-xl animate-fade-in-up">
                         Merupakan platform yang masyarakat untuk melapor jika ada pelanggaran atau kejadian yang
                         mencurigakan. Layanan ini dibuat agar pelaporan bisa dilakukan dengan cepat, aman, tanpa harus
                         datang langsung. Tujuannya adalah untuk membantu menjaga keamanan lingkungan kampus, khususnya di
@@ -60,54 +60,54 @@
 
     @auth
         <section
-            class="relative min-h-screen flex flex-col items-center justify-center text-white overflow-hidden gradient-animation">
+            class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-white gradient-animation">
 
             <!-- Animated floating particles -->
             <div class="absolute inset-0 z-0">
-                <div class="floating-particle w-2 h-2 bg-white bg-opacity-20 rounded-full absolute top-1/4 left-1/4"></div>
-                <div class="floating-particle w-3 h-3 bg-white bg-opacity-15 rounded-full absolute top-1/3 right-1/4"></div>
-                <div class="floating-particle w-1 h-1 bg-white bg-opacity-25 rounded-full absolute bottom-1/4 left-1/3">
+                <div class="absolute w-2 h-2 bg-white rounded-full floating-particle bg-opacity-20 top-1/4 left-1/4"></div>
+                <div class="absolute w-3 h-3 bg-white rounded-full floating-particle bg-opacity-15 top-1/3 right-1/4"></div>
+                <div class="absolute w-1 h-1 bg-white bg-opacity-25 rounded-full floating-particle bottom-1/4 left-1/3">
                 </div>
-                <div class="floating-particle w-2 h-2 bg-white bg-opacity-10 rounded-full absolute top-1/2 right-1/3"></div>
-                <div class="floating-particle w-1 h-1 bg-white bg-opacity-20 rounded-full absolute bottom-1/3 right-1/2">
+                <div class="absolute w-2 h-2 bg-white rounded-full floating-particle bg-opacity-10 top-1/2 right-1/3"></div>
+                <div class="absolute w-1 h-1 bg-white rounded-full floating-particle bg-opacity-20 bottom-1/3 right-1/2">
                 </div>
-                <div class="floating-particle w-2 h-2 bg-white bg-opacity-15 rounded-full absolute top-3/4 left-1/2"></div>
+                <div class="absolute w-2 h-2 bg-white rounded-full floating-particle bg-opacity-15 top-3/4 left-1/2"></div>
             </div>
 
             <!-- Geometric shapes -->
             <div class="absolute inset-0 z-0">
                 <div
-                    class="geometric-shape absolute top-20 left-10 w-20 h-20 border border-white border-opacity-10 rotate-45 animate-pulse">
+                    class="absolute w-20 h-20 rotate-45 border border-white geometric-shape top-20 left-10 border-opacity-10 animate-pulse">
                 </div>
                 <div
-                    class="geometric-shape absolute bottom-20 right-20 w-16 h-16 bg-white bg-opacity-5 rounded-full animate-bounce">
+                    class="absolute w-16 h-16 bg-white rounded-full geometric-shape bottom-20 right-20 bg-opacity-5 animate-bounce">
                 </div>
                 <div
-                    class="geometric-shape absolute top-1/2 left-5 w-12 h-12 border-2 border-white border-opacity-15 transform rotate-12">
+                    class="absolute w-12 h-12 transform border-2 border-white geometric-shape top-1/2 left-5 border-opacity-15 rotate-12">
                 </div>
             </div>
 
             <!-- Watermark with enhanced animation -->
             <img src="{{ asset('images/binmas.png') }}" alt="Logo BINMAS"
-                class="absolute inset-0 m-auto w-96 opacity-50 z-0 animate-pulse watermark-glow" />
+                class="absolute inset-0 z-0 m-auto opacity-50 w-96 animate-pulse watermark-glow" />
 
             <!-- Teks with enhanced animations -->
-            <div class="relative z-10 text-center px-4">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fade-in-up">
+            <div class="relative z-10 px-4 text-center">
+                <h1 class="mb-4 text-4xl font-extrabold md:text-6xl animate-fade-in-up">
                     LAYANAN PENGADUAN
                 </h1>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 animate-fade-in-up animation-delay-300">
+                <h1 class="mb-6 text-4xl font-extrabold md:text-6xl animate-fade-in-up animation-delay-300">
                     ONLINE
                 </h1>
                 <p
-                    class="text-lg font-medium w-full max-w-5xl px-4 md:px-12 mx-auto text-center animate-fade-in-up animation-delay-600">
+                    class="w-full max-w-5xl px-4 mx-auto text-lg font-medium text-center md:px-12 animate-fade-in-up animation-delay-600">
                     Mari Bersama Ciptakan Lingkungan Aman dan Nyaman, Mulai dari Satu Pengaduan —
                     Kami Siap Menanggapi dan Bertindak.
                 </p>
             </div>
 
             <!-- Decorative wave at bottom -->
-            <div class="absolute bottom-0 left-0 w-full overflow-hidden z-0">
+            <div class="absolute bottom-0 left-0 z-0 w-full overflow-hidden">
                 <svg class="relative block w-full h-24 animate-wave" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path
@@ -119,22 +119,22 @@
     @endauth
 
     @auth
-        <section class="relative py-20 px-4 text-white text-center overflow-hidden">
+        <section class="relative px-4 py-20 overflow-hidden text-center text-white">
             <!-- Animated Background -->
             <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-purple-700">
                 <!-- Floating Circles Animation -->
-                <div class="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
-                <div class="absolute top-32 right-20 w-24 h-24 bg-blue-300/20 rounded-full animate-bounce"
+                <div class="absolute w-32 h-32 rounded-full top-10 left-10 bg-white/10 animate-pulse"></div>
+                <div class="absolute w-24 h-24 rounded-full top-32 right-20 bg-blue-300/20 animate-bounce"
                     style="animation-delay: 0.5s;"></div>
-                <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-purple-300/15 rounded-full animate-pulse"
+                <div class="absolute w-40 h-40 rounded-full bottom-20 left-1/4 bg-purple-300/15 animate-pulse"
                     style="animation-delay: 1s;"></div>
-                <div class="absolute bottom-32 right-10 w-20 h-20 bg-white/20 rounded-full animate-bounce"
+                <div class="absolute w-20 h-20 rounded-full bottom-32 right-10 bg-white/20 animate-bounce"
                     style="animation-delay: 1.5s;"></div>
 
                 <!-- Geometric Shapes -->
-                <div class="absolute top-1/4 left-1/3 w-16 h-16 border-2 border-white/30 rotate-45 animate-spin"
+                <div class="absolute w-16 h-16 rotate-45 border-2 top-1/4 left-1/3 border-white/30 animate-spin"
                     style="animation-duration: 8s;"></div>
-                <div class="absolute bottom-1/3 right-1/4 w-12 h-12 border-2 border-blue-300/40 rotate-12 animate-spin"
+                <div class="absolute w-12 h-12 border-2 bottom-1/3 right-1/4 border-blue-300/40 rotate-12 animate-spin"
                     style="animation-duration: 6s; animation-direction: reverse;"></div>
 
                 <!-- Gradient Overlay -->
@@ -144,32 +144,32 @@
             <!-- Content -->
             <div class="relative z-10 max-w-4xl mx-auto">
                 <!-- Judul -->
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-6 animate-fade-in-down">
+                <h2 class="mb-6 text-2xl font-extrabold md:text-3xl lg:text-4xl animate-fade-in-down">
                     Sampaikan Laporan Anda dan Permintaan Anda!
                 </h2>
 
                 <!-- Deskripsi -->
-                <p class="text-base md:text-lg font-medium mb-8 leading-relaxed animate-fade-in-up"
+                <p class="mb-8 text-base font-medium leading-relaxed md:text-lg animate-fade-in-up"
                     style="animation-delay: 0.3s;">
                     Gunakan layanan pengaduan ini untuk berbagai keperluan resmi anda. Kami berkomitmen untuk
                     menindaklanjuti setiap pengaduan dengan cepat, transparan, dan bertanggung jawab
                 </p>
 
                 <!-- Tombol Aksi -->
-                <div class="flex justify-center gap-4 flex-wrap animate-fade-in-up" style="animation-delay: 0.6s;">
+                <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
                     <a href="{{ route('pengaduan.create') }}"
-                        class="group relative bg-white text-blue-800 font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1">
+                        class="relative px-8 py-3 font-bold text-blue-800 transition-all duration-300 transform bg-white shadow-lg group rounded-xl hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 hover:-translate-y-1">
                         <span class="relative z-10">Buat Pengaduan</span>
                         <div
-                            class="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl group-hover:opacity-100">
                         </div>
                     </a>
 
-                    <a href="{{ route('tanggapan.index') }}"
-                        class="group relative bg-white text-blue-800 font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="{{ route('tanggapan.pengaduan.index') }}"
+                        class="relative px-8 py-3 font-bold text-blue-800 transition-all duration-300 transform bg-white shadow-lg group rounded-xl hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 hover:-translate-y-1">
                         <span class="relative z-10">Lihat Status</span>
                         <div
-                            class="absolute inset-0 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl group-hover:opacity-100">
                         </div>
                     </a>
                 </div>
@@ -186,40 +186,40 @@
             <div class="absolute inset-0 bg-black/10"></div>
 
             <!-- Animated Background Shapes -->
-            <div class="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float-delayed"></div>
-            <div class="absolute top-1/2 left-0 w-64 h-64 bg-blue-400/10 rounded-full blur-2xl animate-pulse-slow"></div>
-            <div class="absolute top-1/4 right-0 w-48 h-48 bg-purple-400/10 rounded-full blur-2xl animate-bounce-slow">
+            <div class="absolute top-0 rounded-full left-1/4 w-96 h-96 bg-white/5 blur-3xl animate-float"></div>
+            <div class="absolute bottom-0 rounded-full right-1/4 w-96 h-96 bg-white/5 blur-3xl animate-float-delayed"></div>
+            <div class="absolute left-0 w-64 h-64 rounded-full top-1/2 bg-blue-400/10 blur-2xl animate-pulse-slow"></div>
+            <div class="absolute right-0 w-48 h-48 rounded-full top-1/4 bg-purple-400/10 blur-2xl animate-bounce-slow">
             </div>
 
 
             <!-- Floating Particles -->
-            <div class="absolute top-20 left-20 w-2 h-2 bg-white/20 rounded-full animate-ping"></div>
-            <div class="absolute top-40 right-32 w-1 h-1 bg-white/30 rounded-full animate-pulse"></div>
+            <div class="absolute w-2 h-2 rounded-full top-20 left-20 bg-white/20 animate-ping"></div>
+            <div class="absolute w-1 h-1 rounded-full top-40 right-32 bg-white/30 animate-pulse"></div>
             <div class="absolute bottom-32 left-1/3 w-1.5 h-1.5 bg-white/25 rounded-full animate-ping delay-1000"></div>
-            <div class="absolute bottom-20 right-20 w-1 h-1 bg-white/20 rounded-full animate-pulse delay-500"></div>
+            <div class="absolute w-1 h-1 delay-500 rounded-full bottom-20 right-20 bg-white/20 animate-pulse"></div>
 
-            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="container relative z-10 px-4 mx-auto text-center sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto">
                     <!-- Main Heading -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 animate-fade-in-up">
+                    <h1 class="mb-8 text-4xl font-bold text-white sm:text-5xl lg:text-6xl animate-fade-in-up">
                         Ada Masalah? Laporkan Sekarang!
                     </h1>
 
                     <!-- Description Text -->
                     <p
-                        class="text-lg sm:text-xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto animate-fade-in-up delay-300">
+                        class="max-w-3xl mx-auto mb-12 text-lg leading-relaxed delay-300 sm:text-xl text-white/90 animate-fade-in-up">
                         Kami percaya setiap aduan adalah langkah menuju perubahan. Laporkan kejadian yang Anda alami—kami
                         siap mendengarkan dan bertindak.
                     </p>
 
                     <!-- CTA Button -->
-                    <div class="animate-fade-in-up delay-500">
+                    <div class="delay-500 animate-fade-in-up">
                         <a href="{{ route('pengaduan.index') }}"
-                            class="inline-flex items-center px-12 py-4 text-white font-semibold text-lg rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 group hover:shadow-white/20 animate-glow"
+                            class="inline-flex items-center px-12 py-4 text-lg font-semibold text-white transition-all duration-300 transform shadow-lg rounded-xl hover:scale-105 group hover:shadow-white/20 animate-glow"
                             style="background-color: #413FB5;">
                             <span>Layanan Pengaduan</span>
-                            <svg class="w-5 h-5 ml-3 transform group-hover:translate-x-1 transition-transform duration-300"
+                            <svg class="w-5 h-5 ml-3 transition-transform duration-300 transform group-hover:translate-x-1"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -320,29 +320,29 @@
         <div class="absolute inset-0 bg-gradient-animated opacity-5"></div>
 
         <!-- Floating Elements -->
-        <div class="absolute top-10 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-float"></div>
-        <div class="absolute top-32 right-20 w-16 h-16 bg-purple-200 rounded-full opacity-20 animate-float-delayed">
+        <div class="absolute w-20 h-20 bg-blue-200 rounded-full top-10 left-10 opacity-20 animate-float"></div>
+        <div class="absolute w-16 h-16 bg-purple-200 rounded-full top-32 right-20 opacity-20 animate-float-delayed">
         </div>
-        <div class="absolute bottom-20 left-20 w-24 h-24 bg-cyan-200 rounded-full opacity-20 animate-float"></div>
-        <div class="absolute bottom-40 right-10 w-12 h-12 bg-green-200 rounded-full opacity-20 animate-float-delayed">
+        <div class="absolute w-24 h-24 rounded-full bottom-20 left-20 bg-cyan-200 opacity-20 animate-float"></div>
+        <div class="absolute w-12 h-12 bg-green-200 rounded-full bottom-40 right-10 opacity-20 animate-float-delayed">
         </div>
 
         @auth
-            <div class="container mx-auto px-6 relative z-10">
+            <div class="container relative z-10 px-6 mx-auto">
                 <!-- Title -->
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                <div class="mb-16 text-center">
+                    <h2 class="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">
                         LAYANAN KAMI
                     </h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+                    <div class="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
                 </div>
 
                 <!-- Services Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="grid grid-cols-1 gap-8 mb-12 md:grid-cols-2 lg:grid-cols-4">
                     <!-- Pengaduan -->
-                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100">
+                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
                         <div class="text-center">
-                            <div class="icon-container mx-auto mb-6 bg-blue-100 rounded-2xl animate-pulse-glow">
+                            <div class="mx-auto mb-6 bg-blue-100 icon-container rounded-2xl animate-pulse-glow">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="w-8 h-8 text-blue-600">
                                     <path
@@ -350,17 +350,17 @@
                                         fill="currentColor" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Pengaduan</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Pengaduan</h3>
+                            <p class="leading-relaxed text-gray-600">
                                 Sampaikan Pengaduan anda dengan memilih kategori pengaduan yang anda alami
                             </p>
                         </div>
                     </div>
 
                     <!-- Surat Kehilangan -->
-                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100">
+                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
                         <div class="text-center">
-                            <div class="icon-container mx-auto mb-6 bg-green-100 rounded-2xl animate-pulse-glow">
+                            <div class="mx-auto mb-6 bg-green-100 icon-container rounded-2xl animate-pulse-glow">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="w-8 h-8 text-green-600">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
@@ -370,17 +370,17 @@
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Surat Kehilangan</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Surat Kehilangan</h3>
+                            <p class="leading-relaxed text-gray-600">
                                 Laporkan kehilangan dokumen atau barang pribadi Anda
                             </p>
                         </div>
                     </div>
 
                     <!-- Izin Keramaian -->
-                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100">
+                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
                         <div class="text-center">
-                            <div class="icon-container mx-auto mb-6 bg-orange-100 rounded-2xl animate-pulse-glow">
+                            <div class="mx-auto mb-6 bg-orange-100 icon-container rounded-2xl animate-pulse-glow">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="w-8 h-8 text-orange-600">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor"
@@ -391,17 +391,17 @@
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Izin Keramaian</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Izin Keramaian</h3>
+                            <p class="leading-relaxed text-gray-600">
                                 Ajukan izin untuk kegiatan yang melibatkan banyak orang
                             </p>
                         </div>
                     </div>
 
                     <!-- Aspirasi -->
-                    <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100">
+                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
                         <div class="text-center">
-                            <div class="icon-container mx-auto mb-6 bg-purple-100 rounded-2xl animate-pulse-glow">
+                            <div class="mx-auto mb-6 bg-purple-100 icon-container rounded-2xl animate-pulse-glow">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="w-8 h-8 text-purple-600">
                                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
@@ -411,8 +411,8 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Aspirasi</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Aspirasi</h3>
+                            <p class="leading-relaxed text-gray-600">
                                 Sampaikan aspirasi dan harapan Anda
                             </p>
                         </div>
@@ -422,9 +422,9 @@
                 <!-- Kritik & Saran Card -->
                 <div class="flex justify-center">
                     <div
-                        class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 max-w-md w-full">
+                        class="w-full max-w-md p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
                         <div class="text-center">
-                            <div class="icon-container mx-auto mb-6 bg-yellow-100 rounded-2xl animate-pulse-glow">
+                            <div class="mx-auto mb-6 bg-yellow-100 icon-container rounded-2xl animate-pulse-glow">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     class="w-8 h-8 text-yellow-600">
                                     <path
@@ -433,8 +433,8 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Kritik & Saran</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Kritik & Saran</h3>
+                            <p class="leading-relaxed text-gray-600">
                                 Sampaikan Kritik dan Saran anda kepada kami
                             </p>
                         </div>
@@ -446,53 +446,53 @@
 
     <!-- News Section -->
     <div class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container px-4 mx-auto sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16 animate-fade-in">
+            <div class="mb-16 text-center animate-fade-in">
                 <div
-                    class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl mb-6 shadow-lg animate-bounce">
+                    class="inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl animate-bounce">
                     <img src="{{ asset('images/news.png') }}" alt="icon"
-                        class="w-8 h-8 object-contain transition-transform duration-300 hover:scale-110" />
+                        class="object-contain w-8 h-8 transition-transform duration-300 hover:scale-110" />
                 </div>
 
-                <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                <h2 class="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl">
                     BERITA
-                    <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <span class="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
                         TERBARU
                     </span>
                 </h2>
 
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                <p class="max-w-2xl mx-auto text-xl text-gray-600">
                     Kami menyediakan berita terbaru dan terupdate untuk Anda
                 </p>
             </div>
 
             <!-- News Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 gap-8 mb-12 md:grid-cols-2 lg:grid-cols-3">
                 @forelse ($berita as $index => $item)
                     <article
-                        class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 animate-slide-up"
+                        class="overflow-hidden transition-all duration-500 transform bg-white shadow-lg group rounded-3xl hover:shadow-2xl hover:-translate-y-2 animate-slide-up"
                         style="animation-delay: {{ $index * 100 }}ms">
                         <!-- Image Container -->
                         <div class="relative overflow-hidden">
                             @if ($item->slug)
                                 <a href="{{ route('berita.show', $item->slug) }}" class="block">
                                     <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}"
-                                        class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                                        class="object-cover w-full h-56 transition-transform duration-700 group-hover:scale-110">
                                     <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/50 to-transparent group-hover:opacity-100">
                                     </div>
                                 </a>
                             @else
                                 <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}"
-                                    class="w-full h-56 object-cover">
+                                    class="object-cover w-full h-56">
                             @endif
 
 
                             <!-- Content -->
                             <div class="p-6">
                                 <!-- Date -->
-                                <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <div class="flex items-center mb-3 text-sm text-gray-500">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -504,28 +504,28 @@
                                 <!-- Title -->
                                 @if ($item->slug)
                                     <h3
-                                        class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                                        class="mb-3 text-xl font-bold leading-tight text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
                                         <a href="{{ route('berita.show', $item->slug) }}" class="hover:underline">
                                             {{ $item->judul }}
                                         </a>
                                     </h3>
                                 @else
-                                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                                    <h3 class="mb-3 text-xl font-bold leading-tight text-gray-900">
                                         {{ $item->judul }}
                                     </h3>
                                 @endif
 
                                 <!-- Excerpt -->
-                                <p class="text-gray-600 leading-relaxed mb-4">
+                                <p class="mb-4 leading-relaxed text-gray-600">
                                     {{ Str::limit(strip_tags($item->isiBerita), 120) }}
                                 </p>
 
                                 <!-- Read More -->
                                 @if ($item->slug)
                                     <a href="{{ route('berita.show', $item->slug) }}"
-                                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 group/link">
+                                        class="inline-flex items-center font-semibold text-blue-600 transition-colors duration-300 hover:text-blue-700 group/link">
                                         <span>Baca Selengkapnya</span>
-                                        <svg class="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover/link:translate-x-1"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -535,15 +535,15 @@
                             </div>
                     </article>
                 @empty
-                    <div class="col-span-full text-center py-16">
-                        <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-6">
+                    <div class="py-16 text-center col-span-full">
+                        <div class="inline-flex items-center justify-center w-20 h-20 mb-6 bg-gray-100 rounded-full">
                             <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Belum Ada Berita</h3>
+                        <h3 class="mb-2 text-2xl font-bold text-gray-900">Belum Ada Berita</h3>
                         <p class="text-gray-600">Belum ada berita yang dipublikasikan saat ini.</p>
                     </div>
                 @endforelse
@@ -553,9 +553,9 @@
             @if ($berita->count() > 0)
                 <div class="text-center animate-fade-in">
                     <a href="{{ route('berita.index') }}"
-                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group">
+                        class="inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-xl bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black rounded-2xl hover:shadow-2xl hover:scale-105 group">
                         <span>Lihat Semua Berita</span>
-                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                        <svg class="w-5 h-5 ml-2 transition-transform duration-300 transform group-hover:translate-x-1"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3" />

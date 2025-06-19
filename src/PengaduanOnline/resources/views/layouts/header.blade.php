@@ -26,32 +26,36 @@
                 </a>
             </div>
 
-            <!-- Desktop Navigation -->
-            <div class="items-center hidden space-x-8 lg:flex">
+
+            <!-- Tambahkan ini di bagian header -->
+            <div x-data="{ openMenu: null }" class="items-center hidden space-x-8 lg:flex">
                 @auth
-                    <a href="{{ route('home') }}"
-                        class="{{ request()->routeIs('home') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }} font-medium transition-colors duration-300 relative group">
-                        <span>Beranda</span>
-                        <div
-                            class="absolute -bottom-1 left-0 {{ request()->routeIs('home') ? 'w-full' : 'w-0' }} h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300">
-                        </div>
-                    </a>
+                    @foreach([
+                        ['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'],
+                        ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'],
+                        ['key' => 'kritik', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'],
+                        ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'],
+                        ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index'],
+                    ] as $menu)
+                        <div @mouseenter="openMenu = '{{ $menu['key'] }}'" @mouseleave="openMenu = null" class="relative">
+                            <button class="relative font-medium text-gray-700 transition-colors duration-300 hover:text-blue-600 group">
+                                <span>{{ $menu['title'] }}</span>
+                                <div class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300"></div>
+                            </button>
 
-                    <a href="{{ route('pengaduan.index') }}"
-                        class="{{ request()->routeIs('pengaduan.*') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }} font-medium transition-colors duration-300 relative group">
-                        <span>Pengaduan</span>
-                        <div
-                            class="absolute -bottom-1 left-0 {{ request()->routeIs('pengaduan.*') ? 'w-full' : 'w-0' }} h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300">
+                            <div x-show="openMenu === '{{ $menu['key'] }}'" class="absolute z-10 w-56 py-2 mt-2 bg-white rounded-lg shadow-lg"
+                                @click.away="openMenu = null">
+                                <x-dropdown-link :href="route($menu['route'])"
+                                    :active="request()->routeIs(str_replace('.index', '.*', $menu['route']))">
+                                    {{ $menu['title'] }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route($menu['tanggapan'])"
+                                    :active="request()->routeIs(str_replace('.index', '.*', $menu['tanggapan']))">
+                                    Tanggapan {{ $menu['title'] }}
+                                </x-dropdown-link>
+                            </div>
                         </div>
-                    </a>
-
-                    <a href="{{ route('tanggapan.pengaduan.index') }}"
-                        class="{{ request()->routeIs('tanggapan.*') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }} font-medium transition-colors duration-300 relative group">
-                        <span>Tanggapan</span>
-                        <div
-                            class="absolute -bottom-1 left-0 {{ request()->routeIs('tanggapan.*') ? 'w-full' : 'w-0' }} h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300">
-                        </div>
-                    </a>
+                    @endforeach
                 @endauth
             </div>
 
@@ -141,36 +145,62 @@
         x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-2"
-        class="border-t lg:hidden bg-white/95 backdrop-blur-md border-gray-200/50">
+        class="border-t lg:hidden bg-white/95 backdrop-blur-md border-gray-200/50" x-data="{ openSubmenu: null }">
         <div class="px-4 py-6 space-y-4">
-            <!-- Mobile Navigation Links -->
+            <!-- Beranda -->
             <a href="{{ route('home') }}"
-                class="block px-4 py-3 font-medium text-gray-700 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 rounded-xl"
+                class="block px-4 py-3 font-medium text-gray-700 transition hover:text-blue-600 hover:bg-blue-50 rounded-xl"
                 @click="open = false">
                 Beranda
             </a>
-            <a href="{{ route('pengaduan.index') }}"
-                class="block px-4 py-3 font-medium text-gray-700 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 rounded-xl"
-                @click="open = false">
-                Pengaduan
-            </a>
-            <a href="{{ route('tanggapan.pengaduan.index') }}"
-                class="block px-4 py-3 font-medium text-gray-700 transition-all duration-300 hover:text-blue-600 hover:bg-blue-50 rounded-xl"
-                @click="open = false">
-                Tanggapan
-            </a>
+
+            <!-- Grouped Menus -->
+            @foreach([
+                ['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'],
+                ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'],
+                ['key' => 'kritiksaran', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'],
+                ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'],
+                ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index'],
+            ] as $menu)
+                <div>
+                    <!-- Parent Button -->
+                    <button @click="openSubmenu === '{{ $menu['key'] }}' ? openSubmenu = null : openSubmenu = '{{ $menu['key'] }}'"
+                        class="flex items-center justify-between w-full px-4 py-3 font-medium text-gray-700 transition rounded-xl hover:bg-blue-50">
+                        {{ $menu['title'] }}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform transform"
+                            :class="{ 'rotate-180': openSubmenu === '{{ $menu['key'] }}' }" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Items -->
+                    <div x-show="openSubmenu === '{{ $menu['key'] }}'" x-collapse>
+                        <a href="{{ route($menu['route']) }}"
+                            class="block px-4 py-2 mt-2 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                            @click="open = false">
+                            {{ $menu['title'] }}
+                        </a>
+                        <a href="{{ route($menu['tanggapan']) }}"
+                            class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                            @click="open = false">
+                            Tanggapan {{ $menu['title'] }}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
 
             @guest
-                <hr class="border-gray-200">
-                <!-- Mobile Auth Buttons -->
-                <div class="pt-4 space-y-3">
+                <hr class="my-4 border-gray-200">
+                <div class="space-y-3">
                     <a href="{{ route('login') }}"
-                        class="block w-full px-4 py-3 font-medium text-center text-gray-700 transition-all duration-300 border border-gray-300 hover:text-blue-600 hover:border-blue-300 rounded-xl"
+                        class="block w-full px-4 py-3 font-medium text-center text-gray-700 border border-gray-300 rounded-xl hover:text-blue-600 hover:border-blue-400"
                         @click="open = false">
                         Log In
                     </a>
                     <a href="{{ route('register') }}"
-                        class="block w-full px-4 py-3 font-medium text-center text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl"
+                        class="block w-full px-4 py-3 font-medium text-center text-white shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl"
                         @click="open = false">
                         Register
                     </a>
@@ -178,8 +208,5 @@
             @endguest
         </div>
     </div>
-</nav>
-<div class="h-16 lg:h-20"></div>
 
-<!-- Alpine.js CDN -->
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</nav>
