@@ -267,13 +267,13 @@
                                                 </span>
                                             </td>
                                             <td class="px-8 py-8 text-sm">
-                                                @if ($pengaduan->status == 'pending')
+                                                @if ($pengaduan->status == 'menunggu')
                                                     <span
                                                         class="inline-flex items-center px-4 py-2 text-sm font-bold transition-transform duration-200 transform border rounded-xl bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 dark:from-amber-900/60 dark:to-orange-900/60 dark:text-amber-200 border-amber-200/60 dark:border-amber-700/60 hover:scale-105">
                                                         <div
                                                             class="w-3 h-3 mr-3 rounded-full bg-amber-500 animate-pulse">
                                                         </div>
-                                                        Pending
+                                                        Menunggu
                                                     </span>
                                                 @elseif($pengaduan->status == 'proses')
                                                     <span
