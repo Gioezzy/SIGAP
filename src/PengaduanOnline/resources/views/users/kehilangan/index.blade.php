@@ -51,7 +51,8 @@
                                 Daftar Kehilangan
                             </h1>
                             <p class="text-lg text-blue-100 animate-fade-in-up animation-delay-200">
-                                Kelola dan pantau barang-barang yang hilang. Setiap laporan adalah langkah untuk menemukan kembali barang berharga Anda.
+                                Kelola dan pantau barang-barang yang hilang. Setiap laporan adalah langkah untuk
+                                menemukan kembali barang berharga Anda.
                             </p>
                         </div>
                     </div>
@@ -174,12 +175,11 @@
                                             class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-yellow-100 rounded-lg dark:bg-yellow-900/50">
-                                                    <svg class="w-4 h-4 text-yellow-600 dark:text-yellow-400"
+                                                    <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400"
                                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
-                                                            d="M8 7V3a4 4 0 118 0v4m-4 12v-4m0 0V9a2 2 0 012-2h4a2 2 0 012 2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2z">
-                                                        </path>
+                                                            d="M8 7V3m8 4V3M5 11h14M5 7h14a2 2 0 012 2v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z" />
                                                     </svg>
                                                 </div>
                                                 <span class="hidden sm:inline">Tanggal</span>
@@ -225,15 +225,20 @@
                                                 <div class="flex justify-center">
                                                     @if ($item->foto)
                                                         <div class="relative group/img">
-                                                            <div class="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur opacity-30 group-hover/img:opacity-70 transition duration-300"></div>
-                                                            <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->nama_barang }}"
+                                                            <div
+                                                                class="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur opacity-30 group-hover/img:opacity-70 transition duration-300">
+                                                            </div>
+                                                            <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                alt="{{ $item->nama_barang }}"
                                                                 class="relative object-cover w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shadow-lg transition-transform duration-300 group-hover/img:scale-110">
                                                         </div>
                                                     @else
                                                         <div
                                                             class="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 text-xs text-gray-500 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 dark:text-gray-400 rounded-2xl shadow-lg">
-                                                            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
                                                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
                                                                 </path>
                                                             </svg>
@@ -244,8 +249,10 @@
                                             <td
                                                 class="px-4 sm:px-8 py-8 text-sm font-semibold text-gray-900 transition-colors duration-300 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400">
                                                 <div class="relative">
-                                                    <div class="mb-1 text-base font-bold">{{ $item->nama_barang }}</div>
-                                                    <div class="text-xs text-gray-500 dark:text-gray-400">ID: #{{ $item->id }}</div>
+                                                    <div class="mb-1 text-base font-bold">{{ $item->nama_barang }}
+                                                    </div>
+                                                    <div class="text-xs text-gray-500 dark:text-gray-400">ID:
+                                                        #{{ $item->id }}</div>
                                                 </div>
                                             </td>
                                             <td
@@ -257,14 +264,15 @@
                                             <td
                                                 class="px-4 sm:px-8 py-8 text-sm text-gray-700 transition-colors duration-300 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
                                                 <div class="flex flex-col space-y-1">
-                                                    <span class="font-mono font-semibold">{{ $item->tanggal_hilang }}</span>
+                                                    <span
+                                                        class="font-mono font-semibold">{{ $item->tanggal_hilang }}</span>
                                                 </div>
                                             </td>
                                             <td class="px-4 sm:px-8 py-8 text-sm">
                                                 <span
                                                     class="inline-flex items-center px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-blue-800 transition-transform duration-200 transform border rounded-xl bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/60 dark:to-indigo-900/60 dark:text-blue-200 border-blue-200/60 dark:border-blue-700/60 hover:scale-105">
-                                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
+                                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
                                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -274,7 +282,8 @@
                                                 </span>
                                             </td>
                                             <td class="px-4 sm:px-8 py-8 text-sm font-medium">
-                                                <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-3">
+                                                <div
+                                                    class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-3">
                                                     <!-- Edit Button -->
                                                     <div class="relative group/btn">
                                                         <div
@@ -282,8 +291,9 @@
                                                         </div>
                                                         <a href="{{ route('kehilangan.edit', $item->id) }}"
                                                             class="relative inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl hover:from-blue-600 hover:to-cyan-600 hover:scale-110 hover:shadow-xl w-full sm:w-auto">
-                                                            <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none"
-                                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                            <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2"
+                                                                fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                                     stroke-width="2"
                                                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
@@ -297,17 +307,18 @@
                                                         <div
                                                             class="absolute transition duration-300 -inset-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl blur opacity-30 group-hover/btn:opacity-70">
                                                         </div>
-                                                        <form action="{{ route('kehilangan.destroy', $item->id) }}" method="POST"
-                                                            class="inline w-full sm:w-auto">
+                                                        <form action="{{ route('kehilangan.destroy', $item->id) }}"
+                                                            method="POST" class="inline w-full sm:w-auto">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" 
+                                                            <button type="submit"
                                                                 class="relative inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl w-full sm:w-auto"
                                                                 onclick="return confirm('Yakin ingin hapus?')">
-                                                                <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none"
-                                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                                        stroke-width="2"
+                                                                <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2"
+                                                                    fill="none" stroke="currentColor"
+                                                                    viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke-width="2"
                                                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                                 </svg>
                                                                 Hapus
@@ -342,7 +353,8 @@
                                                             class="mb-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
                                                             Belum Ada Kehilangan</h3>
                                                         <p class="mb-6 text-lg text-gray-600 dark:text-gray-400">Mulai
-                                                            dengan melaporkan barang hilang pertama Anda untuk membantu pencarian</p>
+                                                            dengan melaporkan barang hilang pertama Anda untuk membantu
+                                                            pencarian</p>
                                                         <div class="relative inline-block">
                                                             <div
                                                                 class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded-2xl blur opacity-30">
@@ -372,167 +384,167 @@
         </div>
     </div>
 </x-app-layout>
-    <style>
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+<style>
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
         }
 
-        @keyframes slide-in-left {
-            from {
-                opacity: 0;
-                transform: translateX(-60px);
-            }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+    @keyframes slide-in-left {
+        from {
+            opacity: 0;
+            transform: translateX(-60px);
         }
 
-        @keyframes slide-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+    @keyframes slide-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(60px);
         }
 
-        @keyframes table-row {
-            from {
-                opacity: 0;
-                transform: translateX(30px) translateY(10px);
-            }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-            to {
-                opacity: 1;
-                transform: translateX(0) translateY(0);
-            }
+    @keyframes table-row {
+        from {
+            opacity: 0;
+            transform: translateX(30px) translateY(10px);
         }
 
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
+        to {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+    }
 
-            to {
-                opacity: 1;
-            }
+    @keyframes fade-in {
+        from {
+            opacity: 0;
         }
 
-        .animate-fade-in-up {
-            animation: fade-in-up 1s ease-out forwards;
+        to {
+            opacity: 1;
         }
+    }
 
-        .animate-slide-in-left {
-            animation: slide-in-left 1s ease-out forwards;
-        }
+    .animate-fade-in-up {
+        animation: fade-in-up 1s ease-out forwards;
+    }
 
-        .animate-slide-in-up {
-            animation: slide-in-up 1s ease-out forwards;
-        }
+    .animate-slide-in-left {
+        animation: slide-in-left 1s ease-out forwards;
+    }
 
-        .animate-table-row {
-            animation: table-row 0.8s ease-out forwards;
-        }
+    .animate-slide-in-up {
+        animation: slide-in-up 1s ease-out forwards;
+    }
 
-        .animate-fade-in {
-            animation: fade-in 0.8s ease-out forwards;
-        }
+    .animate-table-row {
+        animation: table-row 0.8s ease-out forwards;
+    }
 
-        .animation-delay-200 {
-            animation-delay: 200ms;
-        }
+    .animate-fade-in {
+        animation: fade-in 0.8s ease-out forwards;
+    }
 
-        .animation-delay-300 {
-            animation-delay: 300ms;
-        }
+    .animation-delay-200 {
+        animation-delay: 200ms;
+    }
 
-        .animation-delay-500 {
-            animation-delay: 500ms;
-        }
+    .animation-delay-300 {
+        animation-delay: 300ms;
+    }
 
-        /* Enhanced glassmorphism effect */
-        .backdrop-blur-xl {
-            backdrop-filter: blur(20px);
-        }
+    .animation-delay-500 {
+        animation-delay: 500ms;
+    }
 
-        .backdrop-blur-sm {
-            backdrop-filter: blur(6px);
-        }
+    /* Enhanced glassmorphism effect */
+    .backdrop-blur-xl {
+        backdrop-filter: blur(20px);
+    }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+    .backdrop-blur-sm {
+        backdrop-filter: blur(6px);
+    }
 
-        /* Enhanced gradient text */
-        .bg-clip-text {
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
 
-        /* Custom scrollbar */
-        .overflow-x-auto::-webkit-scrollbar {
-            height: 8px;
-        }
+    /* Enhanced gradient text */
+    .bg-clip-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
 
-        .overflow-x-auto::-webkit-scrollbar-track {
-            background: rgba(156, 163, 175, 0.1);
-            border-radius: 10px;
-        }
+    /* Custom scrollbar */
+    .overflow-x-auto::-webkit-scrollbar {
+        height: 8px;
+    }
 
-        .overflow-x-auto::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, #8b5cf6, #ec4899);
-            border-radius: 10px;
-        }
+    .overflow-x-auto::-webkit-scrollbar-track {
+        background: rgba(156, 163, 175, 0.1);
+        border-radius: 10px;
+    }
 
-        .overflow-x-auto::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90deg, #7c3aed, #db2777);
-        }
+    .overflow-x-auto::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #8b5cf6, #ec4899);
+        border-radius: 10px;
+    }
 
-        /* Smooth transition for expand/collapse */
-        .content-container {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
+    .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(90deg, #7c3aed, #db2777);
+    }
 
-        .collapsed {
-            max-height: 4.5rem;
-            overflow: hidden;
-        }
+    /* Smooth transition for expand/collapse */
+    .content-container {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
 
-        .collapsed::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1.5rem;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
-            pointer-events: none;
-        }
+    .collapsed {
+        max-height: 4.5rem;
+        overflow: hidden;
+    }
 
-        .dark .collapsed::after {
-            background: linear-gradient(transparent, rgba(31, 41, 55, 0.9));
-        }
+    .collapsed::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1.5rem;
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+        pointer-events: none;
+    }
 
-        .expanded {
-            max-height: none;
-        }
+    .dark .collapsed::after {
+        background: linear-gradient(transparent, rgba(31, 41, 55, 0.9));
+    }
 
-        .expanded::after {
-            display: none;
-        }
-    </style>
+    .expanded {
+        max-height: none;
+    }
+
+    .expanded::after {
+        display: none;
+    }
+</style>

@@ -30,7 +30,7 @@
                 class="absolute top-0 right-0 w-64 h-64 transform translate-x-32 -translate-y-32 rounded-full bg-white/10 blur-3xl animate-pulse">
             </div>
             <div
-                class="absolute bottom-0 left-0 w-48 h-48 transform -translate-x-24 translate-y-24 rounded-full bg-emerald-300/20 blur-2xl animate-bounce">
+                class="absolute bottom-0 left-0 w-48 h-48 transform -translate-x-24 translate-y-24 rounded-full bg-blue-300/20 blur-2xl animate-bounce">
             </div>
 
             <div class="relative px-4 py-12 sm:px-8 sm:py-16">
@@ -53,7 +53,7 @@
                             <h1 class="mb-2 text-2xl font-bold text-white sm:text-4xl animate-fade-in-up">
                                 Pusat Aspirasi Masyarakat
                             </h1>
-                            <p class="text-sm text-emerald-100 sm:text-lg animate-fade-in-up animation-delay-200">
+                            <p class="text-sm text-blue-100 sm:text-lg animate-fade-in-up animation-delay-200">
                                 Suara Anda adalah kunci perubahan. Mari bersama membangun masa depan yang lebih baik
                                 melalui aspirasi positif.
                             </p>
@@ -63,7 +63,7 @@
                     <div class="flex space-x-4">
                         <div class="p-3 border bg-white/20 backdrop-blur-sm rounded-xl border-white/30 sm:p-4">
                             <div class="text-xl font-bold text-white sm:text-2xl">{{ $aspirasi->count() ?? 0 }}</div>
-                            <div class="text-xs text-emerald-100 sm:text-sm">Total Aspirasi</div>
+                            <div class="text-xs text-blue-100 sm:text-sm">Total Aspirasi</div>
                         </div>
                     </div>
                 </div>
@@ -131,9 +131,8 @@
                                         <th
                                             class="px-4 py-4 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 sm:px-8 sm:py-6">
                                             <div class="flex items-center space-x-2 sm:space-x-3">
-                                                <div
-                                                    class="p-1 bg-emerald-100 rounded-lg dark:bg-emerald-900/50 sm:p-2">
-                                                    <svg class="w-3 h-3 text-emerald-600 dark:text-emerald-400 sm:w-4 sm:h-4"
+                                                <div class="p-1 bg-blue-100  rounded-lg dark:bg-emerald-900/50 sm:p-2">
+                                                    <svg class="w-3 h-3 text-emerald-600 dark:bg-blue-900/50 sm:w-4 sm:h-4"
                                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
@@ -145,10 +144,10 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 py-4 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 sm:px-8 sm:py-6">
+                                            class="px-4 py-4 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 sm:px-8 sm:py-6">
                                             <div class="flex items-center space-x-2 sm:space-x-3">
-                                                <div class="p-1 bg-teal-100 rounded-lg dark:bg-teal-900/50 sm:p-2">
-                                                    <svg class="w-3 h-3 text-teal-600 dark:text-teal-400 sm:w-4 sm:h-4"
+                                                <div class="p-1 bg-blue-100 rounded-lg dark:bg-blue-900/50 sm:p-2">
+                                                    <svg class="w-3 h-3 text-blue-600 dark:text-blue-400 sm:w-4 sm:h-4"
                                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
@@ -160,15 +159,14 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 py-4 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 sm:px-8 sm:py-6">
+                                            class="px-4 py-4 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-blue-600 dark:hover:text-emerald-400 sm:px-8 sm:py-6">
                                             <div class="flex items-center space-x-2 sm:space-x-3">
                                                 <div class="p-1 bg-cyan-100 rounded-lg dark:bg-cyan-900/50 sm:p-2">
-                                                    <svg class="w-3 h-3 text-cyan-600 dark:text-cyan-400 sm:w-4 sm:h-4"
+                                                    <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400"
                                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
-                                                            d="M8 7V3a4 4 0 118 0v4m-4 12v-4m0 0V9a2 2 0 012-2h4a2 2 0 012 2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2z">
-                                                        </path>
+                                                            d="M8 7V3m8 4V3M5 11h14M5 7h14a2 2 0 012 2v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z" />
                                                     </svg>
                                                 </div>
                                                 <span>Tanggal</span>
@@ -293,8 +291,8 @@
                                                 <div class="flex flex-col items-center justify-center space-y-6">
                                                     <div class="relative">
                                                         <div
-                                                            class="flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/50 dark:to-teal-900/50 animate-bounce sm:w-32 sm:h-32">
-                                                            <svg class="w-12 h-12 text-emerald-400 dark:text-emerald-500 sm:w-16 sm:h-16"
+                                                            class="flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-sky-100 to-blue-100  dark:from-blue-900/50 dark:to-teal-900/50 animate-bounce sm:w-32 sm:h-32">
+                                                            <svg class="w-12 h-12 text-blue-400 dark:text-emerald-500 sm:w-16 sm:h-16"
                                                                 fill="none" stroke="currentColor"
                                                                 viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -317,10 +315,10 @@
                                                             ide positif</p>
                                                         <div class="relative inline-block">
                                                             <div
-                                                                class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-2xl blur opacity-30">
+                                                                class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded-2xl blur opacity-30">
                                                             </div>
                                                             <a href="{{ route('aspirasi.create') }}"
-                                                                class="relative inline-flex items-center px-6 py-3 font-semibold text-white transition-all duration-300 transform bg-gradient-to-r from-emerald-400 to-teal-500 rounded-2xl hover:from-purple-700 hover:to-pink-700 hover:scale-105 sm:px-8 sm:py-4 sm:text-lg">
+                                                                class="relative inline-flex items-center px-6 py-3 font-semibold text-white transition-all duration-300 transform bg-gradient-to-r from-sky-400 to-blue-500 rounded-2xl hover:from-purple-700 hover:to-pink-700 hover:scale-105 sm:px-8 sm:py-4 sm:text-lg">
                                                                 <svg class="w-5 h-5 mr-2 sm:w-6 sm:h-6 sm:mr-3"
                                                                     fill="none" stroke="currentColor"
                                                                     viewBox="0 0 24 24">
