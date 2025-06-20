@@ -39,10 +39,10 @@ class KeramaianUpdateRequest extends FormRequest
             'waktu_acara' => [
                 'nullable',
                 function ($attribute, $value, $fail) {
-                    if ($value && !preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value)) {
+                    if ($value && ! preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value)) {
                         $fail('Format waktu tidak valid. Gunakan format HH:MM');
                     }
-                }
+                },
             ],
         ];
     }

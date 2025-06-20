@@ -7,7 +7,6 @@ use App\Http\Requests\users\KeramaianStoreRequest;
 use App\Http\Requests\users\KeramaianUpdateRequest;
 use App\Models\Keramaian;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class KeramaianController extends Controller
 {
@@ -89,7 +88,6 @@ class KeramaianController extends Controller
 
         return redirect()->route('keramaian.index');
     }
-
 
     /**
      * Remove the specified resource from storage.
