@@ -23,26 +23,26 @@ class KeramaianUpdateRequest extends FormRequest
     {
         return [
             'nama_acara' => [
-                'sometimes',
                 'required',
                 'string',
                 'max:100',
             ],
             'lokasi_acara' => [
-                'sometimes',
                 'required',
                 'string',
                 'max:100',
             ],
             'tanggal_acara' => [
-                'sometimes',
                 'required',
                 'date',
             ],
             'waktu_acara' => [
-                'sometimes',
-                'required',
-                'date_format:H:i',
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    if ($value && !preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value)) {
+                        $fail('Format waktu tidak valid. Gunakan format HH:MM');
+                    }
+                }
             ],
         ];
     }

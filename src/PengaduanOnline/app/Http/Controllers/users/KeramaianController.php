@@ -7,6 +7,7 @@ use App\Http\Requests\users\KeramaianStoreRequest;
 use App\Http\Requests\users\KeramaianUpdateRequest;
 use App\Models\Keramaian;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class KeramaianController extends Controller
 {
@@ -71,16 +72,24 @@ class KeramaianController extends Controller
      */
     public function update(KeramaianUpdateRequest $request, Keramaian $keramaian)
     {
-        $keramaian->user_id = Auth::id();
-        $keramaian->nama_acara = $request->nama_acara;
-        $keramaian->lokasi_acara = $request->lokasi_acara;
-        $keramaian->tanggal_acara = $request->tanggal_acara;
-        $keramaian->waktu_acara = $request->waktu_acara;
+        $input = $request->only([
+            'nama_acara',
+            'lokasi_acara',
+            'tanggal_acara',
+        ]);
 
+        $input['user_id'] = Auth::id();
+
+        if ($request->filled('waktu_acara')) {
+            $input['waktu_acara'] = $request->waktu_acara;
+        }
+
+        $keramaian->fill($input);
         $keramaian->save();
 
         return redirect()->route('keramaian.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -3,7 +3,8 @@
         <div class="p-6 bg-white rounded-lg shadow">
             <h2 class="mb-6 text-2xl font-semibold">Edit Data Keramaian</h2>
 
-            <form action="{{ route('keramaian.update', $keramaian) }}" method="POST">
+
+            <form action="{{ route('keramaian.update', $keramaian->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -29,7 +30,7 @@
                 <div class="mb-4">
                     <label class="block font-medium text-gray-700">Waktu Acara</label>
                     <input type="time" name="waktu_acara" value="{{ old('waktu_acara', $keramaian->waktu_acara) }}"
-                        class="w-full mt-1 border-gray-300 rounded shadow-sm" required>
+                        class="w-full mt-1 border-gray-300 rounded shadow-sm" >
                 </div>
 
                 <div class="mt-6">

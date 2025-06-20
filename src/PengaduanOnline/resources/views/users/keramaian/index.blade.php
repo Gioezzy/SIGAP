@@ -125,7 +125,7 @@
                                     class="bg-gradient-to-r from-gray-50/90 to-blue-50/90 dark:from-gray-700/90 dark:to-gray-600/90 backdrop-blur-sm">
                                     <tr>
                                         <th
-                                            class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
+                                            class="px-4 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-purple-100 rounded-lg dark:bg-purple-900/50">
                                                     <svg class="w-4 h-4 text-purple-600 dark:text-purple-400"
@@ -140,7 +140,7 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
+                                            class="px-4 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-blue-100 rounded-lg dark:bg-blue-900/50">
                                                     <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none"
@@ -158,7 +158,7 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
+                                            class="px-4 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-green-100 rounded-lg dark:bg-green-900/50">
                                                     <svg class="w-4 h-4 text-green-600 dark:text-green-400"
@@ -173,7 +173,7 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
+                                            class="px-4 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-yellow-100 rounded-lg dark:bg-yellow-900/50">
                                                     <svg class="w-4 h-4 text-yellow-600 dark:text-yellow-400"
@@ -188,7 +188,7 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
+                                            class="px-4 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-indigo-100 rounded-lg dark:bg-indigo-900/50">
                                                     <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400"
@@ -202,7 +202,7 @@
                                             </div>
                                         </th>
                                         <th
-                                            class="px-4 sm:px-8 py-6 text-xs font-bold tracking-wider text-center text-gray-700 uppercase transition-colors duration-300 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
+                                            class="px-4 py-6 text-xs font-bold tracking-wider text-center text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center justify-center space-x-3">
                                                 <div class="p-2 bg-pink-100 rounded-lg dark:bg-pink-900/50">
                                                     <svg class="w-4 h-4 text-pink-600 dark:text-pink-400"
@@ -224,7 +224,7 @@
                                         <tr class="hover:bg-gradient-to-r hover:from-purple-50/80 hover:to-pink-50/80 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-500 transform hover:scale-[1.02] animate-table-row group"
                                             style="animation-delay: {{ $index * 150 }}ms">
                                             <td
-                                                class="px-4 sm:px-8 py-8 text-sm font-semibold text-gray-900 transition-colors duration-300 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                                                class="px-4 py-8 text-sm font-semibold text-gray-900 transition-colors duration-300 sm:px-8 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400">
                                                 <div class="relative">
                                                     <div class="mb-1 text-base font-bold">{{ $event->nama_acara }}
                                                     </div>
@@ -233,7 +233,7 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-4 sm:px-8 py-8 text-sm text-gray-700 transition-colors duration-300 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                                class="px-4 py-8 text-sm text-gray-700 transition-colors duration-300 sm:px-8 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
                                                 <div class="flex items-center space-x-2">
                                                     <svg class="w-4 h-4 text-gray-400" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">
@@ -249,7 +249,7 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-4 sm:px-8 py-8 text-sm text-gray-700 transition-colors duration-300 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                                class="px-4 py-8 text-sm text-gray-700 transition-colors duration-300 sm:px-8 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
                                                 <div class="flex flex-col space-y-1">
                                                     <span
                                                         class="font-mono font-semibold">{{ \Carbon\Carbon::parse($event->tanggal_acara)->format('d/m/Y') }}</span>
@@ -258,7 +258,7 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="px-4 sm:px-8 py-8 text-sm text-gray-700 transition-colors duration-300 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                                class="px-4 py-8 text-sm text-gray-700 transition-colors duration-300 sm:px-8 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
                                                 <div class="flex items-center space-x-2">
                                                     <svg class="w-4 h-4 text-gray-400" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">
@@ -270,14 +270,14 @@
                                                         class="font-mono font-semibold">{{ $event->waktu_acara }}</span>
                                                 </div>
                                             </td>
-                                            <td class="px-4 sm:px-8 py-8 text-sm">
-                                                @if ($event->status == 'sedang_ditinjau')
+                                            <td class="px-4 py-8 text-sm sm:px-8">
+                                                @if ($event->status == 'menunggu')
                                                     <span
                                                         class="inline-flex items-center px-4 py-2 text-sm font-bold transition-transform duration-200 transform border rounded-xl bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 dark:from-amber-900/60 dark:to-orange-900/60 dark:text-amber-200 border-amber-200/60 dark:border-amber-700/60 hover:scale-105">
                                                         <div
                                                             class="w-3 h-3 mr-3 rounded-full bg-amber-500 animate-pulse">
                                                         </div>
-                                                        Sedang Ditinjau
+                                                        Menunggu
                                                     </span>
                                                 @elseif($event->status == 'disetujui')
                                                     <span
@@ -287,6 +287,14 @@
                                                         </div>
                                                         Disetujui
                                                     </span>
+                                                @elseif($event->status == 'ditolak')
+                                                    <span
+                                                        class="inline-flex items-center px-4 py-2 text-sm font-bold text-red-800 transition-transform duration-200 transform border rounded-xl bg-gradient-to-r from-red-100 to-pink-100 dark:from-red-900/60 dark:to-pink-900/60 dark:text-red-200 border-red-200/60 dark:border-red-700/60 hover:scale-105">
+                                                        <div
+                                                            class="w-3 h-3 mr-3 bg-red-500 rounded-full animate-pulse">
+                                                        </div>
+                                                        Ditolak
+                                                    </span>
                                                 @else
                                                     <span
                                                         class="inline-flex items-center px-4 py-2 text-sm font-bold transition-transform duration-200 transform border rounded-xl bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 dark:from-emerald-900/60 dark:to-green-900/60 dark:text-emerald-200 border-emerald-200/60 dark:border-emerald-700/60 hover:scale-105">
@@ -295,9 +303,9 @@
                                                     </span>
                                                 @endif
                                             </td>
-                                            <td class="px-4 sm:px-8 py-8 text-sm font-medium">
+                                            <td class="px-4 py-8 text-sm font-medium sm:px-8">
                                                 <div
-                                                    class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-3">
+                                                    class="flex flex-col justify-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-3">
                                                     <!-- Edit Button -->
                                                     <div class="relative group/btn">
                                                         <div

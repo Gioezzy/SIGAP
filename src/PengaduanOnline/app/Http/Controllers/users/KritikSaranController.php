@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\users\KritikSaranStoreRequest;
 use App\Http\Requests\users\KritikSaranUpdateRequest;
 use App\Models\KritikSaran;
+use Illuminate\Support\Facades\Auth;
 
 class KritikSaranController extends Controller
 {
@@ -15,7 +16,7 @@ class KritikSaranController extends Controller
     public function index()
     {
         $kritikSaran = KritikSaran::with('user')
-            ->where('user_id', auth()->user()->id)
+            ->where('user_id', Auth::user()->id)
             ->latest()
             ->get();
 
@@ -38,7 +39,7 @@ class KritikSaranController extends Controller
     public function store(KritikSaranStoreRequest $request)
     {
         $kritikSaran = new KritikSaran;
-        $kritikSaran->user_id = auth()->user()->id;
+        $kritikSaran->user_id = Auth::user()->id;
         $kritikSaran->judul = $request->judul;
         $kritikSaran->isi = $request->isi;
         $kritikSaran->save();
@@ -67,9 +68,10 @@ class KritikSaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(KritikSaranUpdateRequest $request, KritikSaran $kritikSaran)
+    public function update(KritikSaranUpdateRequest $request, $id)
     {
-        $kritikSaran->user_id = auth()->user()->id;
+        $kritikSaran = KritikSaran::findOrFail($id);
+        $kritikSaran->user_id = Auth::id();
         $kritikSaran->judul = $request->judul;
         $kritikSaran->isi = $request->isi;
         $kritikSaran->save();
