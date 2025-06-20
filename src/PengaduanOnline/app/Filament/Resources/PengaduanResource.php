@@ -119,7 +119,7 @@ class PengaduanResource extends Resource
                     ->label('Isi Pengaduan')
                     ->sortable()
                     ->limit(50)
-                    ->tooltip(fn($state) => $state)
+                    ->tooltip(fn ($state) => $state)
                     ->searchable()
                     ->wrap(),
                 TextColumn::make('status')
@@ -160,7 +160,7 @@ class PengaduanResource extends Resource
                     ->label('Respon')
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->url(
-                        fn($record) => TanggapanPengaduanResource::getUrl('create', [
+                        fn ($record) => TanggapanPengaduanResource::getUrl('create', [
                             'pengaduan_id' => $record->id,
                             'kategori_id' => $record->kategori_id,
                         ])
@@ -180,7 +180,6 @@ class PengaduanResource extends Resource
     {
         return true;
     }
-
 
     public static function getPages(): array
     {
