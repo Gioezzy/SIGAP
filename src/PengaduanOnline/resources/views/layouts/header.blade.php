@@ -42,11 +42,16 @@
 
                     @foreach ([['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'], ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'], ['key' => 'kritik', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'], ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'], ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index']] as $menu)
                         <div class="relative" x-data="{ open: false }">
+                            @php
+                                $isActive =
+                                    request()->routeIs(str_replace('.index', '*', $menu['route'])) ||
+                                    request()->routeIs(str_replace('.index', '*', $menu['tanggapan']));
+                            @endphp
                             <button @click="open = !open"
-                                class="relative font-medium text-gray-700 transition-colors duration-300 hover:text-blue-600 group">
+                                class="relative font-medium transition-colors duration-300 group {{ $isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
                                 <span>{{ $menu['title'] }}</span>
                                 <div
-                                    class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300">
+                                    class="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 {{ $isActive ? 'w-full' : 'w-0 group-hover:w-full' }}">
                                 </div>
                             </button>
 
@@ -214,4 +219,3 @@
 @if (!request()->routeIs('home') && !request()->routeIs('berita.show'))
     <div class="h-10 lg:h-12"></div>
 @endif
-
