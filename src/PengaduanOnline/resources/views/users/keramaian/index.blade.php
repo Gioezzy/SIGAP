@@ -42,8 +42,7 @@
                                 <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 7V3a4 4 0 118 0v4m-4 12v-4m0 0V9a2 2 0 012-2h4a2 2 0 012 2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2z">
-                                    </path>
+                                        d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4m4-4a4 4 0 100-8 4 4 0 000 8zm6 4a4 4 0 00-6 0m-6 0a4 4 0 00-6 0" />
                                 </svg>
                             </div>
                         </div>
@@ -161,12 +160,11 @@
                                             class="px-4 py-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase transition-colors duration-300 sm:px-8 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400">
                                             <div class="flex items-center space-x-3">
                                                 <div class="p-2 bg-green-100 rounded-lg dark:bg-green-900/50">
-                                                    <svg class="w-4 h-4 text-green-600 dark:text-green-400"
+                                                    <svg class="w-4 h-4 text-purple-600 dark:text-purple-400"
                                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
-                                                            d="M8 7V3a4 4 0 118 0v4m-4 12v-4m0 0V9a2 2 0 012-2h4a2 2 0 012 2v4a2 2 0 01-2 2h-4a2 2 0 01-2-2z">
-                                                        </path>
+                                                            d="M3 10l1-2m0 0l2-1 9-3v13L6 11l-2-1zm13 1v2m0-4v.01" />
                                                     </svg>
                                                 </div>
                                                 <span>Tanggal</span>
