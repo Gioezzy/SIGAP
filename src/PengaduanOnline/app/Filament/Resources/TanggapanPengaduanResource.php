@@ -108,11 +108,11 @@ class TanggapanPengaduanResource extends Resource
                             ->helperText('Status ini akan diperbarui pada pengaduan terkait setelah tanggapan disimpan.'),
 
                         Hidden::make('pengaduan_id')
-                            ->default(fn () => request()->query('pengaduan_id'))
+                            ->default(fn() => request()->query('pengaduan_id'))
                             ->required(),
 
                         Hidden::make('kategori_id')
-                            ->default(fn () => request()->query('kategori_id'))
+                            ->default(fn() => request()->query('kategori_id'))
                             ->required(),
                     ]),
             ]);
@@ -149,11 +149,14 @@ class TanggapanPengaduanResource extends Resource
                     ->searchable()
                     ->limit(50)
                     ->sortable()
+                    ->formatStateUsing(fn($state) => \Illuminate\Support\Str::limit($state, 60))
+                    ->tooltip(fn($state) => strip_tags($state))
                     ->wrap(),
                 TextColumn::make('isi_tanggapan')
                     ->label('Tanggapan Pengaduan')
-                    ->searchable()
-                    ->sortable()
+                    ->html() // Supaya tag <p> atau format HTML dirender dengan benar
+                    ->formatStateUsing(fn($state) => \Illuminate\Support\Str::limit($state, 60))
+                    ->tooltip(fn($state) => strip_tags($state))
                     ->wrap(),
                 TextColumn::make('pengaduan.status')
                     ->label('Status Pengaduan')

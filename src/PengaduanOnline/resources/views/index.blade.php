@@ -315,135 +315,356 @@
         }
     </style>
 
-    <!-- Section HTML -->
+    <!-- Section LAYANAN KAMI -->
     <section class="relative py-20 overflow-hidden">
         <!-- Animated Background -->
         <div class="absolute inset-0 bg-gradient-animated opacity-5"></div>
-
+    
         <!-- Floating Elements -->
         <div class="absolute w-20 h-20 bg-blue-200 rounded-full top-10 left-10 opacity-20 animate-float"></div>
-        <div class="absolute w-16 h-16 bg-purple-200 rounded-full top-32 right-20 opacity-20 animate-float-delayed">
-        </div>
+        <div class="absolute w-16 h-16 bg-purple-200 rounded-full top-32 right-20 opacity-20 animate-float-delayed"></div>
         <div class="absolute w-24 h-24 rounded-full bottom-20 left-20 bg-cyan-200 opacity-20 animate-float"></div>
-        <div class="absolute w-12 h-12 bg-green-200 rounded-full bottom-40 right-10 opacity-20 animate-float-delayed">
-        </div>
-
-        @auth
-            <div class="container relative z-10 px-6 mx-auto">
-                <!-- Title -->
-                <div class="mb-16 text-center">
-                    <h2 class="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">
-                        LAYANAN KAMI
-                    </h2>
-                    <div class="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
-                </div>
-
-                <!-- Services Grid -->
-                <div class="grid grid-cols-1 gap-8 mb-12 md:grid-cols-2 lg:grid-cols-4">
-                    <!-- Pengaduan -->
-                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
-                        <div class="text-center">
-                            <div class="mx-auto mb-6 bg-blue-100 icon-container rounded-2xl animate-pulse-glow">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    class="w-8 h-8 text-blue-600">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                        fill="currentColor" />
-                                </svg>
+        <div class="absolute w-12 h-12 bg-green-200 rounded-full bottom-40 right-10 opacity-20 animate-float-delayed"></div>
+    
+        <div class="container relative z-10 px-6 mx-auto">
+            <!-- Title -->
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">
+                    LAYANAN KAMI
+                </h2>
+                <div class="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+            </div>    
+            <!-- Scrollable Services Container -->
+            <div class="overflow-hidden group" 
+                 onmouseenter="pauseLayanan()" 
+                 onmouseleave="resumeLayanan()">
+                <div id="layanan-container" 
+                     class="overflow-x-auto scrollbar-hide pb-4"
+                     style="scroll-behavior: smooth;">
+                    <div id="layanan-scroll" class="flex gap-8 animate-scroll">
+                        <!-- Layanan Cards -->
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-blue-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Pengaduan</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Layanan pengaduan masyarakat untuk melaporkan masalah dan keluhan terkait pelayanan
+                                    publik dengan sistem yang terintegrasi dan mudah diakses
+                                </p>
                             </div>
-                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Pengaduan</h3>
-                            <p class="leading-relaxed text-gray-600">
-                                Sampaikan Pengaduan anda dengan memilih kategori pengaduan yang anda alami
-                            </p>
                         </div>
-                    </div>
-
-                    <!-- Surat Kehilangan -->
-                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
-                        <div class="text-center">
-                            <div class="mx-auto mb-6 bg-green-100 icon-container rounded-2xl animate-pulse-glow">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    class="w-8 h-8 text-green-600">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+    
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-green-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Surat Kehilangan</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Buat surat keterangan kehilangan dokumen penting seperti KTP, SIM, STNK, atau berkas
+                                    lainnya dengan proses yang cepat dan mudah
+                                </p>
                             </div>
-                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Surat Kehilangan</h3>
-                            <p class="leading-relaxed text-gray-600">
-                                Laporkan kehilangan dokumen atau barang pribadi Anda
-                            </p>
                         </div>
-                    </div>
-
-                    <!-- Izin Keramaian -->
-                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
-                        <div class="text-center">
-                            <div class="mx-auto mb-6 bg-orange-100 icon-container rounded-2xl animate-pulse-glow">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    class="w-8 h-8 text-orange-600">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+    
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-orange-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-orange-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Izin Keramaian</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Ajukan izin untuk acara atau kegiatan yang melibatkan keramaian dalam jumlah besar
+                                    seperti konser, festival, atau acara komunitas
+                                </p>
                             </div>
-                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Izin Keramaian</h3>
-                            <p class="leading-relaxed text-gray-600">
-                                Ajukan izin untuk kegiatan yang melibatkan banyak orang
-                            </p>
                         </div>
-                    </div>
-
-                    <!-- Aspirasi -->
-                    <div class="p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
-                        <div class="text-center">
-                            <div class="mx-auto mb-6 bg-purple-100 icon-container rounded-2xl animate-pulse-glow">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    class="w-8 h-8 text-purple-600">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M8 9h8M8 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+    
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-purple-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-purple-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8 9h8M8 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Aspirasi</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Sampaikan ide, harapan, dan usulan Anda untuk kemajuan daerah dan peningkatan kualitas
+                                    pelayanan publik di masa mendatang
+                                </p>
                             </div>
-                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Aspirasi</h3>
-                            <p class="leading-relaxed text-gray-600">
-                                Sampaikan aspirasi dan harapan Anda
-                            </p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Kritik & Saran Card -->
-                <div class="flex justify-center">
-                    <div
-                        class="w-full max-w-md p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl">
-                        <div class="text-center">
-                            <div class="mx-auto mb-6 bg-yellow-100 icon-container rounded-2xl animate-pulse-glow">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    class="w-8 h-8 text-yellow-600">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+    
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-yellow-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-yellow-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Kritik & Saran</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Berikan masukan konstruktif untuk perbaikan kualitas pelayanan dan kinerja kami dalam
+                                    memberikan layanan terbaik kepada masyarakat
+                                </p>
                             </div>
-                            <h3 class="mb-4 text-xl font-semibold text-gray-800">Kritik & Saran</h3>
-                            <p class="leading-relaxed text-gray-600">
-                                Sampaikan Kritik dan Saran anda kepada kami
-                            </p>
+                        </div>
+    
+                        <!-- Duplicate cards for seamless scrolling -->
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-blue-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Pengaduan</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Layanan pengaduan masyarakat untuk melaporkan masalah dan keluhan terkait pelayanan
+                                    publik dengan sistem yang terintegrasi dan mudah diakses
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div class="min-w-[380px] max-w-[420px] min-h-[300px] p-8 bg-white border border-gray-100 shadow-lg service-card rounded-2xl hover:shadow-2xl flex flex-col flex-shrink-0">
+                            <div class="text-center flex-1 flex flex-col justify-center">
+                                <div class="mx-auto mb-6 bg-green-100 icon-container rounded-2xl animate-pulse-glow w-16 h-16 flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <h3 class="mb-4 text-xl font-semibold text-gray-800">Surat Kehilangan</h3>
+                                <p class="leading-relaxed text-gray-600">
+                                    Buat surat keterangan kehilangan dokumen penting seperti KTP, SIM, STNK, atau berkas
+                                    lainnya dengan proses yang cepat dan mudah
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    @endauth
+        </div>
+    </section>
+    
+    <!-- CSS Styles -->
+    <style>
+        @keyframes scrollLayanan {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    
+        @keyframes float-delayed {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+    
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+        }
+    
+        @keyframes gradient-animated {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    
+        .animate-scroll {
+            animation: scrollLayanan 30s linear infinite;
+        }
+    
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    
+        .animate-float-delayed {
+            animation: float-delayed 6s ease-in-out infinite 2s;
+        }
+    
+        .animate-pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+    
+        .bg-gradient-animated {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient-animated 15s ease infinite;
+        }
+    
+        .paused {
+            animation-play-state: paused !important;
+        }
+    
+        /* Hide scrollbar but keep functionality */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    
+        /* Smooth scroll behavior */
+        #layanan-container {
+            scroll-behavior: smooth;
+        }
+    
+        /* Service card hover effects */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+    
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+    
+        /* Enhanced responsive design */
+        @media (max-width: 640px) {
+            .service-card {
+                min-width: 300px;
+                max-width: 340px;
+            }
+        }
+    </style>
+    
+    <!-- JavaScript for enhanced scroll functionality -->
+    <script>
+        const layananScroll = document.getElementById('layanan-scroll');
+        const layananContainer = document.getElementById('layanan-container');
+        let isScrolling = false;
+    
+        // Pause/Resume animation functions
+        function pauseLayanan() {
+            layananScroll.classList.add('paused');
+        }
+    
+        function resumeLayanan() {
+            if (!isScrolling) {
+                layananScroll.classList.remove('paused');
+            }
+        }
+    
+        // Handle manual scrolling
+        layananContainer.addEventListener('scroll', function() {
+            // Pause animation when user is manually scrolling
+            isScrolling = true;
+            layananScroll.classList.add('paused');
+            
+            // Clear previous timeout
+            clearTimeout(layananContainer.scrollTimeout);
+            
+            // Resume animation after user stops scrolling
+            layananContainer.scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                layananScroll.classList.remove('paused');
+            }, 2000);
+        });
+    
+        // Handle wheel events for horizontal scrolling
+        layananContainer.addEventListener('wheel', function(e) {
+            // Check if it's a horizontal scroll (shift + wheel or touchpad horizontal)
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                e.preventDefault();
+                layananContainer.scrollLeft += e.deltaX;
+            }
+            // Allow vertical scroll to be converted to horizontal
+            else if (e.deltaY !== 0) {
+                e.preventDefault();
+                layananContainer.scrollLeft += e.deltaY;
+            }
+        });
+    
+        // Touch support for mobile
+        let startX = 0;
+        let startY = 0;
+        let startScrollLeft = 0;
+    
+        layananContainer.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            startScrollLeft = layananContainer.scrollLeft;
+            pauseLayanan();
+        });
+    
+        layananContainer.addEventListener('touchmove', function(e) {
+            if (!startX || !startY) return;
+            
+            const x = e.touches[0].clientX;
+            const y = e.touches[0].clientY;
+            const diffX = startX - x;
+            const diffY = startY - y;
+            
+            // If horizontal movement is more significant than vertical
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                e.preventDefault();
+                layananContainer.scrollLeft = startScrollLeft + diffX;
+            }
+        });
+    
+        layananContainer.addEventListener('touchend', function() {
+            startX = 0;
+            startY = 0;
+            setTimeout(resumeLayanan, 1000);
+        });
+    
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.target.closest('#layanan-container')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    layananContainer.scrollLeft -= 200;
+                    pauseLayanan();
+                    setTimeout(resumeLayanan, 2000);
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    layananContainer.scrollLeft += 200;
+                    pauseLayanan();
+                    setTimeout(resumeLayanan, 2000);
+                }
+            }
+        });
+    </script>
 
     <!-- News Section -->
     <div class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">

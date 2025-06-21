@@ -102,7 +102,7 @@
                                             </span>
                                         </td>
                                         <td class="px-8 py-6 text-gray-700 dark:text-gray-300">
-                                            {{ $tanggapan->isi_tanggapan }}
+                                            {{ strip_tags($tanggapan->isi_tanggapan) }}
                                         </td>
                                         <td class="px-8 py-6">
                                             @php
