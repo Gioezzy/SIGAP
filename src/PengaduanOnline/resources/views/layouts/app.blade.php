@@ -39,6 +39,9 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.header')
+        @if (!request()->routeIs('home'))
+            <div class="h-20 lg:h-24"></div>
+        @endif
 
         <!-- Page Heading -->
         @isset($header)
@@ -49,7 +52,7 @@
             </header>
         @endisset
 
-        <main class="pt-8 lg:pt-12">
+        <main>
             {{ $slot }}
         </main>
 

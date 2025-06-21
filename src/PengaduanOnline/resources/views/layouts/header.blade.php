@@ -214,8 +214,4 @@
             @endguest
         </div>
     </div>
-
 </nav>
-@if (!request()->routeIs('home') && !request()->routeIs('berita.show'))
-    <div class="h-10 lg:h-12"></div>
-@endif
