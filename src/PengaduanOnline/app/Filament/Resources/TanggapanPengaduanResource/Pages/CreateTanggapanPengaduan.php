@@ -7,6 +7,8 @@ use App\Models\Pengaduan;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\TanggapanBaru;
+
 
 class CreateTanggapanPengaduan extends CreateRecord
 {
@@ -74,7 +76,7 @@ class CreateTanggapanPengaduan extends CreateRecord
 
     protected function afterCreate(): void
     {
-        // Update status di tabel pengaduan setelah tanggapan berhasil dibuat
+        // Update status pengaduan
         if ($this->record->pengaduan_id && isset($this->statusPengaduan)) {
             Pengaduan::where('id', $this->record->pengaduan_id)
                 ->update(['status' => $this->statusPengaduan]);
@@ -84,7 +86,16 @@ class CreateTanggapanPengaduan extends CreateRecord
                 'new_status' => $this->statusPengaduan,
             ]);
         }
+
+        // Kirim notifikasi ke user
+        $user = $this->record->pengaduan->user ?? null;
+
+        if ($user && $user->email) {
+            $user->notify(new TanggapanBaru($this->record));
+            logger('Notifikasi tanggapan dikirim ke: ' . $user->email);
+        }
     }
+
 
     protected function getCreatedNotification(): ?Notification
     {

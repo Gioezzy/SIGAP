@@ -7,6 +7,9 @@ use App\Http\Requests\users\PengaduanStoreRequest;
 use App\Http\Requests\users\PengaduanUpdateRequest;
 use App\Models\CategoryReport;
 use App\Models\Pengaduan;
+use App\Models\User;
+use App\Notifications\PengaduanBaru;
+use Illuminate\Support\Facades\Notification;
 
 class PengaduanController extends Controller
 {
@@ -47,7 +50,12 @@ class PengaduanController extends Controller
         $pengaduan->status = 'menunggu';
         $pengaduan->save();
 
+        // Kirim notifikasi ke semua admin
+        $admins = User::where('role', 'admin')->get();
+        Notification::send($admins, new PengaduanBaru($pengaduan));
+
         return redirect()->route('pengaduan.index')->with('success', 'Pengaduan berhasil dibuat.');
+
     }
 
     /**
