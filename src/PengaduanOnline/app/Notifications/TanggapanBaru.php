@@ -4,16 +4,14 @@ namespace App\Notifications;
 
 use App\Models\TanggapanPengaduan;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class TanggapanBaru extends Notification
 {
     use Queueable;
 
-    public function __construct(public TanggapanPengaduan $tanggapan)
-    {
-    }
+    public function __construct(public TanggapanPengaduan $tanggapan) {}
 
     public function via(object $notifiable): array
     {
@@ -24,9 +22,9 @@ class TanggapanBaru extends Notification
     {
         return (new MailMessage)
             ->subject('Tanggapan Pengaduan Anda')
-            ->greeting('Halo ' . $this->tanggapan->pengaduan->user->name . ',')
+            ->greeting('Halo '.$this->tanggapan->pengaduan->user->name.',')
             ->line('Pengaduan Anda berjudul:')
-            ->line('"' . $this->tanggapan->pengaduan->judul . '" telah ditanggapi oleh admin.')
+            ->line('"'.$this->tanggapan->pengaduan->judul.'" telah ditanggapi oleh admin.')
             ->line('Isi Tanggapan:')
             ->line(strip_tags($this->tanggapan->isi_tanggapan))
             ->action('Lihat Pengaduan', url('/tanggapanpengaduan'))

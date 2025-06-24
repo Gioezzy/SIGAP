@@ -3,8 +3,8 @@
 namespace App\Notifications;
 
 use App\Models\Pengaduan;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class PengaduanBaru extends Notification
 {
@@ -20,9 +20,9 @@ class PengaduanBaru extends Notification
         return (new MailMessage)
             ->subject('Pengaduan Baru Masuk')
             ->greeting('Halo Admin!')
-            ->line('Ada pengaduan baru dari: ' . $this->pengaduan->user->name)
-            ->line('Judul: ' . $this->pengaduan->judul)
-            ->line('Isi Pengaduan: ' . $this->pengaduan->isi_pengaduan)
+            ->line('Ada pengaduan baru dari: '.$this->pengaduan->user->name)
+            ->line('Judul: '.$this->pengaduan->judul)
+            ->line('Isi Pengaduan: '.$this->pengaduan->isi_pengaduan)
             ->action('Lihat Pengaduan', url('/admin/pengaduans'));
     }
 }
