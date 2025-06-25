@@ -10,6 +10,8 @@ use App\Models\Pengaduan;
 use App\Models\User;
 use App\Notifications\PengaduanBaru;
 use Illuminate\Support\Facades\Notification;
+use App\Helpers\Whatsapp;
+
 
 class PengaduanController extends Controller
 {
@@ -41,7 +43,6 @@ class PengaduanController extends Controller
      */
     public function store(PengaduanStoreRequest $request)
     {
-        // dd($request->all());
         $pengaduan = new Pengaduan;
         $pengaduan->user_id = auth()->user()->id;
         $pengaduan->kategori_id = $request->kategori_id;
@@ -50,12 +51,19 @@ class PengaduanController extends Controller
         $pengaduan->status = 'menunggu';
         $pengaduan->save();
 
-        // Kirim notifikasi ke semua admin
+        // Kirim WA ke admin (diambil dari database)
+        $admin = User::where('role', 'admin')->whereNotNull('no_hp')->first();
+        if ($admin && $admin->no_hp) {
+            $userName = auth()->user()->name ?? 'Pengguna';
+            $pesan = "📬 Pengaduan baru masuk dari *$userName*.\n\n📝 Judul: $pengaduan->judul\n📄 Isi: $pengaduan->isi_pengaduan\n\nSilakan periksa di sistem.";
+            Whatsapp::kirim($admin->no_hp, $pesan);
+        }
+
+        // Kirim notifikasi ke semua admin (email/filament)
         $admins = User::where('role', 'admin')->get();
         Notification::send($admins, new PengaduanBaru($pengaduan));
 
         return redirect()->route('pengaduan.index')->with('success', 'Pengaduan berhasil dibuat.');
-
     }
 
     /**

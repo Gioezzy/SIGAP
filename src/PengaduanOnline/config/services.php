@@ -30,5 +30,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+    'wablas' => [
+        'device_id' => env('WABLAS_DEVICE_ID'),
+        'authorization' => env('WABLAS_AUTHORIZATION'),
+    ],
 ];

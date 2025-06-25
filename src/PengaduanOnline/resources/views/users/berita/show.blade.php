@@ -20,7 +20,7 @@
 
             <!-- Title -->
             <div class="max-w-6xl mx-auto">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight font-title">
                     {{ $berita->judul }}
                 </h1>
 
@@ -50,9 +50,9 @@
     <!-- Main Content -->
     <div class="py-16 bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
         <div class="container mx-auto px-4">
-            <!-- Menggunakan max-w-6xl untuk container yang lebih lebar -->
+            <!-- Container dengan max-width yang optimal untuk pembacaan -->
             <div class="max-w-6xl mx-auto">
-                <!-- Featured Image - Diperbesar dan ditingkatkan -->
+                <!-- Featured Image -->
                 <div class="relative mb-12 overflow-hidden rounded-3xl shadow-2xl">
                     <img src="{{ asset('storage/' . $berita->gambar) }}" 
                          alt="gambar" 
@@ -60,14 +60,13 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
 
-                <!-- Article Content - Container yang lebih lebar -->
+                <!-- Article Content -->
                 <article class="bg-white rounded-3xl shadow-xl overflow-hidden dark:bg-gray-800">
-                    <!-- Padding yang lebih besar untuk experience yang lebih baik -->
                     <div class="p-8 md:p-12 lg:p-16 xl:p-20">
                         <!-- Article Header -->
                         <div class="border-b border-gray-200 dark:border-gray-700 pb-8 mb-12">
                             <div class="flex items-center justify-between flex-wrap gap-4">
-                                <div class="flex items-center text-gray-600 dark:text-gray-400 text-lg">
+                                <div class="flex items-center text-gray-600 dark:text-gray-400 text-lg font-sans">
                                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
@@ -76,85 +75,199 @@
                             </div>
                         </div>
 
-                        <!-- Article Body - Typography yang lebih baik untuk reading experience -->
-                        <div class="prose prose-xl max-w-none leading-relaxed text-gray-800 dark:text-gray-200 dark:prose-invert">
-                            <!-- Custom styling untuk reading experience yang lebih baik -->
-                            <div class="text-lg md:text-xl leading-8 md:leading-9 tracking-wide">
+                        <!-- Article Body dengan typography yang optimal -->
+                        <div class="article-content max-w-none">
+                            <div class="text-content">
                                 {!! $berita->isiBerita !!}
                             </div>
                         </div>
-                             <!-- Navigation Buttons -->
-                <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
-                    <a href="{{ url('/berita') }}" 
-                       class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                        Berita Lainnya
-                    </a>
-                    <a href="{{ url('/') }}" 
-                       class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-300 text-gray-700 font-semibold rounded-xl shadow-lg hover:shadow-xl hover:border-gray-400 transition-all duration-300 transform hover:scale-105 text-lg">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                        </svg>
-                        Kembali ke Beranda
-                    </a>
-                </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
+                            <a href="{{ url('/berita') }}" 
+                               class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg font-sans">
+                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                Berita Lainnya
+                            </a>
+                            <a href="{{ url('/') }}" 
+                               class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-300 text-gray-700 font-semibold rounded-xl shadow-lg hover:shadow-xl hover:border-gray-400 transition-all duration-300 transform hover:scale-105 text-lg font-sans">
+                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                </svg>
+                                Kembali ke Beranda
+                            </a>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-    <!-- Custom CSS untuk reading experience yang lebih baik -->
+    <!-- Professional Typography & Font Styles -->
     <style>
-        .prose {
-            font-family: 'Georgia', 'Times New Roman', serif;
+        /* Import fonts yang optimal untuk web reading */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        /* Font untuk heading dan UI elements */
+        .font-title, 
+        .font-sans {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
-        .prose p {
-            margin-bottom: 1.5rem;
+        /* Styling untuk konten artikel dengan readability terbaik */
+        .article-content {
+            font-family: 'Crimson Text', 'Charter', 'Georgia', 'Times New Roman', serif;
+            font-size: 1.125rem; /* 18px */
             line-height: 1.8;
+            color: #1f2937;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-            font-family: 'Inter', '-apple-system', 'BlinkMacSystemFont', sans-serif;
+        .text-content p {
+            margin-bottom: 1.75rem;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        .text-content p:first-child {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 2rem;
+        }
+        
+        /* Styling untuk heading dalam artikel */
+        .text-content h1,
+        .text-content h2,
+        .text-content h3,
+        .text-content h4,
+        .text-content h5,
+        .text-content h6 {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+            color: #111827;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.4;
         }
         
-        .prose blockquote {
+        .text-content h1 { font-size: 2.25rem; }
+        .text-content h2 { font-size: 1.875rem; }
+        .text-content h3 { font-size: 1.5rem; }
+        .text-content h4 { font-size: 1.25rem; }
+        
+        /* Styling untuk blockquote */
+        .text-content blockquote {
             border-left: 4px solid #3B82F6;
-            padding-left: 1.5rem;
+            padding: 1.5rem 2rem;
+            margin: 2.5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
             font-style: italic;
-            background-color: #F8FAFC;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin: 2rem 0;
+            font-size: 1.1rem;
+            color: #475569;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
-        .prose img {
-            border-radius: 1rem;
+        /* Styling untuk list */
+        .text-content ul,
+        .text-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .text-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+        
+        /* Styling untuk gambar dalam artikel */
+        .text-content img {
+            border-radius: 12px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            margin: 2.5rem auto;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Styling untuk link */
+        .text-content a {
+            color: #3B82F6;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+        }
+        
+        .text-content a:hover {
+            color: #1D4ED8;
+        }
+        
+        /* Styling untuk code dan pre */
+        .text-content code {
+            background-color: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            color: #dc2626;
+        }
+        
+        .text-content pre {
+            background-color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
             margin: 2rem 0;
+            border: 1px solid #e5e7eb;
         }
         
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .article-content {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            .text-content p:first-child {
+                font-size: 1.125rem;
+            }
+            
+            .text-content h1 { font-size: 1.875rem; }
+            .text-content h2 { font-size: 1.5rem; }
+            .text-content h3 { font-size: 1.25rem; }
+            .text-content h4 { font-size: 1.125rem; }
         }
         
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        /* Dark mode support */
+        .dark .article-content,
+        .dark .text-content p,
+        .dark .text-content h1,
+        .dark .text-content h2,
+        .dark .text-content h3,
+        .dark .text-content h4,
+        .dark .text-content h5,
+        .dark .text-content h6 {
+            color: #f3f4f6;
+        }
+        
+        .dark .text-content blockquote {
+            background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+            color: #d1d5db;
+        }
+        
+        .dark .text-content code {
+            background-color: #4b5563;
+            color: #fca5a5;
+        }
+        
+        .dark .text-content pre {
+            background-color: #374151;
+            border-color: #4b5563;
         }
     </style>
 </x-app-layout>

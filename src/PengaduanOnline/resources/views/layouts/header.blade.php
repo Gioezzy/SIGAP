@@ -15,10 +15,10 @@
                     <div class="hidden sm:block">
                         <div
                             class="text-xl font-bold text-transparent lg:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
-                            LPO
+                            SIGAP
                         </div>
                         <div class="-mt-1 text-xs text-gray-500">
-                            Layanan Pengaduan Online
+                            Sistem Gerak Cepat Atasi Pengaduan
                         </div>
                     </div>
                 </a>
@@ -49,7 +49,15 @@
                             @endphp
                             <button @click="open = !open"
                                 class="relative font-medium transition-colors duration-300 group {{ $isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
-                                <span>{{ $menu['title'] }}</span>
+                                <span class="inline-flex items-center space-x-1">
+                                    <span>{{ $menu['title'] }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': open }"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
                                 <div
                                     class="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 {{ $isActive ? 'w-full' : 'w-0 group-hover:w-full' }}">
                                 </div>
