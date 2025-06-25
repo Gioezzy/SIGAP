@@ -64,7 +64,7 @@ class TanggapanKritikSaranResource extends Resource
                             ->columnSpanFull(),
 
                         Hidden::make('id_kritiksaran')
-                            ->default(fn() => request()
+                            ->default(fn () => request()
                                 ->query('id_kritiksaran'))
                             ->required(),
                     ]),
@@ -99,8 +99,8 @@ class TanggapanKritikSaranResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->html() // Supaya tag <p> atau format HTML dirender dengan benar
-                    ->formatStateUsing(fn($state) => \Illuminate\Support\Str::limit($state, 60))
-                    ->tooltip(fn($state) => strip_tags($state))
+                    ->formatStateUsing(fn ($state) => \Illuminate\Support\Str::limit($state, 60))
+                    ->tooltip(fn ($state) => strip_tags($state))
                     ->wrap(),
                 TextColumn::make('created_at')
                     ->label('Tanggal Tanggapan')

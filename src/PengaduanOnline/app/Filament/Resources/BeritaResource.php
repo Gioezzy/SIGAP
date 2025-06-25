@@ -65,8 +65,8 @@ class BeritaResource extends Resource
                     ->maxLength(255)
                     ->dehydrated()
                     ->disabled()
-                    ->hidden(fn(string $operation): bool => $operation === 'create')
-                    ->hidden(fn(string $operation): bool => $operation === 'edit'),
+                    ->hidden(fn (string $operation): bool => $operation === 'create')
+                    ->hidden(fn (string $operation): bool => $operation === 'edit'),
 
                 // Saat EDIT: Show dengan warning
                 TextInput::make('slug')
@@ -74,7 +74,7 @@ class BeritaResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->helperText('⚠️ Slug digunakan untuk URL berita')
-                    ->visible(fn(string $operation): bool => $operation === 'edit'),
+                    ->visible(fn (string $operation): bool => $operation === 'edit'),
 
                 FileUpload::make('gambar')
                     ->label('Gambar Berita')
@@ -114,20 +114,19 @@ class BeritaResource extends Resource
                 TextColumn::make('isiBerita')
                     ->label('Isi Berita')
                     ->html()
-                    ->formatStateUsing(fn($state) => \Illuminate\Support\Str::limit(
+                    ->formatStateUsing(fn ($state) => \Illuminate\Support\Str::limit(
                         strip_tags(html_entity_decode($state)),
                         60
                     ))
-                    ->tooltip(fn($state) => strip_tags(html_entity_decode($state)))
+                    ->tooltip(fn ($state) => strip_tags(html_entity_decode($state)))
                     ->wrap(),
-
 
                 ImageColumn::make('gambar')
                     ->label('Gambar')
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
-                        return $record->gambar ? asset('storage/' . $record->gambar) : null;
+                        return $record->gambar ? asset('storage/'.$record->gambar) : null;
                     })
                     ->size(60)
                     ->square(),

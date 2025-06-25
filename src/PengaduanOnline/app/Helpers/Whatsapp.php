@@ -13,7 +13,7 @@ class Whatsapp
 
         // Format nomor ke 62xxxxxxxxxxx
         if (str_starts_with($nomor, '08')) {
-            $nomor = '62' . substr($nomor, 1);
+            $nomor = '62'.substr($nomor, 1);
         }
 
         // Kirim request ke Wablas
@@ -26,8 +26,8 @@ class Whatsapp
                     'message' => $pesan,
                     'device_id' => $deviceId,
                     'priority' => true,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         logger('Wablas response:', $response->json());

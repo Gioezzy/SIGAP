@@ -3,12 +3,12 @@
 namespace App\Filament\Resources\TanggapanPengaduanResource\Pages;
 
 use App\Filament\Resources\TanggapanPengaduanResource;
+use App\Helpers\Whatsapp;
 use App\Models\Pengaduan;
 use App\Notifications\TanggapanBaru;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use App\Helpers\Whatsapp;
 
 class CreateTanggapanPengaduan extends CreateRecord
 {
@@ -89,7 +89,7 @@ class CreateTanggapanPengaduan extends CreateRecord
 
         if ($user && $user->email) {
             $user->notify(new TanggapanBaru($this->record));
-            logger('Notifikasi tanggapan dikirim ke: ' . $user->email);
+            logger('Notifikasi tanggapan dikirim ke: '.$user->email);
         }
 
         // ✅ Tambahkan ini untuk kirim WhatsApp ke user
@@ -98,7 +98,7 @@ class CreateTanggapanPengaduan extends CreateRecord
                 $user->no_hp,
                 "✅ Pengaduan Anda telah ditanggapi oleh admin.\n\nJudul: {$this->record->pengaduan->judul}\nTanggapan: {$this->record->isi_tanggapan}"
             );
-            logger('Notifikasi WA dikirim ke: ' . $user->no_hp);
+            logger('Notifikasi WA dikirim ke: '.$user->no_hp);
         }
     }
 

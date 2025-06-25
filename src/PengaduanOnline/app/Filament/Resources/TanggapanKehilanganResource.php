@@ -83,7 +83,7 @@ class TanggapanKehilanganResource extends Resource
                             ->columnSpanFull()
                             ->helperText('Status ini akan menentukan apakah barang yang dilaporkan hilang sudah ditemukan atau belum.'),
                         Hidden::make('id_kehilangan')
-                            ->default(fn() => request()->query('id_kehilangan'))
+                            ->default(fn () => request()->query('id_kehilangan'))
                             ->required(),
                     ]),
             ]);
@@ -114,15 +114,15 @@ class TanggapanKehilanganResource extends Resource
                 TextColumn::make('tanggapan')
                     ->label('Tanggapan Kehilangan')
                     ->html() // Supaya tag <p> atau format HTML dirender dengan benar
-                    ->formatStateUsing(fn($state) => \Illuminate\Support\Str::limit($state, 60))
-                    ->tooltip(fn($state) => strip_tags($state))
+                    ->formatStateUsing(fn ($state) => \Illuminate\Support\Str::limit($state, 60))
+                    ->tooltip(fn ($state) => strip_tags($state))
                     ->wrap(),
                 ImageColumn::make('kehilangan.foto')
                     ->label('Gambar')
                     ->disk('public')
                     ->visibility('public')
                     ->getStateUsing(function ($record) {
-                        return $record->kehilangan->foto ? asset('storage/' . $record->kehilangan->foto) : null;
+                        return $record->kehilangan->foto ? asset('storage/'.$record->kehilangan->foto) : null;
                     })
                     ->size(60)
                     ->square(),

@@ -83,10 +83,10 @@ class TanggapanKeramaianResource extends Resource
                             ->columnSpanFull()
                             ->helperText('Status ini akan digunakan untuk menentukan apa pengajuan izin disetujui atau ditolak.'),
                         Hidden::make('id_keramaian')
-                            ->default(fn() => request()->query('id_keramaian'))
+                            ->default(fn () => request()->query('id_keramaian'))
                             ->required(),
                         Hidden::make('user_id')
-                            ->default(fn() => Auth::id())
+                            ->default(fn () => Auth::id())
                             ->required(),
                     ]),
             ]);
@@ -116,8 +116,8 @@ class TanggapanKeramaianResource extends Resource
                 TextColumn::make('tanggapan')
                     ->label('Tanggapan')
                     ->html() // Supaya tag <p> atau format HTML dirender dengan benar
-                    ->formatStateUsing(fn($state) => \Illuminate\Support\Str::limit($state, 60))
-                    ->tooltip(fn($state) => strip_tags($state))
+                    ->formatStateUsing(fn ($state) => \Illuminate\Support\Str::limit($state, 60))
+                    ->tooltip(fn ($state) => strip_tags($state))
 
                     ->wrap(),
                 TextColumn::make('keramaian.status')

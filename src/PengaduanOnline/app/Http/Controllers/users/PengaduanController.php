@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\users;
 
+use App\Helpers\Whatsapp;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\users\PengaduanStoreRequest;
 use App\Http\Requests\users\PengaduanUpdateRequest;
@@ -10,8 +11,6 @@ use App\Models\Pengaduan;
 use App\Models\User;
 use App\Notifications\PengaduanBaru;
 use Illuminate\Support\Facades\Notification;
-use App\Helpers\Whatsapp;
-
 
 class PengaduanController extends Controller
 {
