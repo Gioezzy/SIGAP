@@ -4,13 +4,11 @@ namespace App\Filament\Resources\TanggapanPengaduanResource\Pages;
 
 use App\Filament\Resources\TanggapanPengaduanResource;
 use App\Models\Pengaduan;
+use App\Notifications\TanggapanBaru;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
-use App\Notifications\TanggapanBaru;
 use App\Helpers\Whatsapp;
-
-
 
 class CreateTanggapanPengaduan extends CreateRecord
 {
@@ -57,7 +55,6 @@ class CreateTanggapanPengaduan extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        // Backup jika hidden fields tidak bekerja
         if (empty($data['pengaduan_id'])) {
             $data['pengaduan_id'] = request()->query('pengaduan_id');
         }
@@ -77,37 +74,33 @@ class CreateTanggapanPengaduan extends CreateRecord
     }
 
     protected function afterCreate(): void
-{
-    // Update status pengaduan
-    if ($this->record->pengaduan_id && isset($this->statusPengaduan)) {
-        Pengaduan::where('id', $this->record->pengaduan_id)
-            ->update(['status' => $this->statusPengaduan]);
+    {
+        if ($this->record->pengaduan_id && isset($this->statusPengaduan)) {
+            Pengaduan::where('id', $this->record->pengaduan_id)
+                ->update(['status' => $this->statusPengaduan]);
 
-        logger('Status pengaduan updated:', [
-            'pengaduan_id' => $this->record->pengaduan_id,
-            'new_status' => $this->statusPengaduan,
-        ]);
+            logger('Status pengaduan updated:', [
+                'pengaduan_id' => $this->record->pengaduan_id,
+                'new_status' => $this->statusPengaduan,
+            ]);
+        }
+
+        $user = $this->record->pengaduan->user ?? null;
+
+        if ($user && $user->email) {
+            $user->notify(new TanggapanBaru($this->record));
+            logger('Notifikasi tanggapan dikirim ke: ' . $user->email);
+        }
+
+        // ✅ Tambahkan ini untuk kirim WhatsApp ke user
+        if ($user && $user->no_hp) {
+            Whatsapp::kirim(
+                $user->no_hp,
+                "✅ Pengaduan Anda telah ditanggapi oleh admin.\n\nJudul: {$this->record->pengaduan->judul}\nTanggapan: {$this->record->isi_tanggapan}"
+            );
+            logger('Notifikasi WA dikirim ke: ' . $user->no_hp);
+        }
     }
-
-    // Kirim notifikasi ke user
-    $user = $this->record->pengaduan->user ?? null;
-
-    if ($user && $user->email) {
-        $user->notify(new TanggapanBaru($this->record));
-        logger('Notifikasi tanggapan dikirim ke: ' . $user->email);
-    }
-
-    // ✅ Tambahkan ini untuk kirim WhatsApp
-    if ($user && $user->no_hp) {
-        Whatsapp::kirim(
-            $user->no_hp,
-            "✅ Pengaduan Anda telah ditanggapi oleh admin.\n\nJudul: {$this->record->pengaduan->judul}\nTanggapan: {$this->record->isi_tanggapan}"
-        );
-        logger('Notifikasi WA dikirim ke: ' . $user->no_hp);
-    }
-}
-
-
 
     protected function getCreatedNotification(): ?Notification
     {
