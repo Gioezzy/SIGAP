@@ -1,35 +1,53 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Edit Aspirasi
-        </h2>
-    </x-slot>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'slide-up': 'slideUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-    <div class="py-6">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-6 bg-white shadow-sm sm:rounded-lg">
-                <form action="{{ route('aspirasi.update', $aspirasi) }}" method="POST">
+    <div class="py-12 min-h-screen bg-gray-50 flex justify-center items-center">
+        <div class="w-full px-4 sm:px-6 lg:px-8 max-w-2xl">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 animate-slide-up">
+                <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Edit Aspirasi</h3>
+
+                <form action="{{ route('aspirasi.update', $aspirasi) }}" method="POST" class="space-y-6">
                     @csrf
                     @method('PUT')
 
-                    <div class="mb-4">
-                        <label for="judul" class="block text-sm font-medium text-gray-700">Judul</label>
-                        <input type="text" name="judul" id="judul"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm"
-                            value="{{ old('judul', $aspirasi->judul) }}" required>
+                    <div>
+                        <label for="judul" class="block text-gray-700 font-semibold mb-2">Judul</label>
+                        <input id="judul" name="judul" type="text" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-300"
+                            value="{{ old('judul', $aspirasi->judul) }}">
                     </div>
 
-                    <div class="mb-4">
-                        <label for="isi" class="block text-sm font-medium text-gray-700">Isi Aspirasi</label>
-                        <textarea name="isi" id="isi" rows="5"
-                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm"
-                            required>{{ old('isi', $aspirasi->isi) }}</textarea>
+                    <div>
+                        <label for="isi" class="block text-gray-700 font-semibold mb-2">Isi Aspirasi</label>
+                        <textarea id="isi" name="isi" rows="5" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-300">{{ old('isi', $aspirasi->isi) }}</textarea>
                     </div>
 
-                    <div class="flex justify-end space-x-2">
-                        <a href="{{ route('aspirasi.index') }}" class="text-gray-600 hover:underline">Batal</a>
+                    <div class="flex items-center justify-between">
                         <button type="submit"
-                            class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Simpan</button>
+                            class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transform hover:scale-105 transition duration-300 font-bold">
+                            Simpan
+                        </button>
+                        <a href="{{ route('aspirasi.index') }}" class="text-gray-600 hover:underline ml-4">
+                            Batal
+                        </a>
                     </div>
                 </form>
             </div>

@@ -98,7 +98,7 @@
                 <div class="text-center">
                     <h2
                         class="mb-4 text-3xl font-bold text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text">
-                        Daftar Acara Keramaian
+                        Daftar Ajuan Izin Keramaian
                     </h2>
                     <div class="w-32 h-1 mx-auto rounded-full bg-gradient-to-r from-sky-400 to-blue-500"></div>
                 </div>

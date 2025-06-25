@@ -787,7 +787,7 @@
 
                                 <!-- Excerpt -->
                                 <p class="mb-4 leading-relaxed text-gray-600">
-                                    {{ Str::limit(strip_tags($item->isiBerita), 120) }}
+                                    {!! Str::limit(strip_tags(html_entity_decode($item->isiBerita), '<b><strong><i><em><u>'), 120) !!}
                                 </p>
 
                                 <!-- Read More -->

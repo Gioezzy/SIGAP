@@ -108,7 +108,7 @@
                     <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 overflow-hidden">
                         <img src="{{ asset('images/binmas.png') }}" alt="Logo" class="w-8 h-8 object-contain">
                     </div>
-                    <h1 class="text-3xl font-bold">LPO</h1>
+                    <h1 class="text-3xl font-bold">SIGAP</h1>
                 </div>
 
                 <!-- Main Heading -->
@@ -119,7 +119,7 @@
 
                 <!-- Description -->
                 <p class="text-xl text-gray-200 mb-8 max-w-md">
-                    Daftarkan diri Anda untuk menjadi bagian dari platform Layanan Pengaduan Online. 
+                    Daftarkan diri Anda untuk menjadi bagian dari platform SIGAP. 
                     Bersama-sama kita wujudkan lingkungan yang aman dan nyaman untuk semua.
                 </p>
 

@@ -128,12 +128,12 @@
                     <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 overflow-hidden">
                         <img src="{{ asset('images/binmas.png') }}" alt="Logo" class="w-8 h-8 object-contain">
                     </div>
-                    <h1 class="text-3xl font-bold">LPO</h1>
+                    <h1 class="text-3xl font-bold">SIGAP</h1>
                 </div>
 
                 <!-- Main Heading -->
                 <h2 class="text-5xl font-bold mb-6 leading-tight">
-                    Layanan Pengaduan Online
+                    Sistem Gerak Cepat Atasi Pengaduan
                 </h2>
 
                 <!-- Description -->

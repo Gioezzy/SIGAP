@@ -11,7 +11,7 @@ class Whatsapp
         $deviceId = config('services.wablas.device_id');
         $authorization = config('services.wablas.authorization');
 
-        // Format nomor ke 62xxxxxxxxxxx
+        // Format nomor ke 62
         if (str_starts_with($nomor, '08')) {
             $nomor = '62'.substr($nomor, 1);
         }
