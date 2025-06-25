@@ -55,17 +55,17 @@ class PengaduanController extends Controller
         if ($admin && $admin->no_hp) {
             $userName = auth()->user()->name ?? 'Pengguna';
 
-            $pesan = "🚨 PENGADUAN BARU MASUK\n\n" .
-                "Kepada Tim Admin,\n\n" .
-                "Terdapat pengaduan baru yang memerlukan perhatian Anda.\n\n" .
-                "👤 Data Pelapor:\n" .
-                "• Nama: {$userName}\n\n" .
-                "📋 Detail Pengaduan:\n" .
-                "• Judul: {$pengaduan->judul}\n" .
-                "• Isi Pengaduan: {$pengaduan->isi_pengaduan}\n" .
-                "• Status: Menunggu Tanggapan\n\n" .
-                " Silakan login ke sistem untuk memberikan tanggapan.\n\n" .
-                "Tim Sistem Pengaduan";
+            $pesan = "🚨 PENGADUAN BARU MASUK\n\n".
+                "Kepada Tim Admin,\n\n".
+                "Terdapat pengaduan baru yang memerlukan perhatian Anda.\n\n".
+                "👤 Data Pelapor:\n".
+                "• Nama: {$userName}\n\n".
+                "📋 Detail Pengaduan:\n".
+                "• Judul: {$pengaduan->judul}\n".
+                "• Isi Pengaduan: {$pengaduan->isi_pengaduan}\n".
+                "• Status: Menunggu Tanggapan\n\n".
+                " Silakan login ke sistem untuk memberikan tanggapan.\n\n".
+                'Tim Sistem Pengaduan';
 
             Whatsapp::kirim($admin->no_hp, $pesan);
         }

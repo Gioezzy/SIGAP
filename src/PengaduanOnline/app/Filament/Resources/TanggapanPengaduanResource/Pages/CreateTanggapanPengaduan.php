@@ -89,26 +89,26 @@ class CreateTanggapanPengaduan extends CreateRecord
 
         if ($user && $user->email) {
             $user->notify(new TanggapanBaru($this->record));
-            logger('Notifikasi tanggapan dikirim ke: ' . $user->email);
+            logger('Notifikasi tanggapan dikirim ke: '.$user->email);
         }
 
         // ✅ Tambahkan ini untuk kirim WhatsApp ke user
         if ($user && $user->no_hp) {
-            $message = "🔔 PEMBERITAHUAN TANGGAPAN PENGADUAN\n\n" .
-                "Yth. Bapak/Ibu,\n\n" .
-                "Pengaduan Anda telah mendapat tanggapan dari tim kami.\n\n" .
-                "📋 Detail Pengaduan:\n" .
-                "• Judul: {$this->record->pengaduan->judul}\n" .
-                "• Status: Telah Ditanggapi\n\n" .
-                "💬 Tanggapan:\n" .
-                "{$this->record->isi_tanggapan}\n\n" .
-                "🌐 Untuk melihat detail lengkap tanggapan, silakan kunjungi website kami.\n\n" .
-                "Terima kasih atas kepercayaan Anda.\n\n" .
-                "Hormat kami,\n" .
-                "Tim SIGAP";
+            $message = "🔔 PEMBERITAHUAN TANGGAPAN PENGADUAN\n\n".
+                "Yth. Bapak/Ibu,\n\n".
+                "Pengaduan Anda telah mendapat tanggapan dari tim kami.\n\n".
+                "📋 Detail Pengaduan:\n".
+                "• Judul: {$this->record->pengaduan->judul}\n".
+                "• Status: Telah Ditanggapi\n\n".
+                "💬 Tanggapan:\n".
+                "{$this->record->isi_tanggapan}\n\n".
+                "🌐 Untuk melihat detail lengkap tanggapan, silakan kunjungi website kami.\n\n".
+                "Terima kasih atas kepercayaan Anda.\n\n".
+                "Hormat kami,\n".
+                'Tim SIGAP';
 
             Whatsapp::kirim($user->no_hp, $message);
-            logger('Notifikasi WA dikirim ke: ' . $user->no_hp);
+            logger('Notifikasi WA dikirim ke: '.$user->no_hp);
         }
     }
 
