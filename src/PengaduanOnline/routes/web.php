@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\users\AspirasiController;
 use App\Http\Controllers\users\BeritaController;
@@ -14,6 +15,9 @@ use App\Http\Controllers\users\TanggapanKeramaianController;
 use App\Http\Controllers\users\TanggapanKritikSaranController;
 use App\Http\Controllers\users\TanggapanPengaduanController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/auth/redirect', [SocialController::class, 'googleRedirect'])->name('google.redirect');
+Route::get('/auth/callback', [SocialController::class, 'loginWithGoogle'])->name('google.callback');
 
 Route::get('/', [BeritaController::class, 'home'])->name('home');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');

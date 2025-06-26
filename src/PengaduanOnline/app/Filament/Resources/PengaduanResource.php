@@ -90,6 +90,7 @@ class PengaduanResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('id')->sortable()->searchable(),
                 TextColumn::make('user.name')
@@ -119,7 +120,7 @@ class PengaduanResource extends Resource
                     ->label('Isi Pengaduan')
                     ->sortable()
                     ->limit(50)
-                    ->tooltip(fn ($state) => $state)
+                    ->tooltip(fn($state) => $state)
                     ->searchable()
                     ->wrap(),
                 TextColumn::make('status')
@@ -160,7 +161,7 @@ class PengaduanResource extends Resource
                     ->label('Respon')
                     ->icon('heroicon-o-chat-bubble-left-right')
                     ->url(
-                        fn ($record) => TanggapanPengaduanResource::getUrl('create', [
+                        fn($record) => TanggapanPengaduanResource::getUrl('create', [
                             'pengaduan_id' => $record->id,
                             'kategori_id' => $record->kategori_id,
                         ])
