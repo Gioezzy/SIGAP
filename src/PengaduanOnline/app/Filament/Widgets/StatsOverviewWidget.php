@@ -25,7 +25,7 @@ class StatsOverviewWidget extends BaseWidget
 
             Stat::make('Pengaduan Selesai', Pengaduan::where('status', 'selesai')->count())
                 ->description('Jumlah pengaduan masuk yang sudah selesai')
-                ->color('success')
+                ->color('success'),
         ];
     }
 }

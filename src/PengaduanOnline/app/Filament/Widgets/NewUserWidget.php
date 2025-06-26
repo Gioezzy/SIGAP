@@ -3,9 +3,8 @@
 namespace App\Filament\Widgets;
 
 use App\Models\User;
-use Filament\Widgets\TableWidget as BaseWidget;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 
 class NewUserWidget extends BaseWidget
