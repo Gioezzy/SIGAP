@@ -18,7 +18,7 @@ class SocialController extends Controller
     {
         try {
             // retreive user from google
-            $googleUser = Socialite::driver('google')->user();
+            $googleUser = Socialite::driver('google')->stateless()->user();
 
             // attempt to find an existing user by Google ID or Email
             $existingUser = User::where('google_id', $googleUser->id)
@@ -52,7 +52,7 @@ class SocialController extends Controller
                 Auth::login($createUser);
             }
 
-            return redirect()->to('/profile');
+            return redirect('/');
         } catch (\Throwable $th) {
             // log the exception or handle it as needed
             throw $th; // consider logging the exeption for debugging
