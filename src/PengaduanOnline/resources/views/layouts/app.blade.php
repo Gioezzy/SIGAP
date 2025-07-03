@@ -62,9 +62,11 @@
                 !request()->is('aspirasi*') &&
                 !request()->is('kritiksaran*') &&
                 !request()->is('kehilangan*') &&
-                !request()->is('keramaian*'))
+                !request()->is('keramaian*') &&
+                !request()->is('profil*'))
             @include('layouts.footer')
         @endif
+
 
 
     </div>

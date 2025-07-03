@@ -4,7 +4,7 @@
 
             <!-- Kolom 1 -->
             <div>
-                <h5 class="mb-4 text-xl font-semibold text-white">Layanan Pengaduan Polsek Pauh</h5>
+                <h5 class="mb-4 text-xl font-semibold text-white">SIGAP - PAUH</h5>
                 <p class="text-sm leading-relaxed">
                     Kami menyediakan platform pengaduan masyarakat terkait pelayanan publik, pelanggaran hukum, dan
                     aspirasi untuk meningkatkan transparansi serta kualitas pelayanan Polsek Pauh.
@@ -89,7 +89,7 @@
         <hr class="my-3 opacity-25 border-light">
         <div class="text-center">
             <p class="mb-0 opacity-50 text-light small">
-                &copy; 2025 Layanan Pengaduan Online. All Rights Reserved.
+                &copy; 2025 SIGAP - PAUH. All Rights Reserved.
             </p>
         </div>
     </div>

@@ -133,12 +133,12 @@
 
                 <!-- Main Heading -->
                 <h2 class="mb-6 text-5xl font-bold leading-tight">
-                    Layanan Pengaduan Online
+                    Bergabung dengan komunitas kami
                 </h2>
 
                 <!-- Description -->
                 <p class="max-w-md mb-8 text-xl text-gray-200">
-                    Merupakan platform yang masyarakat untuk melapor jika ada pelanggaran atau kejadian yang
+                    SIGAP Merupakan platform yang masyarakat untuk melapor jika ada pelanggaran atau kejadian yang
                     mencurigakan.
                     Layanan ini dibuat agar pelaporan bisa dilakukan dengan cepat, aman, tanpa harus datang langsung.
                     Tujuannya adalah untuk membantu menjaga keamanan lingkungan kampus, khususnya di daerah UNAND dan

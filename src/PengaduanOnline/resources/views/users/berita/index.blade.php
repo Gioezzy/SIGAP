@@ -88,7 +88,7 @@
 
                             <!-- Excerpt -->
                             <p class="mt-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4 line-clamp-3">
-                                {{ Str::limit(strip_tags($item->isiBerita), 100) }}
+                                {{ Str::limit(str_replace('&nbsp;', ' ', html_entity_decode(strip_tags($item->isiBerita))), 100) }}
                             </p>
 
                             <!-- Read More Button (only if slug exists) -->

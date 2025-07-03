@@ -1,7 +1,5 @@
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b shadow-sm bg-white/90 backdrop-blur-md border-gray-200/50"
-    x-data="{ open: false, scrolled: false }" 
-    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" 
-    :class="{ 'bg-white/95 shadow-lg': scrolled }">
+    x-data="{ open: false, scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })" :class="{ 'bg-white/95 shadow-lg': scrolled }">
 
     <div class="container px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
@@ -15,7 +13,8 @@
                     </div>
                     <!-- Logo Text -->
                     <div class="hidden sm:block">
-                        <div class="text-lg sm:text-xl font-bold text-transparent lg:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+                        <div
+                            class="text-lg sm:text-xl font-bold text-transparent lg:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
                             SIGAP
                         </div>
                         <div class="-mt-1 text-xs text-gray-500">
@@ -34,51 +33,117 @@
                             class="relative font-medium transition-colors duration-300 group whitespace-nowrap text-sm lg:text-base
             {{ request()->routeIs('home') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
                             <span>Beranda</span>
-                            <div class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5
+                            <div
+                                class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5
             bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300
             {{ request()->routeIs('home') ? 'w-full' : '' }}">
                             </div>
                         </a>
 
-                        @foreach ([
-                            ['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'], 
-                            ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'], 
-                            ['key' => 'kritik', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'], 
-                            ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'], 
-                            ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index']
-                        ] as $menu)
-                            <div class="relative" x-data="{ open: false }">
-                                @php
-                                    $isActive =
-                                        request()->routeIs(str_replace('.index', '*', $menu['route'])) ||
-                                        request()->routeIs(str_replace('.index', '*', $menu['tanggapan']));
-                                @endphp
-                                <button @click="open = !open"
-                                    class="relative font-medium transition-colors duration-300 group whitespace-nowrap text-sm lg:text-base {{ $isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
-                                    <span class="inline-flex items-center space-x-1">
-                                        <span>{{ $menu['title'] }}</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': open }"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </span>
-                                    <div class="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 {{ $isActive ? 'w-full' : 'w-0 group-hover:w-full' }}">
-                                    </div>
-                                </button>
-
-                                <div x-show="open" @click.away="open = false"
-                                    class="absolute z-50 w-56 py-2 mt-2 bg-white rounded-lg shadow-lg">
-                                    <x-dropdown-link :href="route($menu['route'])" :active="request()->routeIs(str_replace('.index', '.*', $menu['route']))">
-                                        {{ $menu['title'] }}
-                                    </x-dropdown-link>
-                                    <x-dropdown-link :href="route($menu['tanggapan'])" :active="request()->routeIs(str_replace('.index', '.*', $menu['tanggapan']))">
-                                        Tanggapan {{ $menu['title'] }}
-                                    </x-dropdown-link>
+                        <!-- Layanan Dropdown -->
+                        <div class="relative" x-data="{ open: false }">
+                            @php
+                                $layananActive = request()->routeIs('pengaduan*') || 
+                                               request()->routeIs('aspirasi*') || 
+                                               request()->routeIs('kritiksaran*') || 
+                                               request()->routeIs('kehilangan*') || 
+                                               request()->routeIs('keramaian*');
+                            @endphp
+                            <button @click="open = !open"
+                                class="relative font-medium transition-colors duration-300 group whitespace-nowrap text-sm lg:text-base {{ $layananActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
+                                <span class="inline-flex items-center space-x-1">
+                                    <span>Layanan</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4 transition-transform duration-200"
+                                        :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                                <div
+                                    class="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 {{ $layananActive ? 'w-full' : 'w-0 group-hover:w-full' }}">
                                 </div>
+                            </button>
+
+                            <div x-show="open" @click.away="open = false"
+                                class="absolute z-50 w-56 py-2 mt-2 bg-white rounded-lg shadow-lg">
+                                <x-dropdown-link :href="route('pengaduan.index')" :active="request()->routeIs('pengaduan.*')">
+                                    Pengaduan
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('aspirasi.index')" :active="request()->routeIs('aspirasi.*')">
+                                    Aspirasi
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('kritiksaran.index')" :active="request()->routeIs('kritiksaran.*')">
+                                    Kritik & Saran
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('kehilangan.index')" :active="request()->routeIs('kehilangan.*')">
+                                    Kehilangan
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('keramaian.index')" :active="request()->routeIs('keramaian.*')">
+                                    Keramaian
+                                </x-dropdown-link>
                             </div>
-                        @endforeach
+                        </div>
+
+                        <!-- Tanggapan Dropdown -->
+                        <div class="relative" x-data="{ open: false }">
+                            @php
+                                $tanggapanActive = request()->routeIs('tanggapan.pengaduan*') || 
+                                                 request()->routeIs('tanggapan.aspirasi*') || 
+                                                 request()->routeIs('tanggapan.kritiksaran*') || 
+                                                 request()->routeIs('tanggapan.kehilangan*') || 
+                                                 request()->routeIs('tanggapan.keramaian*');
+                            @endphp
+                            <button @click="open = !open"
+                                class="relative font-medium transition-colors duration-300 group whitespace-nowrap text-sm lg:text-base {{ $tanggapanActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
+                                <span class="inline-flex items-center space-x-1">
+                                    <span>Tanggapan</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4 transition-transform duration-200"
+                                        :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                                <div
+                                    class="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 {{ $tanggapanActive ? 'w-full' : 'w-0 group-hover:w-full' }}">
+                                </div>
+                            </button>
+
+                            <div x-show="open" @click.away="open = false"
+                                class="absolute z-50 w-56 py-2 mt-2 bg-white rounded-lg shadow-lg">
+                                <x-dropdown-link :href="route('tanggapan.pengaduan.index')" :active="request()->routeIs('tanggapan.pengaduan.*')">
+                                    Tanggapan Pengaduan
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('tanggapan.aspirasi.index')" :active="request()->routeIs('tanggapan.aspirasi.*')">
+                                    Tanggapan Aspirasi
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('tanggapan.kritiksaran.index')" :active="request()->routeIs('tanggapan.kritiksaran.*')">
+                                    Tanggapan Kritik & Saran
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('tanggapan.kehilangan.index')" :active="request()->routeIs('tanggapan.kehilangan.*')">
+                                    Tanggapan Kehilangan
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('tanggapan.keramaian.index')" :active="request()->routeIs('tanggapan.keramaian.*')">
+                                    Tanggapan Keramaian
+                                </x-dropdown-link>
+                            </div>
+                        </div>
+
+                        <!-- About Us -->
+                        <a href="{{ route('profiles.index') }}"
+                            class="relative font-medium transition-colors duration-300 group whitespace-nowrap text-sm lg:text-base
+                            {{ request()->routeIs('profiles.*') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600' }}">
+                            <span>Tentang kami</span>
+                            <div
+                                class="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5
+                                bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300
+                                {{ request()->routeIs('profiles.*') ? 'w-full' : '' }}">
+                            </div>
+                        </a>
+
                     @endauth
                 </div>
             </div>
@@ -165,7 +230,7 @@
         </div>
     </div>
 
-    <!-- Mobile Menu (unchanged) -->
+    <!-- Mobile Menu -->
     <div x-show="open" x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
@@ -179,43 +244,98 @@
                 Beranda
             </a>
 
-            <!-- Grouped Menus -->
-            @foreach ([
-                ['key' => 'pengaduan', 'title' => 'Pengaduan', 'route' => 'pengaduan.index', 'tanggapan' => 'tanggapan.pengaduan.index'], 
-                ['key' => 'aspirasi', 'title' => 'Aspirasi', 'route' => 'aspirasi.index', 'tanggapan' => 'tanggapan.aspirasi.index'], 
-                ['key' => 'kritiksaran', 'title' => 'Kritik & Saran', 'route' => 'kritiksaran.index', 'tanggapan' => 'tanggapan.kritiksaran.index'], 
-                ['key' => 'kehilangan', 'title' => 'Kehilangan', 'route' => 'kehilangan.index', 'tanggapan' => 'tanggapan.kehilangan.index'], 
-                ['key' => 'keramaian', 'title' => 'Keramaian', 'route' => 'keramaian.index', 'tanggapan' => 'tanggapan.keramaian.index']
-            ] as $menu)
-                <div>
-                    <!-- Parent Button -->
-                    <button
-                        @click="openSubmenu === '{{ $menu['key'] }}' ? openSubmenu = null : openSubmenu = '{{ $menu['key'] }}'"
-                        class="flex items-center justify-between w-full px-4 py-3 font-medium text-gray-700 transition rounded-xl hover:bg-blue-50">
-                        {{ $menu['title'] }}
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform transform"
-                            :class="{ 'rotate-180': openSubmenu === '{{ $menu['key'] }}' }" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
+            <!-- Layanan Dropdown (Mobile) -->
+            <div>
+                <button
+                    @click="openSubmenu === 'layanan' ? openSubmenu = null : openSubmenu = 'layanan'"
+                    class="flex items-center justify-between w-full px-4 py-3 font-medium text-gray-700 transition rounded-xl hover:bg-blue-50">
+                    Layanan
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform transform"
+                        :class="{ 'rotate-180': openSubmenu === 'layanan' }" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
 
-                    <!-- Dropdown Items -->
-                    <div x-show="openSubmenu === '{{ $menu['key'] }}'" x-collapse>
-                        <a href="{{ route($menu['route']) }}"
-                            class="block px-4 py-2 mt-2 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
-                            @click="open = false">
-                            {{ $menu['title'] }}
-                        </a>
-                        <a href="{{ route($menu['tanggapan']) }}"
-                            class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
-                            @click="open = false">
-                            Tanggapan {{ $menu['title'] }}
-                        </a>
-                    </div>
+                <div x-show="openSubmenu === 'layanan'" x-collapse>
+                    <a href="{{ route('pengaduan.index') }}"
+                        class="block px-4 py-2 mt-2 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Pengaduan
+                    </a>
+                    <a href="{{ route('aspirasi.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Aspirasi
+                    </a>
+                    <a href="{{ route('kritiksaran.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Kritik & Saran
+                    </a>
+                    <a href="{{ route('kehilangan.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Kehilangan
+                    </a>
+                    <a href="{{ route('keramaian.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Keramaian
+                    </a>
                 </div>
-            @endforeach
+            </div>
+
+            <!-- Tanggapan Dropdown (Mobile) -->
+            <div>
+                <button
+                    @click="openSubmenu === 'tanggapan' ? openSubmenu = null : openSubmenu = 'tanggapan'"
+                    class="flex items-center justify-between w-full px-4 py-3 font-medium text-gray-700 transition rounded-xl hover:bg-blue-50">
+                    Tanggapan
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform transform"
+                        :class="{ 'rotate-180': openSubmenu === 'tanggapan' }" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <div x-show="openSubmenu === 'tanggapan'" x-collapse>
+                    <a href="{{ route('tanggapan.pengaduan.index') }}"
+                        class="block px-4 py-2 mt-2 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Tanggapan Pengaduan
+                    </a>
+                    <a href="{{ route('tanggapan.aspirasi.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Tanggapan Aspirasi
+                    </a>
+                    <a href="{{ route('tanggapan.kritiksaran.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Tanggapan Kritik & Saran
+                    </a>
+                    <a href="{{ route('tanggapan.kehilangan.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Tanggapan Kehilangan
+                    </a>
+                    <a href="{{ route('tanggapan.keramaian.index') }}"
+                        class="block px-4 py-2 mt-1 ml-6 text-sm text-gray-600 rounded hover:bg-blue-50 hover:text-blue-700"
+                        @click="open = false">
+                        Tanggapan Keramaian
+                    </a>
+                </div>
+            </div>
+
+            <!-- About Us (Mobile) -->
+            <a href="{{ route('profiles.index') }}"
+                class="block px-4 py-3 font-medium text-gray-700 transition hover:text-blue-600 hover:bg-blue-50 rounded-xl"
+                @click="open = false">
+                About Us
+            </a>
 
             @guest
                 <hr class="my-4 border-gray-200">
