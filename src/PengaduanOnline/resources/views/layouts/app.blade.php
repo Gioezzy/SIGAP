@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Pengaduan Polsek Pauh') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/binmas.png') }}?v=1">
 
     <!-- Tambahan meta dan style -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,13 +58,14 @@
         </main>
 
         @if (
-            !request()->is('pengaduan*') &&
+                !request()->is('pengaduan*') &&
                 !request()->is('tanggapan*') &&
                 !request()->is('aspirasi*') &&
                 !request()->is('kritiksaran*') &&
                 !request()->is('kehilangan*') &&
                 !request()->is('keramaian*') &&
-                !request()->is('profil*'))
+                !request()->is('profil*')
+            )
             @include('layouts.footer')
         @endif
 
@@ -77,7 +79,7 @@
     <script src="{{ asset('js/SmoothScroll.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="{{ asset('js/script.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </body>
