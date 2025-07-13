@@ -46,7 +46,7 @@ class LoginRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 // 'email' => trans('Email yang dimasukkan tidak valid.'),
-                'password' => trans('Email atau Password yang dimasukkan tidak valid.')
+                'password' => trans('Email atau Password yang dimasukkan tidak valid.'),
             ]);
         }
 
