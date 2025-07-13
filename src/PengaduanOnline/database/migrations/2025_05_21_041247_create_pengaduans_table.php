@@ -16,11 +16,11 @@ return new class extends Migration
 
             // tambahkan kolom foreign dulu
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('kategori_id')->nullable();
 
             // referensi dari table lain
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('kategori_id')->references('id')->on('category_reports');
+            $table->foreign('kategori_id')->references('id')->on('category_reports')->onDelete('set null');
 
             // isi utama
             $table->string('judul');

@@ -71,8 +71,8 @@ class EditTanggapanKehilangan extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title('Tanggapan Kehilangan Berhasil Dibuat')
-            ->body('Tanggapan Kehilangan berhasil dibuat.');
+            ->title('Tanggapan Kehilangan Berhasil Diperbarui')
+            ->body('Tanggapan Kehilangan berhasil diperbarui.');
     }
 
     protected function getRedirectUrl(): string
