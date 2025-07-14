@@ -51,7 +51,8 @@ class KehilanganController extends Controller
 
         $kehilangan->save();
 
-        return redirect()->route('kehilangan.index');
+        return redirect()->route('kehilangan.index')
+            ->with('success', 'Laporan kehilangan berhasil dikirim.');
     }
 
     /**
@@ -90,7 +91,8 @@ class KehilanganController extends Controller
 
         $kehilangan->save();
 
-        return redirect()->route('kehilangan.index');
+        return redirect()->route('kehilangan.index')
+            ->with('success', 'Data kehilangan berhasil diperbarui.');
     }
 
     /**

@@ -45,7 +45,8 @@ class KeramaianController extends Controller
 
         $keramaian->save();
 
-        return redirect()->route('keramaian.index');
+        return redirect()->route('keramaian.index')
+            ->with('success', 'Permohonan izin keramaian berhasil dikirim.');
     }
 
     /**
@@ -86,7 +87,8 @@ class KeramaianController extends Controller
         $keramaian->fill($input);
         $keramaian->save();
 
-        return redirect()->route('keramaian.index');
+        return redirect()->route('keramaian.index')
+            ->with('success', 'Data izin keramaian berhasil diperbarui.');
     }
 
     /**
@@ -97,6 +99,7 @@ class KeramaianController extends Controller
         $keramaian = Keramaian::findOrFail($id);
         $keramaian->delete();
 
-        return redirect()->route('keramaian.index');
+        return redirect()->route('keramaian.index')
+            ->with('success', 'Data izin keramaian berhasil dihapus.');
     }
 }

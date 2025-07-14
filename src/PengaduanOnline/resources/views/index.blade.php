@@ -22,7 +22,7 @@
                     <h1
                         class="mb-6 font-sans text-4xl font-semibold tracking-wider text-white uppercase sm:text-5xl lg:text-6xl animate-fade-in-up drop-shadow-lg">
                         <span class="block transition-all duration-300 hover:animate-glow">
-                            SIGAP
+                            SIGAP - PAUH
                         </span>
                     </h1>
 

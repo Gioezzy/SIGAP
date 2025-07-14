@@ -44,7 +44,8 @@ class AspirasiController extends Controller
         $aspirasi->isi = $request->isi;
         $aspirasi->save();
 
-        return redirect()->route('aspirasi.index');
+        return redirect()->route('aspirasi.index')
+            ->with('success', 'Aspirasi berhasil dikirim.');
     }
 
     /**
@@ -75,7 +76,8 @@ class AspirasiController extends Controller
         $aspirasi->isi = $request->isi;
         $aspirasi->save();
 
-        return redirect()->route('aspirasi.index');
+        return redirect()->route('aspirasi.index')
+            ->with('success', 'Aspirasi berhasil diperbarui.');
     }
 
     /**

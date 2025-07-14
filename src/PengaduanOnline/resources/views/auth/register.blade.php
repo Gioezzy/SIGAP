@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }} - Register</title>
+    <title>SIGAP - Register</title>
     <link rel="icon" type="image/png" href="{{ asset('images/binmas.png') }}?v=1">
 
 
@@ -204,8 +204,8 @@
                             class="block mb-2 text-sm font-medium text-gray-700">{{ __('Nama Lengkap') }}</label>
                         <input id="name"
                             class="w-full px-4 py-3 transition-all duration-300 border border-gray-300 rounded-lg form-input focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                            type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
-                            placeholder="Masukkan Nama Lengkap" />
+                            type="text" name="name" value="{{ old('name') }}" required autofocus
+                            autocomplete="name" placeholder="Masukkan Nama Lengkap" />
                         @error('name')
                             <div class="input-error">{{ $message }}</div>
                         @enderror
@@ -244,8 +244,7 @@
                             class="block mb-2 text-sm font-medium text-gray-700">{{ __('Alamat') }}</label>
                         <textarea id="alamat"
                             class="w-full px-4 py-3 transition-all duration-300 border border-gray-300 rounded-lg resize-none form-input focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                            name="alamat" rows="3" required
-                            placeholder="Masukkan alamat lengkap anda">{{ old('alamat') }}</textarea>
+                            name="alamat" rows="3" required placeholder="Masukkan alamat lengkap anda">{{ old('alamat') }}</textarea>
                         @error('alamat')
                             <div class="input-error">{{ $message }}</div>
                         @enderror
@@ -306,9 +305,11 @@
                         <input id="terms" type="checkbox" required
                             class="mt-1 text-indigo-600 border-gray-300 rounded shadow-sm focus:ring-indigo-500">
                         <label for="terms" class="ml-2 text-sm text-gray-600">
-                            I agree to the <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Terms
+                            I agree to the <a href="#"
+                                class="font-medium text-indigo-600 hover:text-indigo-500">Terms
                                 of Service</a>
-                            and <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Privacy Policy</a>
+                            and <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Privacy
+                                Policy</a>
                         </label>
                     </div>
 
@@ -363,13 +364,13 @@
 
     <script>
         // Password toggle functionality
-        document.getElementById('togglePassword').addEventListener('click', function () {
+        document.getElementById('togglePassword').addEventListener('click', function() {
             const password = document.getElementById('password');
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
         });
 
-        document.getElementById('togglePasswordConfirm').addEventListener('click', function () {
+        document.getElementById('togglePasswordConfirm').addEventListener('click', function() {
             const password = document.getElementById('password_confirmation');
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
@@ -387,24 +388,24 @@
         ];
 
         let currentBg = 0;
-        document.getElementById('backgroundToggle').addEventListener('click', function () {
+        document.getElementById('backgroundToggle').addEventListener('click', function() {
             currentBg = (currentBg + 1) % backgrounds.length;
             document.querySelector('.register-container').style.background = backgrounds[currentBg];
         });
 
         // Add smooth focus animations
         document.querySelectorAll('.form-input').forEach(input => {
-            input.addEventListener('focus', function () {
+            input.addEventListener('focus', function() {
                 this.parentElement.style.transform = 'scale(1.02)';
             });
 
-            input.addEventListener('blur', function () {
+            input.addEventListener('blur', function() {
                 this.parentElement.style.transform = 'scale(1)';
             });
         });
 
         // Add loading state to register button
-        document.querySelector('form').addEventListener('submit', function () {
+        document.querySelector('form').addEventListener('submit', function() {
             const button = this.querySelector('.btn-primary');
             button.innerHTML = `
                 <svg class="inline w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -417,7 +418,7 @@
         });
 
         // Password strength indicator
-        document.getElementById('password').addEventListener('input', function () {
+        document.getElementById('password').addEventListener('input', function() {
             const password = this.value;
             let strength = 0;
 

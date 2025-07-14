@@ -117,7 +117,7 @@
                     </div>
 
                     <div
-                        class="relative overflow-hidden border shadow-2xl bg-white/90 backdrop-blur-xl dark:bg-gray-800/90 rounded-3xl border-white/50 dark:border-gray-700/50">
+                        class="relative overflow-x-auto border shadow-2xl bg-white/90 backdrop-blur-xl dark:bg-gray-800/90 rounded-3xl border-white/50 dark:border-gray-700/50">
                         <!-- Glass effect overlay -->
                         <div
                             class="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/60 to-transparent dark:from-gray-800/60">
@@ -264,13 +264,11 @@
                                                             class="absolute transition duration-300 -inset-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl blur opacity-30 group-hover/btn:opacity-70">
                                                         </div>
                                                         <form action="{{ route('aspirasi.destroy', $aspirasis->id) }}"
-                                                            method="POST"
-                                                            onsubmit="return confirm('Yakin ingin menghapus aspirasi ini?')"
-                                                            class="w-full sm:w-auto">
+                                                            method="POST" class="w-full sm:w-auto delete-form">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
-                                                                class="relative inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl sm:px-5 sm:py-3">
+                                                                class="btn-delete relative inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl sm:px-5 sm:py-3">
                                                                 <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2"
                                                                     fill="none" stroke="currentColor"
                                                                     viewBox="0 0 24 24">
@@ -498,4 +496,5 @@
             display: none;
         }
     </style>
+    <x-alertdelete/>
 </x-app-layout>

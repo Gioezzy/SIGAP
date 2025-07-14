@@ -312,8 +312,7 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
-                                                                class="relative inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl w-full sm:w-auto"
-                                                                onclick="return confirm('Yakin ingin hapus?')">
+                                                                class="btn-delete relative inline-flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl w-full sm:w-auto">
                                                                 <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2"
                                                                     fill="none" stroke="currentColor"
                                                                     viewBox="0 0 24 24">
@@ -383,6 +382,7 @@
             </div>
         </div>
     </div>
+    <x-alertdelete />
 </x-app-layout>
 <style>
     @keyframes fade-in-up {

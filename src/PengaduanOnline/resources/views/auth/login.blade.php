@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }} - Login</title>
+    <title>SIGAP - Login</title>
     <link rel="icon" type="image/png" href="{{ asset('images/binmas.png') }}?v=1">
 
 
@@ -256,7 +256,7 @@
                     </div>
 
                     <!-- Social Login Buttons -->
-                    <a href="{{route('google.redirect')}}">
+                    <a href="{{ route('google.redirect') }}">
                         <div class="space-y-3">
                             <button type="button"
                                 class="flex items-center justify-center w-full px-4 py-3 text-gray-700 transition-all duration-300 border border-gray-300 rounded-lg social-btn hover:bg-gray-50">
@@ -294,7 +294,7 @@
 
     <script>
         // Password toggle functionality
-        document.getElementById('togglePassword').addEventListener('click', function () {
+        document.getElementById('togglePassword').addEventListener('click', function() {
             const password = document.getElementById('password');
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
@@ -312,24 +312,24 @@
         ];
 
         let currentBg = 0;
-        document.getElementById('backgroundToggle').addEventListener('click', function () {
+        document.getElementById('backgroundToggle').addEventListener('click', function() {
             currentBg = (currentBg + 1) % backgrounds.length;
             document.querySelector('.login-container').style.background = backgrounds[currentBg];
         });
 
         // Add smooth focus animations
         document.querySelectorAll('.form-input').forEach(input => {
-            input.addEventListener('focus', function () {
+            input.addEventListener('focus', function() {
                 this.parentElement.style.transform = 'scale(1.02)';
             });
 
-            input.addEventListener('blur', function () {
+            input.addEventListener('blur', function() {
                 this.parentElement.style.transform = 'scale(1)';
             });
         });
 
         // Add loading state to login button
-        document.querySelector('form').addEventListener('submit', function () {
+        document.querySelector('form').addEventListener('submit', function() {
             const button = this.querySelector('.btn-primary');
             button.innerHTML = `
                 <svg class="inline w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

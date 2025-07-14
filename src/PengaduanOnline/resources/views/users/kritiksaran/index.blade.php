@@ -282,12 +282,11 @@
                                                         </div>
                                                         <form action="{{ route('kritiksaran.destroy', $kritik->id) }}"
                                                             method="POST"
-                                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus kritik & saran ini?')"
                                                             class="relative">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
-                                                                class="relative inline-flex items-center px-5 py-3 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl">
+                                                                class="btn-delete relative inline-flex items-center px-5 py-3 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-red-500 to-pink-500 rounded-xl hover:from-red-600 hover:to-pink-600 hover:scale-110 hover:shadow-xl">
                                                                 <svg class="w-4 h-4 mr-2" fill="none"
                                                                     stroke="currentColor" viewBox="0 0 24 24">
                                                                     <path stroke-linecap="round"
@@ -521,4 +520,5 @@
             display: none;
         }
     </style>
+    <x-alertdelete />
 </x-app-layout>

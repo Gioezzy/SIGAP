@@ -44,7 +44,8 @@ class KritikSaranController extends Controller
         $kritikSaran->isi = $request->isi;
         $kritikSaran->save();
 
-        return redirect()->route('kritiksaran.index');
+        return redirect()->route('kritiksaran.index')
+            ->with('success', 'Kritik dan Saran berhasil dikirim.');
     }
 
     /**
@@ -76,7 +77,8 @@ class KritikSaranController extends Controller
         $kritikSaran->isi = $request->isi;
         $kritikSaran->save();
 
-        return redirect()->route('kritiksaran.index');
+        return redirect()->route('kritiksaran.index')
+            ->with('success', 'Kritik dan Saran berhasil diperbarui.');
     }
 
     /**
