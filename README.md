@@ -108,7 +108,7 @@ http://localhost:8000
 
 | Role            | Email                                           | Password     |
 |-----------------|--------------------------------------------------|--------------|
-| Admin      | admin@admin.sigap.com                | password123  |
+| Admin      | lupiranofan@gmail.com                | password123  |
 | Masyarakat    | user@user.sigap.com            | password123  |
 
 > Semua akun di atas telah diberikan role yang sesuai untuk melakukan pengujian pada sistem.
