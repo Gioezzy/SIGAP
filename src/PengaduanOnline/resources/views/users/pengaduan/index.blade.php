@@ -72,14 +72,20 @@
         class="min-h-screen py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-800 dark:to-gray-900">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
+            @php
+                $user = Auth::user();
+                $canSubmit = $user && $user->no_hp && $user->alamat;
+            @endphp
+
             <!-- Action Button -->
             <div class="mb-12 animate-slide-in-left">
                 <div class="relative inline-block group">
                     <div
                         class="absolute transition duration-500 -inset-1 bg-gradient-to-r from-sky-400 via-blue-500 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-70">
                     </div>
-                    <a href="{{ route('pengaduan.create') }}"
-                        class="relative inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-xl bg-gradient-to-br from-sky-400 via-blue-500 to-blue-600 rounded-2xl hover:from-purple-700 hover:to-pink-700 hover:scale-105 hover:shadow-2xl">
+
+                    <a href="{{ $canSubmit ? route('pengaduan.create') : '#' }}"
+                        class="relative inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-xl bg-gradient-to-br from-sky-400 via-blue-500 to-blue-600 rounded-2xl hover:from-purple-700 hover:to-pink-700 hover:scale-105 hover:shadow-2xl btn-check-nohp">
                         <svg class="w-6 h-6 mr-3 transition-transform duration-300 group-hover:rotate-90" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -90,6 +96,9 @@
                             class="absolute inset-0 transition-opacity duration-300 opacity-0 rounded-2xl bg-white/20 group-hover:opacity-100">
                         </div>
                     </a>
+
+                    {{-- Alert Script --}}
+                    @include('components.check-nohp')
                 </div>
             </div>
 

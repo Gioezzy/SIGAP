@@ -245,6 +245,7 @@
             </a>
 
             <!-- Layanan Dropdown (Mobile) -->
+            @auth
             <div>
                 <button
                     @click="openSubmenu === 'layanan' ? openSubmenu = null : openSubmenu = 'layanan'"
@@ -329,12 +330,13 @@
                     </a>
                 </div>
             </div>
+            @endauth
 
             <!-- About Us (Mobile) -->
             <a href="{{ route('profiles.index') }}"
                 class="block px-4 py-3 font-medium text-gray-700 transition hover:text-blue-600 hover:bg-blue-50 rounded-xl"
                 @click="open = false">
-                About Us
+                Tentang Kami
             </a>
 
             @guest

@@ -32,10 +32,18 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        $pengaduans = CategoryReport::all();
+        $user = auth()->user();
 
+        // Cek apakah no_hp dan alamat sudah diisi
+        if (!$user->no_hp || !$user->alamat) {
+            return redirect()->route('profile.edit')
+                ->with('error', 'Silakan isi nomor HP dan alamat terlebih dahulu sebelum membuat pengaduan.');
+        }
+
+        $pengaduans = CategoryReport::all();
         return view('users.pengaduan.create', compact('pengaduans'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -55,16 +63,16 @@ class PengaduanController extends Controller
         if ($admin && $admin->no_hp) {
             $userName = auth()->user()->name ?? 'Pengguna';
 
-            $pesan = "🚨 PENGADUAN BARU MASUK\n\n".
-                "Kepada Tim Admin,\n\n".
-                "Terdapat pengaduan baru yang memerlukan perhatian Anda.\n\n".
-                "👤 Data Pelapor:\n".
-                "• Nama: {$userName}\n\n".
-                "📋 Detail Pengaduan:\n".
-                "• Judul: {$pengaduan->judul}\n".
-                "• Isi Pengaduan: {$pengaduan->isi_pengaduan}\n".
-                "• Status: Menunggu Tanggapan\n\n".
-                " Silakan login ke sistem untuk memberikan tanggapan.\n\n".
+            $pesan = "🚨 PENGADUAN BARU MASUK\n\n" .
+                "Kepada Tim Admin,\n\n" .
+                "Terdapat pengaduan baru yang memerlukan perhatian Anda.\n\n" .
+                "👤 Data Pelapor:\n" .
+                "• Nama: {$userName}\n\n" .
+                "📋 Detail Pengaduan:\n" .
+                "• Judul: {$pengaduan->judul}\n" .
+                "• Isi Pengaduan: {$pengaduan->isi_pengaduan}\n" .
+                "• Status: Menunggu Tanggapan\n\n" .
+                " Silakan login ke sistem untuk memberikan tanggapan.\n\n" .
                 'Tim Sistem Pengaduan';
 
             Whatsapp::kirim($admin->no_hp, $pesan);

@@ -81,8 +81,21 @@
     </script>
     <script src="{{ asset('js/script.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-      <!-- ✅ Toast Notification -->
+    <!-- ✅ Toast Notification -->
     <x-alert />
 </body>
-
+@if (session('error'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: '{{ session('error') }}',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Oke'
+            });
+        });
+    </script>
+@endif
 </html>
