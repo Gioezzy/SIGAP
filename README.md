@@ -115,6 +115,8 @@ http://localhost:8000
 
 ---
 
-## 📄 Lisensi
 
-Proyek ini dibuat untuk kebutuhan pembelajaran dan demonstrasi. Silakan digunakan dan dimodifikasi sesuai kebutuhan.
+
+Proyek ini dibuat untuk keperluan **Project-Based Learning (PBL)** dan untuk memenuhi kerjasama dengan mitra terkait. Dan juga sebagai nilai tugas akhir dari prodi D4 Teknologi Rekayasa Perangkat Lunak Politeknik Negeri Padang
+
+Silakan digunakan, dimodifikasi, atau dikembangkan lebih lanjut sesuai kebutuhan pembelajaran.
